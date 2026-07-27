@@ -1,0 +1,12 @@
+[submodule "ai_model_research"]
+	path = ai_model_research
+	url = https://github.com/oneRede/ai_model_research.git
+[submodule "ai_physical_research"]
+	path = ai_physical_research
+	url = https://github.com/oneRede/ai_physical_research.git
+[submodule "ai_application_research"]
+	path = ai_application_research
+	url = https://github.com/oneRede/ai_application_research.git
+[submodule "harness-engineering"]
+	path = harness-engineering
+	url = https://github.com/oneRede/harness-engineering.git
