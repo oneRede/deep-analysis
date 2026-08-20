@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 缓存文件
+.rss-cache.json
+
+# 日志文件
+*.log
+.rss-aggregator.log
+.rss-aggregator.error.log
+
+# 临时文件
+*.tmp
+*.bak
+.DS_Store

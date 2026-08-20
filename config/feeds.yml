@@ -1,0 +1,392 @@
+# RSS/Atom Feeds 配置文件 - 修复版
+# 优化日期: 2026-08-18
+# 修复原则: 仅保留可验证的 RSS 源，移除无效地址
+
+# Tier 1 - 高权重（学术 + 已验证的官方博客）
+tier1:
+  # ============================================================
+  # 学术论文 - 绝对主力 (68% 收录率) ✅ 已验证
+  # ============================================================
+
+  - name: "arXiv cs.CL (计算与语言)"
+    url: "http://export.arxiv.org/rss/cs.CL"
+    type: "arxiv"
+    priority: "high"
+    keywords:
+      - "Large Language Model"
+      - "LLM"
+      - "Transformer"
+      - "Attention"
+      - "GPT"
+      - "BERT"
+      - "Language Model"
+      - "NLP"
+
+  - name: "arXiv cs.AI (人工智能)"
+    url: "http://export.arxiv.org/rss/cs.AI"
+    type: "arxiv"
+    priority: "high"
+    keywords:
+      - "Foundation Model"
+      - "Neural Network"
+      - "Deep Learning"
+      - "Reinforcement Learning"
+
+  - name: "arXiv cs.LG (机器学习)"
+    url: "http://export.arxiv.org/rss/cs.LG"
+    type: "arxiv"
+    priority: "high"
+    keywords:
+      - "MoE"
+      - "Mixture of Experts"
+      - "Model Training"
+      - "RLHF"
+      - "Optimization"
+      - "Scaling"
+
+  - name: "arXiv cs.RO (机器人)"
+    url: "http://export.arxiv.org/rss/cs.RO"
+    type: "arxiv"
+    priority: "high"
+    keywords:
+      - "Robot"
+      - "Embodied"
+      - "Manipulation"
+      - "Navigation"
+      - "Humanoid"
+
+  - name: "arXiv cs.CV (计算机视觉)"
+    url: "http://export.arxiv.org/rss/cs.CV"
+    type: "arxiv"
+    priority: "medium"
+    keywords:
+      - "Vision Language"
+      - "Multimodal"
+      - "VLM"
+      - "World Model"
+      - "3D Vision"
+
+  # ============================================================
+  # 已验证的官方博客 ✅
+  # ============================================================
+
+  - name: "NVIDIA Technical Blog"
+    url: "https://developer.nvidia.com/blog/feed/"
+    type: "blog"
+    priority: "high"
+    keywords:
+      - "GPU"
+      - "Training"
+      - "Inference"
+      - "NVLink"
+      - "Tensor Core"
+      - "CUDA"
+
+  - name: "NVIDIA AI Blog"
+    url: "https://blogs.nvidia.com/blog/category/deep-learning/feed/"
+    type: "blog"
+    priority: "high"
+    keywords:
+      - "AI"
+      - "Deep Learning"
+      - "Robotics"
+      - "Isaac"
+
+  - name: "Google DeepMind Blog"
+    url: "https://deepmind.google/blog/rss.xml"
+    type: "blog"
+    priority: "high"
+    # 虽有解析警告但可用
+
+  # ============================================================
+  # 主流大模型公司 - 通过网页爬取获取（见 web_scraper.py）
+  # ============================================================
+  # 以下公司的官方博客/研究页面通过自定义爬虫获取：
+  # ✅ DeepSeek Blog: https://deepseek.ai/blog
+  # ✅ Qwen Blog: https://qwenlm.github.io/blog/
+  # ✅ Zhipu AI Research: https://www.zhipuai.cn/en/research/
+  # ✅ Kimi (Moonshot AI) Blog: https://platform.kimi.ai/blog
+  # ✅ Anthropic Research: https://www.anthropic.com/research
+  # ✅ OpenAI News & Research: https://openai.com/news, https://openai.com/research
+  # ✅ xAI (Grok) Blog: https://x.ai/blog
+  #
+  # 使用 cloudscraper 库绕过 Cloudflare 防护
+
+  # ============================================================
+  # 具身智能公司 - 通过网页爬取获取
+  # ============================================================
+  # 国际:
+  # ✅ Physical Intelligence: https://www.physicalintelligence.company/blog (~7篇/周)
+  # ✅ Skild AI: https://www.skild.ai/blogs
+  # ✅ Figure AI: https://www.figure.ai/news
+  # ✅ 1X Technologies: https://www.1x.tech/discover (~11篇/周)
+  # ❌ Covariant: 无公开博客
+  #
+  # 中国:
+  # ✅ UBTECH (优必选): https://www.ubtrobot.com/en/news-list (~4篇/周)
+  # ✅ Unitree (宇树科技): https://www.unitree.com/ (~4篇/周)
+  # ✅ Agibot (智元机器人): https://agibot.com/news (~8篇/周)
+  #
+  # 关注：机器人基础模型、embodied AI、人形机器人
+
+  # ============================================================
+  # AI 芯片初创公司 - 通过网页爬取获取
+  # ============================================================
+  # 国际:
+  # ✅ Cerebras: https://www.cerebras.ai/blog (~44篇/周，极活跃)
+  # ✅ SambaNova: https://sambanova.ai/blog
+  # ✅ Tenstorrent: https://tenstorrent.com/newsroom (~13篇/周)
+  # ✅ Etched: https://etched.com/progress
+  # ✅ D-Matrix: https://www.d-matrix.ai/blog (~6篇/周，已解决 Cloudflare 403)
+  #     方案：Firefox/Windows + 会话预热 + 重试机制
+  #
+  # 中国:
+  # ✅ Cambricon (寒武纪): https://www.cambricon.com/ (科创板上市)
+  # ✅ Iluvatar (天数智芯): https://www.iluvatar.com/news
+  # ✅ Enflame (燧原科技): https://www.enflame-tech.com/news (~8篇/周)
+  # ✅ MetaX (沐曦): https://www.metax-tech.com/news.html
+  # ✅ Biren (壁仞科技): https://www.birentech.com/news/ (~8篇/周，港股上市)
+  #
+  # 关注：AI加速器、推理芯片、训练芯片、国产替代
+  #
+  # 这些源会在 fetch_all() 中自动爬取，无需在此配置
+
+# Tier 2 - 中权重（已验证的技术社区）
+tier2:
+  # ============================================================
+  # 学术机构博客 - 已验证可用 ✅
+  # ============================================================
+
+  - name: "Berkeley AI Research (BAIR)"
+    url: "https://bair.berkeley.edu/blog/feed.xml"
+    type: "blog"
+    priority: "medium"
+
+  - name: "CMU Machine Learning Blog"
+    url: "https://blog.ml.cmu.edu/feed/"
+    type: "blog"
+    priority: "medium"
+
+  # ============================================================
+  # 技术社区 - 已验证 ✅
+  # ============================================================
+
+  - name: "Hugging Face Blog"
+    url: "https://huggingface.co/blog/feed.xml"
+    type: "blog"
+    priority: "medium"
+    keywords:
+      - "model"
+      - "training"
+      - "inference"
+      - "optimization"
+      - "open source"
+
+  - name: "The Gradient"
+    url: "https://thegradient.pub/rss/"
+    type: "blog"
+    priority: "medium"
+
+  - name: "Together AI Blog"
+    url: "https://www.together.ai/blog/rss.xml"
+    type: "blog"
+    priority: "medium"
+    # 已验证有产出（3篇）
+
+  # ============================================================
+  # GitHub Releases - 重要开源项目追踪 ✅
+  # ============================================================
+
+  - name: "Meta LLaMA Releases"
+    url: "https://github.com/meta-llama/llama-models/releases.atom"
+    type: "releases"
+    priority: "medium"
+    keywords:
+      - "LLaMA"
+      - "Llama"
+      - "Meta"
+
+  - name: "Mistral AI Releases"
+    url: "https://github.com/mistralai/mistral-inference/releases.atom"
+    type: "releases"
+    priority: "medium"
+    keywords:
+      - "Mistral"
+      - "Model"
+
+  - name: "OpenAI GPT Releases"
+    url: "https://github.com/openai/openai-python/releases.atom"
+    type: "releases"
+    priority: "low"
+    keywords:
+      - "OpenAI"
+      - "GPT"
+
+  - name: "Anthropic Claude Releases"
+    url: "https://github.com/anthropics/anthropic-sdk-python/releases.atom"
+    type: "releases"
+    priority: "low"
+    keywords:
+      - "Claude"
+      - "Anthropic"
+
+  # ============================================================
+  # AI 芯片与硬件创新 ✅
+  # ============================================================
+
+  - name: "SambaNova Blog"
+    url: "https://sambanova.ai/blog/rss.xml"
+    type: "blog"
+    priority: "medium"
+    keywords:
+      - "chip"
+      - "inference"
+      - "accelerator"
+      - "hardware"
+
+  - name: "TrendForce Insights"
+    url: "https://insights.trendforce.com/feed"
+    type: "blog"
+    priority: "medium"
+    keywords:
+      - "semiconductor"
+      - "chip"
+      - "AI chip"
+      - "advanced packaging"
+      - "memory"
+      - "market analysis"
+      - "supply chain"
+
+# Tier 3 - 补充覆盖（已验证的中文媒体）
+tier3:
+  # ============================================================
+  # 中文技术媒体 - 已验证 ✅
+  # ============================================================
+
+  - name: "量子位"
+    url: "https://www.qbitai.com/feed"
+    type: "news"
+    lang: "zh"
+    priority: "low"
+    keywords:
+      - "论文"
+      - "arXiv"
+      - "技术"
+      - "开源"
+      - "模型"
+
+  # ============================================================
+  # Reddit - AI 讨论社区 ✅
+  # ============================================================
+
+  - name: "r/MachineLearning"
+    url: "https://www.reddit.com/r/MachineLearning/.rss"
+    type: "forum"
+    priority: "low"
+    keywords:
+      - "Research"
+      - "Paper"
+      - "Model"
+      - "Training"
+
+  - name: "r/LocalLLaMA"
+    url: "https://www.reddit.com/r/LocalLLaMA/.rss"
+    type: "forum"
+    priority: "low"
+    keywords:
+      - "LLM"
+      - "Quantization"
+      - "Inference"
+      - "Open Source"
+
+  # ============================================================
+  # 硬件与半导体新闻 ✅
+  # ============================================================
+
+  - name: "Tom's Hardware"
+    url: "https://www.tomshardware.com/feeds/all"
+    type: "news"
+    priority: "medium"
+    keywords:
+      - "AI"
+      - "chip"
+      - "GPU"
+      - "accelerator"
+      - "hardware"
+      - "semiconductor"
+      - "NVIDIA"
+      - "AMD"
+      - "Intel"
+
+  # ============================================================
+  # 科技新闻与创投动态 ✅
+  # ============================================================
+
+  - name: "TechCrunch"
+    url: "https://techcrunch.com/feed/"
+    type: "news"
+    priority: "medium"
+    keywords:
+      - "AI"
+      - "startup"
+      - "funding"
+      - "technology"
+      - "artificial intelligence"
+      - "machine learning"
+
+  - name: "TechCrunch AI"
+    url: "https://techcrunch.com/category/artificial-intelligence/feed/"
+    type: "news"
+    priority: "medium"
+    keywords:
+      - "AI"
+      - "LLM"
+      - "model"
+      - "generative AI"
+      - "chatbot"
+      - "OpenAI"
+      - "Anthropic"
+      - "Google"
+
+  - name: "The Information"
+    url: "https://www.theinformation.com/feed"
+    type: "news"
+    priority: "medium"
+    keywords:
+      - "AI"
+      - "technology"
+      - "startup"
+      - "big tech"
+      - "business"
+      - "innovation"
+      - "enterprise"
+
+# 全局过滤配置
+filters:
+  # 排除关键词（降低噪音）
+  exclude_keywords:
+    - "sponsored"
+    - "advertisement"
+    - "webinar"
+    - "hiring"
+    - "招聘"
+    - "融资"
+    - "收购"
+    - "访谈"
+    - "interview"
+    - "募资轮"
+    - "AMA"
+    - "megathread"
+
+  # 最小标题长度（过滤垃圾信息）
+  min_title_length: 15
+
+  # 时间窗口（天数）
+  days_lookback: 7
+
+# 输出配置
+output:
+  format: "markdown"
+  group_by: "tier"
+  deduplicate: true
+  similarity_threshold: 0.85

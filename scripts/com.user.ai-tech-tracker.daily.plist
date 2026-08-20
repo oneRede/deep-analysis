@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- 任务标识符 -->
+    <key>Label</key>
+    <string>com.user.ai-tech-tracker.daily</string>
+
+    <!-- 任务描述 -->
+    <key>Comment</key>
+    <string>AI技术追踪 - 每日自动运行</string>
+
+    <!-- 要执行的脚本 -->
+    <key>Program</key>
+    <string>/Users/rede/Git/deep_analysis/scripts/daily-run.sh</string>
+
+    <!-- 工作目录 -->
+    <key>WorkingDirectory</key>
+    <string>/Users/rede/Git/deep_analysis</string>
+
+    <!-- 标准输出日志（可选，脚本已有日志） -->
+    <key>StandardOutPath</key>
+    <string>/Users/rede/Git/deep_analysis/logs/launchd-stdout.log</string>
+
+    <!-- 标准错误日志 -->
+    <key>StandardErrorPath</key>
+    <string>/Users/rede/Git/deep_analysis/logs/launchd-stderr.log</string>
+
+    <!-- 每天运行一次 - 早上8点 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- 如果错过了运行时间，启动时立即运行 -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <!-- 环境变量 -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+
+    <!-- 保持运行（false表示运行一次后退出） -->
+    <key>KeepAlive</key>
+    <false/>
+
+    <!-- 在系统负载高时延迟运行 -->
+    <key>LowPriorityIO</key>
+    <true/>
+
+    <!-- 在电池供电时也运行 -->
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
