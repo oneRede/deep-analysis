@@ -1,0 +1,25 @@
+# AI 文章分类配置
+# 用于 RSS 聚合器的文章分类
+
+categories:
+  - key: ai_application
+    name: AI应用
+    description: 关于AI在实际场景中的应用、产品、解决方案
+
+  - key: harness_engineering
+    name: Harness工程
+    description: 关于AI工程实践、评估、测试、部署、监控、工具链、MLOps
+
+  - key: ai_model
+    name: AI模型
+    description: 关于新模型、模型架构、训练方法、模型优化
+
+  - key: embodied_ai
+    name: 具身智能
+    description: 关于机器人、物理世界交互、embodied AI
+
+# 默认分类（如果无法分类时使用）
+default_category: ai_application
+
+# 是否启用未分类类别
+enable_uncategorized: true

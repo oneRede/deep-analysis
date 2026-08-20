@@ -42,70 +42,71 @@ class WebScraper:
 
     def scrape_deepseek_blog(self, days_lookback: int = 7) -> List[Dict]:
         """
-        爬取 DeepSeek 官方博客
-        URL: https://deepseek.ai/blog
+        爬取 DeepSeek 官方博客和研究页面
+        URL: https://deepseek.ai/blog 和 https://www.deepseek.ai/research
         注意：这是一个动态加载的网站，使用备用方案
         """
         articles = []
 
-        # DeepSeek 博客是 SPA，内容在 JSON 中
-        # 尝试从页面源码中提取 JSON 数据
-        url = "https://deepseek.ai/blog"
+        # DeepSeek 的多个页面
+        urls = [
+            ("https://deepseek.ai/blog", "DeepSeek Blog", "blog"),
+            ("https://www.deepseek.ai/research", "DeepSeek Research", "research"),
+        ]
 
-        try:
-            print(f"🕷️  爬取: DeepSeek Blog ({url})")
-            response = self.session.get(url, timeout=30)
-            response.raise_for_status()
+        for url, source_name, content_type in urls:
+            try:
+                print(f"🕷️  爬取: {source_name} ({url})")
+                response = self.session.get(url, timeout=30)
+                response.raise_for_status()
 
-            # 尝试从页面中提取 JSON-LD 或内联数据
-            soup = BeautifulSoup(response.content, 'html.parser')
+                # 尝试从页面中提取 JSON-LD 或内联数据
+                soup = BeautifulSoup(response.content, 'html.parser')
 
-            # 查找 JSON-LD 结构化数据
-            json_ld_scripts = soup.find_all('script', type='application/ld+json')
+                # 查找 JSON-LD 结构化数据
+                json_ld_scripts = soup.find_all('script', type='application/ld+json')
 
-            for script in json_ld_scripts:
-                try:
-                    data = json.loads(script.string)
+                for script in json_ld_scripts:
+                    try:
+                        data = json.loads(script.string)
 
-                    # 检查是否包含博客文章
-                    if isinstance(data, dict) and 'blogPost' in data:
-                        cutoff_date = datetime.now() - timedelta(days=days_lookback)
+                        # 检查是否包含博客文章或研究
+                        if isinstance(data, dict) and 'blogPost' in data:
+                            cutoff_date = datetime.now() - timedelta(days=days_lookback)
 
-                        for post in data['blogPost']:
-                            if isinstance(post, dict):
-                                title = post.get('headline', '')
-                                url_path = post.get('url', '')
-                                date_str = post.get('datePublished', '')
-                                description = post.get('description', '')
+                            for post in data['blogPost']:
+                                if isinstance(post, dict):
+                                    title = post.get('headline', '')
+                                    url_path = post.get('url', '')
+                                    date_str = post.get('datePublished', '')
+                                    description = post.get('description', '')
 
-                                if not title or not url_path:
-                                    continue
+                                    if not title or not url_path:
+                                        continue
 
-                                # 解析日期
-                                article_date = self._parse_date(date_str)
-                                if article_date and article_date < cutoff_date:
-                                    continue
+                                    # 解析日期
+                                    article_date = self._parse_date(date_str)
+                                    if article_date and article_date < cutoff_date:
+                                        continue
 
-                                articles.append({
-                                    'title': title,
-                                    'url': url_path if url_path.startswith('http') else f"https://deepseek.ai{url_path}",
-                                    'summary': description,
-                                    'published': date_str or datetime.now().strftime('%Y-%m-%d'),
-                                    'published_raw': None,
-                                    'source': 'DeepSeek Blog',
-                                    'type': 'blog',
-                                    'priority': 'high',
-                                })
+                                    articles.append({
+                                        'title': title,
+                                        'url': url_path if url_path.startswith('http') else f"https://deepseek.ai{url_path}",
+                                        'summary': description,
+                                        'published': date_str or datetime.now().strftime('%Y-%m-%d'),
+                                        'published_raw': None,
+                                        'source': source_name,
+                                        'type': content_type,
+                                        'priority': 'high',
+                                    })
 
-                except json.JSONDecodeError:
-                    continue
+                    except json.JSONDecodeError:
+                        continue
 
-            print(f"✅ DeepSeek Blog: {len(articles)} 篇文章")
+                print(f"✅ {source_name}: {len([a for a in articles if a['source'] == source_name])} 篇文章")
 
-        except Exception as e:
-            print(f"❌ 爬取 DeepSeek Blog 失败: {str(e)}")
-
-        return articles
+            except Exception as e:
+                print(f"❌ 爬取 {source_name} 失败: {str(e)}")
 
         return articles
 
@@ -719,135 +720,151 @@ class WebScraper:
         companies = [
             {
                 'name': 'Physical Intelligence',
-                'url': 'https://www.physicalintelligence.company/blog',
-                'path_filter': '/blog/'
+                'urls': [
+                    ('https://www.physicalintelligence.company/blog', '/blog/'),
+                    ('https://www.physicalintelligence.company/research', '/research/'),
+                ]
             },
             {
                 'name': 'Skild AI',
-                'url': 'https://www.skild.ai/blogs',
-                'path_filter': '/blogs/'
+                'urls': [
+                    ('https://www.skild.ai/blogs', '/blogs/'),
+                ]
             },
             {
                 'name': 'Figure AI',
-                'url': 'https://www.figure.ai/news',
-                'path_filter': '/news/'
+                'urls': [
+                    ('https://www.figure.ai/news', '/news/'),
+                ]
             },
             {
                 'name': '1X Technologies',
-                'url': 'https://www.1x.tech/discover',
-                'path_filter': '/discover/'
+                'urls': [
+                    ('https://www.1x.tech/discover', '/discover/'),
+                ]
             },
             # 中国具身智能公司
             {
                 'name': 'UBTECH (优必选)',
-                'url': 'https://www.ubtrobot.com/en/news-list',
-                'path_filter': '/news'
+                'urls': [
+                    ('https://www.ubtrobot.com/en/news-list', '/news'),
+                ]
             },
             {
                 'name': 'Unitree (宇树科技)',
-                'url': 'https://www.unitree.com/',
-                'path_filter': ['/news', '/article']
+                'urls': [
+                    ('https://www.unitree.com/', ['/news', '/article']),
+                ]
             },
             {
                 'name': 'Agibot (智元机器人)',
-                'url': 'https://agibot.com/news',
-                'path_filter': ['/news', '/article']
+                'urls': [
+                    ('https://agibot.com/news', ['/news', '/article']),
+                    ('https://agibot.com/research', '/research'),
+                ]
             }
         ]
 
         for company in companies:
-            try:
-                print(f"🕷️  爬取: {company['name']} ({company['url']})")
+            for url_config in company['urls']:
+                url, path_filter = url_config
+                try:
+                    print(f"🕷️  爬取: {company['name']} ({url})")
 
-                if CLOUDSCRAPER_AVAILABLE:
-                    scraper = cloudscraper.create_scraper(
-                        browser={'browser': 'chrome', 'platform': 'darwin', 'desktop': True}
-                    )
-                    response = scraper.get(company['url'], timeout=30)
-                else:
-                    response = self.session.get(company['url'], timeout=30)
+                    if CLOUDSCRAPER_AVAILABLE:
+                        scraper = cloudscraper.create_scraper(
+                            browser={'browser': 'chrome', 'platform': 'darwin', 'desktop': True}
+                        )
+                        response = scraper.get(url, timeout=30)
+                    else:
+                        response = self.session.get(url, timeout=30)
 
-                response.raise_for_status()
+                    response.raise_for_status()
 
-                soup = BeautifulSoup(response.content, 'html.parser')
-                cutoff_date = datetime.now() - timedelta(days=days_lookback)
+                    soup = BeautifulSoup(response.content, 'html.parser')
+                    cutoff_date = datetime.now() - timedelta(days=days_lookback)
 
-                all_links = soup.find_all('a', href=True)
+                    all_links = soup.find_all('a', href=True)
 
-                for link_tag in all_links:
-                    try:
-                        href = link_tag.get('href', '')
+                    for link_tag in all_links:
+                        try:
+                            href = link_tag.get('href', '')
 
-                        if not href or href == '#':
-                            continue
-
-                        # 过滤相关路径（支持单个或多个过滤器）
-                        path_filter = company['path_filter']
-                        if isinstance(path_filter, list):
-                            # 多个路径过滤器
-                            if not any(pf in href for pf in path_filter):
-                                continue
-                        else:
-                            # 单个路径过滤器
-                            if path_filter not in href:
+                            if not href or href == '#':
                                 continue
 
-                        title = link_tag.get_text(strip=True)
-                        if not title or len(title) < 10:
-                            title_elem = link_tag.find(['h1', 'h2', 'h3', 'h4'])
-                            if title_elem:
-                                title = title_elem.get_text(strip=True)
+                            # 过滤相关路径（支持单个或多个过滤器）
+                            if isinstance(path_filter, list):
+                                # 多个路径过滤器
+                                if not any(pf in href for pf in path_filter):
+                                    continue
+                            else:
+                                # 单个路径过滤器
+                                if path_filter not in href:
+                                    continue
+
+                            title = link_tag.get_text(strip=True)
+                            if not title or len(title) < 10:
+                                title_elem = link_tag.find(['h1', 'h2', 'h3', 'h4'])
+                                if title_elem:
+                                    title = title_elem.get_text(strip=True)
+                                else:
+                                    continue
+
+                            # 构建完整URL
+                            if href.startswith('/'):
+                                # 从当前URL提取基础域名
+                                from urllib.parse import urlparse
+                                parsed = urlparse(url)
+                                base_url = f"{parsed.scheme}://{parsed.netloc}"
+                                full_url = f"{base_url}{href}"
+                            elif href.startswith('http'):
+                                full_url = href
                             else:
                                 continue
 
-                        # 构建完整URL
-                        if href.startswith('/'):
-                            base_url = company['url'].split('/blog')[0].split('/blogs')[0]
-                            full_url = f"{base_url}{href}"
-                        elif href.startswith('http'):
-                            full_url = href
-                        else:
+                            # 查找日期
+                            parent = link_tag.parent
+                            date_str = ""
+                            if parent:
+                                date_elem = parent.find(['time', 'span'], class_=re.compile(r'date|time', re.I))
+                                if date_elem:
+                                    date_str = date_elem.get_text(strip=True)
+                                else:
+                                    text = parent.get_text()
+                                    date_match = re.search(r'(\w{3}\s+\d{1,2},\s+\d{4})', text)
+                                    if date_match:
+                                        date_str = date_match.group(1)
+
+                            article_date = self._parse_date(date_str)
+                            if article_date and article_date < cutoff_date:
+                                continue
+
+                            if any(a['url'] == full_url for a in all_articles):
+                                continue
+
+                            all_articles.append({
+                                'title': title,
+                                'url': full_url,
+                                'summary': '',
+                                'published': date_str or datetime.now().strftime('%Y-%m-%d'),
+                                'published_raw': None,
+                                'source': company['name'],
+                                'type': 'blog',
+                                'priority': 'high',
+                            })
+
+                        except Exception as e:
                             continue
 
-                        # 查找日期
-                        parent = link_tag.parent
-                        date_str = ""
-                        if parent:
-                            date_elem = parent.find(['time', 'span'], class_=re.compile(r'date|time', re.I))
-                            if date_elem:
-                                date_str = date_elem.get_text(strip=True)
-                            else:
-                                text = parent.get_text()
-                                date_match = re.search(r'(\w{3}\s+\d{1,2},\s+\d{4})', text)
-                                if date_match:
-                                    date_str = date_match.group(1)
+                except Exception as e:
+                    print(f"❌ 爬取 {company['name']} ({url}) 失败: {str(e)}")
 
-                        article_date = self._parse_date(date_str)
-                        if article_date and article_date < cutoff_date:
-                            continue
-
-                        if any(a['url'] == full_url for a in all_articles):
-                            continue
-
-                        all_articles.append({
-                            'title': title,
-                            'url': full_url,
-                            'summary': '',
-                            'published': date_str or datetime.now().strftime('%Y-%m-%d'),
-                            'published_raw': None,
-                            'source': company['name'],
-                            'type': 'blog',
-                            'priority': 'high',
-                        })
-
-                    except Exception as e:
-                        continue
-
-                company_articles = [a for a in all_articles if a['source'] == company['name']]
+        # 最后统计每个公司的总文章数
+        for company in companies:
+            company_articles = [a for a in all_articles if a['source'] == company['name']]
+            if company_articles:
                 print(f"✅ {company['name']}: {len(company_articles)} 篇文章")
-
-            except Exception as e:
-                print(f"❌ 爬取 {company['name']} 失败: {str(e)}")
 
         return all_articles
 
@@ -864,6 +881,12 @@ class WebScraper:
                 'name': 'Cerebras',
                 'url': 'https://www.cerebras.ai/blog',
                 'path_filter': '/blog/',
+                'browser_config': {'browser': 'chrome', 'platform': 'darwin', 'desktop': True}
+            },
+            {
+                'name': 'Cerebras',
+                'url': 'https://www.cerebras.ai/publications',
+                'path_filter': '/publications/',
                 'browser_config': {'browser': 'chrome', 'platform': 'darwin', 'desktop': True}
             },
             {
@@ -890,6 +913,12 @@ class WebScraper:
                 'path_filter': '/progress/',
                 'browser_config': {'browser': 'chrome', 'platform': 'darwin', 'desktop': True}
             },
+            {
+                'name': 'Etched',
+                'url': 'https://etched.com/research',
+                'path_filter': '/research/',
+                'browser_config': {'browser': 'chrome', 'platform': 'darwin', 'desktop': True}
+            },
             # 中国AI芯片公司
             {
                 'name': 'Cambricon (寒武纪)',
@@ -901,6 +930,12 @@ class WebScraper:
                 'name': 'Iluvatar (天数智芯)',
                 'url': 'https://www.iluvatar.com/news',
                 'path_filter': ['/news', '/newsdetails'],
+                'browser_config': {'browser': 'chrome', 'platform': 'darwin', 'desktop': True}
+            },
+            {
+                'name': 'Iluvatar (天数智芯)',
+                'url': 'https://www.iluvatar.com/en/research',
+                'path_filter': '/research',
                 'browser_config': {'browser': 'chrome', 'platform': 'darwin', 'desktop': True}
             },
             {
@@ -928,11 +963,7 @@ class WebScraper:
                 print(f"🕷️  爬取: {company['name']} ({company['url']})")
 
                 if CLOUDSCRAPER_AVAILABLE:
-                    scraper = cloudscraper.create_scraper(browser=company.get('browser_config', {
-                        'browser': 'chrome', 'platform': 'darwin', 'desktop': True
-                    }))
-
-                    # D-Matrix 需要特殊处理：先访问主页建立会话，多次重试
+                    # D-Matrix 需要特殊处理：使用 Firefox/Windows，先访问主页建立会话，多次重试
                     if company['name'] == 'D-Matrix':
                         success = False
                         for attempt in range(3):  # 最多尝试3次
@@ -941,14 +972,21 @@ class WebScraper:
                                     print(f"  🔄 重试 {attempt}/3...")
                                     time.sleep(5 * attempt)  # 递增延迟
 
-                                # 先访问主页
+                                # 每次重试都重新创建 scraper，使用正确的配置
+                                scraper = cloudscraper.create_scraper(browser={
+                                    'browser': 'firefox', 'platform': 'windows', 'desktop': True
+                                })
+
+                                # 先访问主页建立会话
                                 homepage_resp = scraper.get('https://www.d-matrix.ai/', timeout=30)
                                 if homepage_resp.status_code == 200:
-                                    time.sleep(2)  # 模拟人类浏览
+                                    time.sleep(3)  # 等待更长时间
                                     response = scraper.get(company['url'], timeout=30)
                                     if response.status_code == 200:
                                         success = True
                                         break
+                                    elif response.status_code == 403 and attempt < 2:
+                                        continue  # 尝试下一次
                             except Exception as e:
                                 if attempt == 2:  # 最后一次尝试
                                     print(f"  ⚠️  多次尝试后仍失败，跳过 D-Matrix")
@@ -958,6 +996,10 @@ class WebScraper:
                             print(f"❌ D-Matrix: Cloudflare 保护（403），暂时跳过")
                             continue
                     else:
+                        # 其他公司使用标准配置
+                        scraper = cloudscraper.create_scraper(browser=company.get('browser_config', {
+                            'browser': 'chrome', 'platform': 'darwin', 'desktop': True
+                        }))
                         response = scraper.get(company['url'], timeout=30)
                 else:
                     response = self.session.get(company['url'], timeout=30)

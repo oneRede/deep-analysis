@@ -2,7 +2,7 @@
 # AI技术追踪 - 自动运行管理脚本
 
 PLIST_FILE="com.user.ai-tech-tracker.daily.plist"
-PLIST_SOURCE="/Users/rede/Git/deep_analysis/$PLIST_FILE"
+PLIST_SOURCE="/Users/rede/Git/deep_analysis/scripts/$PLIST_FILE"
 PLIST_DEST="$HOME/Library/LaunchAgents/$PLIST_FILE"
 
 show_usage() {

@@ -21,14 +21,26 @@ from web_scraper import scrape_all_custom_sources
 SCRIPT_DIR = Path(__file__).parent
 ROOT_DIR = SCRIPT_DIR.parent
 CONFIG_FILE = ROOT_DIR / "config" / "feeds.yml"
+CATEGORIES_FILE = ROOT_DIR / "config" / "categories.yml"
 REPORT_DIR = ROOT_DIR / "report"
 CACHE_FILE = SCRIPT_DIR / ".rss-cache.json"
 
 class RSSAggregator:
-    def __init__(self, config_path: Path):
+    def __init__(self, config_path: Path, categories_path: Path = CATEGORIES_FILE):
         """初始化聚合器"""
         with open(config_path, 'r', encoding='utf-8') as f:
             self.config = yaml.safe_load(f)
+
+        # 加载分类配置
+        with open(categories_path, 'r', encoding='utf-8') as f:
+            categories_config = yaml.safe_load(f)
+            self.categories = categories_config['categories']
+            self.default_category = categories_config.get('default_category', 'ai_application')
+            self.enable_uncategorized = categories_config.get('enable_uncategorized', True)
+
+        # 构建分类映射
+        self.category_name_to_key = {cat['name']: cat['key'] for cat in self.categories}
+        self.category_key_to_name = {cat['key']: cat['name'] for cat in self.categories}
 
         self.cache = self._load_cache()
         self.articles = []
@@ -53,19 +65,18 @@ class RSSAggregator:
             json.dump(self.cache, f, indent=2, ensure_ascii=False)
 
     def _is_recent(self, published_parsed) -> bool:
-        """检查文章是否在时间窗口内 - 每日模式：检查是否为昨天发布"""
+        """检查文章是否在时间窗口内 - 使用配置的 days_lookback 参数"""
         if not published_parsed:
             return True  # 无日期信息，保守处理
 
-        # 获取昨天的日期范围
-        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-        yesterday_start = today - timedelta(days=1)
-        yesterday_end = today
+        # 使用配置的时间窗口，去重由缓存机制处理
+        days_lookback = self.config.get('filters', {}).get('days_lookback', 7)
+        cutoff_date = datetime.now() - timedelta(days=days_lookback)
 
         article_date = datetime(*published_parsed[:6])
 
-        # 检查文章是否发布于昨天
-        return yesterday_start <= article_date < yesterday_end
+        # 检查文章是否在时间窗口内
+        return article_date >= cutoff_date
 
     def _normalize_url(self, url: str) -> str:
         """标准化 URL（去除查询参数和 fragment）"""
@@ -95,6 +106,29 @@ class RSSAggregator:
             return days
         except:
             return None
+
+    def _clean_html(self, text: str) -> str:
+        """清理文本中的 HTML 标签和特殊字符"""
+        if not text:
+            return ""
+
+        # 移除 HTML 注释
+        text = re.sub(r'<!--.*?-->', '', text, flags=re.DOTALL)
+
+        # 移除 HTML 标签
+        text = re.sub(r'<[^>]+>', '', text)
+
+        # 解码 HTML 实体
+        import html
+        text = html.unescape(text)
+
+        # 合并多个空格
+        text = re.sub(r'\s+', ' ', text)
+
+        # 移除首尾空格
+        text = text.strip()
+
+        return text
 
     def _extract_arxiv_date(self, article: Dict) -> tuple:
         """从 arXiv 文章中提取实际提交日期"""
@@ -180,6 +214,16 @@ class RSSAggregator:
             title = article.get('title', '')
             summary = article.get('summary', '')[:500]  # 限制输入长度
 
+            # 动态构建分类描述
+            category_descriptions = []
+            category_names = []
+            for cat in self.categories:
+                category_descriptions.append(f"   - {cat['name']}：{cat['description']}")
+                category_names.append(cat['name'])
+
+            category_list = '/'.join(category_names)
+            category_count = len(category_names)
+
             prompt = f"""请分析以下文章并完成两个任务：
 
 文章标题：{title}
@@ -189,15 +233,12 @@ class RSSAggregator:
 任务：
 1. 生成一个简洁的中文摘要（不超过100字）
 2. 将文章分类到以下类别之一：
-   - AI应用：关于AI在实际场景中的应用、产品、解决方案
-   - Harness工程：关于AI工程实践、评估、测试、部署、监控、工具链、MLOps
-   - AI模型：关于新模型、模型架构、训练方法、模型优化
-   - 具身智能：关于机器人、物理世界交互、embodied AI
+{chr(10).join(category_descriptions)}
 
 请严格按照以下JSON格式返回：
 {{
   "summary": "100字以内的中文摘要",
-  "category": "AI应用/Harness工程/AI模型/具身智能（四选一）"
+  "category": "{category_list}（{category_count}选一）"
 }}
 
 只返回JSON，不要有其他内容。"""
@@ -237,16 +278,10 @@ class RSSAggregator:
                 try:
                     parsed = json.loads(content)
                     ai_summary = parsed.get('summary', '').strip()
-                    category = parsed.get('category', 'AI应用').strip()
+                    category = parsed.get('category', self.category_key_to_name[self.default_category]).strip()
 
-                    # 标准化分类名称
-                    category_mapping = {
-                        'AI应用': 'ai_application',
-                        'Harness工程': 'harness_engineering',
-                        'AI模型': 'ai_model',
-                        '具身智能': 'embodied_ai'
-                    }
-                    category_key = category_mapping.get(category, 'ai_application')
+                    # 使用配置的分类映射
+                    category_key = self.category_name_to_key.get(category, self.default_category)
 
                     return ai_summary, category_key
                 except json.JSONDecodeError:
@@ -386,14 +421,17 @@ class RSSAggregator:
         if not self.articles:
             return {"all": "# RSS 聚合报告\n\n本次运行未发现新文章。\n"}
 
-        # 定义分类
-        categories = {
-            'ai_application': {'name': 'AI应用', 'articles': []},
-            'harness_engineering': {'name': 'Harness工程', 'articles': []},
-            'ai_model': {'name': 'AI模型', 'articles': []},
-            'embodied_ai': {'name': '具身智能', 'articles': []},
-            'uncategorized': {'name': '未分类', 'articles': []}
-        }
+        # 从配置构建分类字典
+        categories = {}
+        for cat in self.categories:
+            categories[cat['key']] = {
+                'name': cat['name'],
+                'articles': []
+            }
+
+        # 添加未分类类别（如果启用）
+        if self.enable_uncategorized:
+            categories['uncategorized'] = {'name': '未分类', 'articles': []}
 
         # 按分类分组文章
         for article in self.articles:
@@ -512,13 +550,8 @@ class RSSAggregator:
 
             # 显示分类
             if article.get('category'):
-                category_names = {
-                    'ai_application': 'AI应用',
-                    'harness_engineering': 'Harness工程',
-                    'ai_model': 'AI模型',
-                    'embodied_ai': '具身智能'
-                }
-                report.append(f"- **分类**: {category_names.get(article['category'], article['category'])}")
+                category_display = self.category_key_to_name.get(article['category'], article['category'])
+                report.append(f"- **分类**: {category_display}")
 
             report.append(f"- **链接**: {article['url']}")
 
@@ -528,11 +561,15 @@ class RSSAggregator:
 
             # 原始摘要（作为补充）
             if article.get('summary'):
+                # 清理 HTML 标签
+                summary = self._clean_html(article['summary'])
                 # 截取摘要前200字符
-                summary = article['summary'][:200].strip()
+                summary = summary[:200].strip()
                 if len(article['summary']) > 200:
                     summary += "..."
-                report.append(f"- **原始摘要**: {summary}")
+                # 只有清理后还有内容才显示
+                if summary and summary != "...":
+                    report.append(f"- **原始摘要**: {summary}")
 
             report.append("")  # 空行
 
@@ -564,20 +601,23 @@ class RSSAggregator:
         saved_files.append(('全部文章', filepath))
 
         # 保存分类报告
-        category_filenames = {
-            'ai_application': f"rss-aggregation-{yesterday}-AI应用.md",
-            'harness_engineering': f"rss-aggregation-{yesterday}-Harness工程.md",
-            'ai_model': f"rss-aggregation-{yesterday}-AI模型.md",
-            'embodied_ai': f"rss-aggregation-{yesterday}-具身智能.md",
-            'uncategorized': f"rss-aggregation-{yesterday}-未分类.md"
-        }
-
-        for cat_key, filename in category_filenames.items():
+        for cat in self.categories:
+            cat_key = cat['key']
+            cat_name = cat['name']
             if cat_key in reports:
+                filename = f"rss-aggregation-{yesterday}-{cat_name}.md"
                 filepath = date_dir / filename
                 with open(filepath, 'w', encoding='utf-8') as f:
                     f.write(reports[cat_key])
-                saved_files.append((category_filenames[cat_key].replace(f'rss-aggregation-{yesterday}-', '').replace('.md', ''), filepath))
+                saved_files.append((cat_name, filepath))
+
+        # 保存未分类报告（如果启用且存在）
+        if self.enable_uncategorized and 'uncategorized' in reports:
+            filename = f"rss-aggregation-{yesterday}-未分类.md"
+            filepath = date_dir / filename
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write(reports['uncategorized'])
+            saved_files.append(('未分类', filepath))
 
         print(f"\n{'='*60}")
         print(f"✅ 报告已保存到: {date_dir}")
