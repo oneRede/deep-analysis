@@ -47,7 +47,7 @@ class RSSAggregator:
         self.seen_urls: Set[str] = set()
 
         # DeepSeek API 配置
-        self.deepseek_api_key = "YOUR_DEEPSEEK_API_KEY"
+        self.deepseek_api_key = os.getenv('DEEPSEEK_API_KEY', '')
         self.deepseek_api_url = "https://api.deepseek.com/chat/completions"
         self.enable_ai_summary = self.config.get('ai_summary', {}).get('enabled', True)
 
