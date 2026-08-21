@@ -17,6 +17,7 @@ import os
 import requests
 import time
 from web_scraper import scrape_all_custom_sources
+from military_scraper import scrape_military_sources
 
 # 配置路径
 SCRIPT_DIR = Path(__file__).parent
@@ -402,8 +403,41 @@ class RSSAggregator:
         except Exception as e:
             print(f"❌ 自定义网页爬取失败: {str(e)}")
 
+        # 爬取军事新闻网站（无RSS）
+        try:
+            days = self.config.get('filters', {}).get('days_lookback', 7)
+            military_articles = scrape_military_sources(days_lookback=days)
+
+            for article in military_articles:
+                # 设置 tier（军事源归为 military）
+                article['tier'] = 'military'
+
+                # 排除规则检查
+                if self._should_exclude(article):
+                    continue
+
+                # 去重检查
+                if self._is_duplicate(article):
+                    continue
+
+                # 军事新闻不需要AI分类，可以直接设置分类
+                # 如果需要AI摘要，可以取消注释下面的代码
+                # if self.enable_ai_summary:
+                #     print(f"  🤖 分析文章: {article['title'][:50]}...")
+                #     ai_summary, category = self._generate_ai_summary_and_category(article)
+                #     if ai_summary:
+                #         article['ai_summary'] = ai_summary
+                #     time.sleep(0.5)
+
+                # 添加到结果
+                self.articles.append(article)
+                self.seen_urls.add(self._normalize_url(article['url']))
+
+        except Exception as e:
+            print(f"❌ 军事新闻爬取失败: {str(e)}")
+
         # 然后抓取 RSS feeds
-        for tier in ['tier1', 'tier2', 'tier3']:
+        for tier in ['tier1', 'tier2', 'tier3', 'military']:
             feeds = self.config.get(tier, [])
             if feeds:
                 print(f"\n{'='*60}")

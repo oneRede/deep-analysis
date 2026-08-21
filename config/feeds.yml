@@ -399,6 +399,94 @@ filters:
   # 时间窗口（天数）
   days_lookback: 7
 
+# 军事新闻源配置
+military:
+  # ============================================================
+  # 有RSS的军事媒体 ✅
+  # ============================================================
+
+  - name: "Defense News"
+    url: "https://www.defensenews.com/m/rss/"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "military"
+      - "defense"
+      - "weapons"
+      - "procurement"
+      - "technology"
+
+  - name: "Military Times"
+    url: "https://www.militarytimes.com/m/rss/"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "military"
+      - "armed forces"
+      - "defense"
+      - "veterans"
+
+  - name: "Breaking Defense"
+    url: "https://breakingdefense.com/full-rss-feed/?v=2"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "defense"
+      - "weapons systems"
+      - "military technology"
+      - "procurement"
+
+  - name: "Stars and Stripes"
+    url: "https://subscribe.stripes.com/rss"
+    type: "news"
+    priority: "medium"
+    keywords:
+      - "military"
+      - "veterans"
+      - "defense"
+
+  - name: "TASS Defense"
+    url: "http://tass.com/rss/v2.xml"
+    type: "news"
+    priority: "medium"
+    keywords:
+      - "defense"
+      - "military"
+      - "weapons"
+      - "Russia"
+
+  - name: "Military.com"
+    url: "https://www.military.com/feed/"
+    type: "news"
+    priority: "medium"
+    keywords:
+      - "military"
+      - "veterans"
+      - "defense news"
+
+  - name: "The War Zone"
+    url: "https://www.twz.com/feed"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "military"
+      - "aviation"
+      - "defense"
+      - "weapons"
+      - "analysis"
+
+  # ============================================================
+  # 需要爬取的军事媒体（无RSS）
+  # ============================================================
+  # 以下网站通过 military_scraper.py 爬取：
+  # ✅ Jane's Defence: https://www.janes.com
+  # ✅ Army Technology: https://www.army-technology.com
+  # ✅ 环球网军事: https://mil.huanqiu.com
+  #
+  # 注意：
+  # ❌ 中国军网 (81.cn) - 重定向循环问题，暂时跳过
+  # ❌ Global Security - 403 Forbidden，需要特殊处理
+
 # 输出配置
 output:
   format: "markdown"
