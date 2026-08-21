@@ -18,6 +18,10 @@ categories:
     name: 具身智能
     description: 关于机器人、物理世界交互、embodied AI
 
+  - key: ai_chip
+    name: AI芯片
+    description: 关于AI训练芯片、AI推理芯片
+
 # 默认分类（如果无法分类时使用）
 default_category: ai_application
 

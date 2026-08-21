@@ -9,6 +9,12 @@ ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 
 cd "$ROOT_DIR"
 
+# 加载环境变量
+if [ -f "$ROOT_DIR/.env" ]; then
+    export $(grep -v '^#' "$ROOT_DIR/.env" | xargs)
+    echo "✅ 已加载环境变量"
+fi
+
 echo "🚀 运行 RSS 聚合器..."
 echo ""
 

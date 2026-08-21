@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import List, Dict, Any, Set
 from urllib.parse import urlparse
 import re
+import os
 import requests
 import time
 from web_scraper import scrape_all_custom_sources
