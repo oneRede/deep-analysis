@@ -482,10 +482,6 @@ military:
   # ✅ Jane's Defence: https://www.janes.com
   # ✅ Army Technology: https://www.army-technology.com
   # ✅ 环球网军事: https://mil.huanqiu.com
-  #
-  # 注意：
-  # ❌ 中国军网 (81.cn) - 重定向循环问题，暂时跳过
-  # ❌ Global Security - 403 Forbidden，需要特殊处理
 
 # 输出配置
 output:

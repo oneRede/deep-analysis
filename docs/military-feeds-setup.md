@@ -4,6 +4,20 @@
 
 已将世界范围内著名的军事新闻媒体添加到 `~/git/deep_analysis/config/feeds.yml` 的 `military` 分类中。
 
+## 🏷️  自动分类
+
+所有军事新闻文章会自动分类为 `military_tech`（军事技术），无需DeepSeek AI分析：
+
+- **categories.yml** 中添加了新分类：
+  - `key: military_tech`
+  - `name: 军事技术`
+  - `description: 关于军事装备、武器系统、国防技术、军事战略、防务政策、军事行动`
+
+- **RSS聚合器逻辑**：
+  - `tier == 'military'` 的文章自动设置 `category = 'military_tech'`
+  - 节省API调用成本（无需调用DeepSeek分类）
+  - 确保分类准确性（军事新闻不会被误分类）
+
 ## ✅ 可用的RSS源（4个）
 
 以下媒体提供RSS订阅，可自动获取文章：
@@ -104,6 +118,15 @@ cd ~/git/deep_analysis/scripts
 python3 military_scraper.py
 ```
 
+### 4. 测试军事分类功能
+
+```bash
+cd ~/git/deep_analysis/scripts
+python3 test_military_category.py
+```
+
+验证所有军事文章都正确分类为 `military_tech`。
+
 ## 📝 配置文件结构
 
 ### feeds.yml
@@ -176,7 +199,33 @@ military:
 ## 🔗 相关文件
 
 - 配置: `~/git/deep_analysis/config/feeds.yml`
+- 分类配置: `~/git/deep_analysis/config/categories.yml`
 - 主脚本: `~/git/deep_analysis/scripts/rss-aggregator.py`
 - 军事爬虫: `~/git/deep_analysis/scripts/military_scraper.py`
 - 测试脚本: `~/git/deep_analysis/scripts/test_military_feeds.py`
+- 分类测试: `~/git/deep_analysis/scripts/test_military_category.py`
 - 报告目录: `~/git/deep_analysis/report/`
+
+## 🎯 关键特性
+
+### 1. 自动分类
+所有军事新闻自动分类为 `military_tech`，无需AI分析：
+- 节省API成本
+- 分类更准确
+- 处理速度更快
+
+### 2. 通用RSS处理
+使用统一的 `fetch_feed()` 方法处理所有RSS源：
+- 一致的去重逻辑
+- 统一的时间过滤
+- 自动的关键词匹配
+
+### 3. 爬虫补充
+对没有RSS的网站使用爬虫：
+- Jane's Defence
+- Army Technology（待修复）
+- 环球网军事（待改进）
+
+### 4. 完整的测试套件
+- `test_military_feeds.py` - 测试所有源的可用性
+- `test_military_category.py` - 验证分类功能

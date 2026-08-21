@@ -420,14 +420,15 @@ class RSSAggregator:
                 if self._is_duplicate(article):
                     continue
 
-                # 军事新闻不需要AI分类，可以直接设置分类
-                # 如果需要AI摘要，可以取消注释下面的代码
-                # if self.enable_ai_summary:
-                #     print(f"  🤖 分析文章: {article['title'][:50]}...")
-                #     ai_summary, category = self._generate_ai_summary_and_category(article)
-                #     if ai_summary:
-                #         article['ai_summary'] = ai_summary
-                #     time.sleep(0.5)
+                # 生成 AI 摘要和分类（和其他文章一样处理）
+                if self.enable_ai_summary:
+                    print(f"  🤖 分析文章: {article['title'][:50]}...")
+                    ai_summary, category = self._generate_ai_summary_and_category(article)
+                    if ai_summary:
+                        article['ai_summary'] = ai_summary
+                    if category:
+                        article['category'] = category
+                    time.sleep(0.5)
 
                 # 添加到结果
                 self.articles.append(article)
