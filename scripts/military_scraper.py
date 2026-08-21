@@ -28,18 +28,27 @@ class MilitaryScraper:
         articles = []
 
         try:
-            url = "https://www.janes.com"
+            # 第一步：访问 Jane's 的新闻和分析页面
+            url = "https://www.janes.com/defence-intelligence-insights"
             response = requests.get(url, headers=self.headers, timeout=15)
             response.raise_for_status()
 
             soup = BeautifulSoup(response.content, 'html.parser')
 
-            # 查找文章链接
-            article_links = soup.find_all('a', href=re.compile(r'/defence-|/article/'))
+            # 查找文章链接 - 匹配 /post/ 路径的链接
+            all_links = soup.find_all('a', href=re.compile(r'/post/'))
 
             seen_urls = set()
-            for link in article_links[:10]:  # 限制前10篇
+            article_urls = []
+
+            for link in all_links[:20]:  # 获取前20个链接
                 href = link.get('href', '')
+                text = link.get_text(strip=True)
+
+                # 过滤太短的文本（可能是按钮或导航）
+                if len(text) < 20:
+                    continue
+
                 if not href.startswith('http'):
                     href = f"https://www.janes.com{href}"
 
@@ -47,21 +56,125 @@ class MilitaryScraper:
                     continue
                 seen_urls.add(href)
 
-                title = link.get_text(strip=True)
-                if len(title) < 15:  # 过滤太短的标题
+                # 排除非文章页面
+                if any(x in href for x in ['/search', '/about', '/contact', '/category', '/tag/']):
                     continue
 
-                article = {
-                    'title': title,
-                    'url': href,
-                    'summary': '',
-                    'published': datetime.now().strftime('%Y-%m-%d'),
-                    'published_raw': None,
-                    'source': "Jane's Defence",
-                    'type': 'news',
-                    'priority': 'high'
-                }
-                articles.append(article)
+                article_urls.append(href)
+
+            print(f"  找到 {len(article_urls)} 个文章链接，开始获取详细内容...")
+
+            # 第二步：访问每篇文章页面获取详细内容
+            for idx, article_url in enumerate(article_urls[:10], 1):  # 限制最多10篇
+                try:
+                    print(f"  [{idx}/{min(10, len(article_urls))}] 获取: {article_url}")
+
+                    article_response = requests.get(article_url, headers=self.headers, timeout=15)
+                    article_response.raise_for_status()
+
+                    article_soup = BeautifulSoup(article_response.content, 'html.parser')
+
+                    # 提取标题
+                    title = None
+                    title_selectors = [
+                        ('h1', {'class': re.compile(r'.*title.*|.*headline.*', re.I)}),
+                        ('h1', {}),
+                        ('meta', {'property': 'og:title'}),
+                    ]
+
+                    for tag, attrs in title_selectors:
+                        if tag == 'meta':
+                            elem = article_soup.find(tag, attrs)
+                            if elem and elem.get('content'):
+                                title = elem.get('content').strip()
+                                break
+                        else:
+                            elem = article_soup.find(tag, attrs)
+                            if elem:
+                                title = elem.get_text(strip=True)
+                                break
+
+                    if not title or len(title) < 10:
+                        print(f"    ⚠️  未找到有效标题，跳过")
+                        continue
+
+                    # 提取摘要
+                    summary = ''
+                    summary_selectors = [
+                        ('meta', {'name': 'description'}),
+                        ('meta', {'property': 'og:description'}),
+                        ('div', {'class': re.compile(r'.*summary.*|.*excerpt.*|.*intro.*', re.I)}),
+                        ('p', {'class': re.compile(r'.*lead.*|.*intro.*', re.I)}),
+                    ]
+
+                    for tag, attrs in summary_selectors:
+                        if tag == 'meta':
+                            elem = article_soup.find(tag, attrs)
+                            if elem and elem.get('content'):
+                                summary = elem.get('content').strip()
+                                break
+                        else:
+                            elem = article_soup.find(tag, attrs)
+                            if elem:
+                                summary = elem.get_text(strip=True)
+                                break
+
+                    # 如果还是没有摘要，尝试获取第一段
+                    if not summary:
+                        article_body = article_soup.find(['article', 'div'], {'class': re.compile(r'.*content.*|.*body.*', re.I)})
+                        if article_body:
+                            first_p = article_body.find('p')
+                            if first_p:
+                                summary = first_p.get_text(strip=True)[:300]
+
+                    # 提取发布日期
+                    published_date = datetime.now().strftime('%Y-%m-%d')
+                    date_selectors = [
+                        ('meta', {'property': 'article:published_time'}),
+                        ('meta', {'name': 'publish_date'}),
+                        ('time', {'class': re.compile(r'.*date.*|.*time.*', re.I)}),
+                        ('span', {'class': re.compile(r'.*date.*|.*time.*', re.I)}),
+                    ]
+
+                    for tag, attrs in date_selectors:
+                        elem = article_soup.find(tag, attrs)
+                        if elem:
+                            date_str = elem.get('content') or elem.get('datetime') or elem.get_text(strip=True)
+                            if date_str:
+                                try:
+                                    # 尝试解析日期
+                                    parsed_date = None
+                                    for fmt in ['%Y-%m-%d', '%Y-%m-%dT%H:%M:%S', '%Y-%m-%dT%H:%M:%SZ']:
+                                        try:
+                                            parsed_date = datetime.strptime(date_str[:19], fmt)
+                                            break
+                                        except:
+                                            continue
+
+                                    if parsed_date:
+                                        published_date = parsed_date.strftime('%Y-%m-%d')
+                                        break
+                                except:
+                                    pass
+
+                    article = {
+                        'title': title,
+                        'url': article_url,
+                        'summary': summary,
+                        'published': published_date,
+                        'published_raw': None,
+                        'source': "Jane's Defence",
+                        'type': 'news',
+                        'priority': 'high'
+                    }
+                    articles.append(article)
+                    print(f"    ✓ 已获取: {title[:50]}...")
+
+                    time.sleep(1)  # 避免请求过快
+
+                except Exception as e:
+                    print(f"    ⚠️  获取文章失败: {str(e)}")
+                    continue
 
             print(f"✅ Jane's Defence: {len(articles)} 篇文章")
 

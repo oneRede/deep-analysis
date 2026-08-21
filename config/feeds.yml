@@ -489,3 +489,9 @@ output:
   group_by: "tier"
   deduplicate: true
   similarity_threshold: 0.85
+
+# AI 摘要与分类配置
+ai_summary:
+  enabled: true
+  batch_size: 10  # 每批处理的文章数量（建议5-20篇）
+  batch_delay: 1.0  # 批次之间的延迟（秒）

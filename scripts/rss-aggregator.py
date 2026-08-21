@@ -52,6 +52,8 @@ class RSSAggregator:
         self.deepseek_api_key = os.getenv('DEEPSEEK_API_KEY', '')
         self.deepseek_api_url = "https://api.deepseek.com/chat/completions"
         self.enable_ai_summary = self.config.get('ai_summary', {}).get('enabled', True)
+        self.batch_size = self.config.get('ai_summary', {}).get('batch_size', 10)
+        self.batch_delay = self.config.get('ai_summary', {}).get('batch_delay', 1.0)
 
     def _load_cache(self) -> Dict:
         """加载缓存（已处理的文章）"""
@@ -207,14 +209,27 @@ class RSSAggregator:
         return any(keyword.lower() in text for keyword in keywords)
 
     def _generate_ai_summary_and_category(self, article: Dict) -> tuple:
-        """使用 DeepSeek API 生成文章摘要并分类"""
+        """使用 DeepSeek API 生成文章摘要并分类（单篇，保留用于兼容性）"""
         if not self.enable_ai_summary:
             return None, None
 
+        batch_result = self._generate_ai_summaries_batch([article])
+        if batch_result and len(batch_result) > 0:
+            return batch_result[0]
+        return None, None
+
+    def _generate_ai_summaries_batch(self, articles: List[Dict]) -> List[tuple]:
+        """批量使用 DeepSeek API 生成文章摘要并分类"""
+        if not self.enable_ai_summary or not articles:
+            return [(None, None)] * len(articles)
+
         try:
-            # 构建 prompt
-            title = article.get('title', '')
-            summary = article.get('summary', '')[:500]  # 限制输入长度
+            # 构建批量 prompt
+            articles_text = []
+            for idx, article in enumerate(articles, 1):
+                title = article.get('title', '')
+                summary = article.get('summary', '')[:500]  # 限制输入长度
+                articles_text.append(f"文章 {idx}:\n标题：{title}\n摘要：{summary}\n")
 
             # 动态构建分类描述
             category_descriptions = []
@@ -226,24 +241,25 @@ class RSSAggregator:
             category_list = '/'.join(category_names)
             category_count = len(category_names)
 
-            prompt = f"""请分析以下文章并完成两个任务：
-
-文章标题：{title}
-
-文章摘要：{summary}
-
-任务：
+            prompt = f"""请分析以下 {len(articles)} 篇文章，为每篇文章完成两个任务：
 1. 生成一个简洁的中文摘要（不超过100字）
 2. 将文章分类到以下类别之一：
 {chr(10).join(category_descriptions)}
 
-请严格按照以下JSON格式返回：
-{{
-  "summary": "100字以内的中文摘要",
-  "category": "{category_list}（{category_count}选一）"
-}}
+文章列表：
+{''.join(articles_text)}
 
-只返回JSON，不要有其他内容。"""
+请严格按照以下JSON数组格式返回（数组包含 {len(articles)} 个对象）：
+[
+  {{
+    "article_id": 1,
+    "summary": "100字以内的中文摘要",
+    "category": "{category_list}（{category_count}选一）"
+  }},
+  ...
+]
+
+只返回JSON数组，不要有其他内容。"""
 
             # 调用 DeepSeek API
             headers = {
@@ -258,7 +274,7 @@ class RSSAggregator:
                     {"role": "user", "content": prompt}
                 ],
                 "stream": False,
-                "max_tokens": 300,
+                "max_tokens": 300 * len(articles),  # 每篇文章约300 tokens
                 "temperature": 0.3
             }
 
@@ -266,7 +282,7 @@ class RSSAggregator:
                 self.deepseek_api_url,
                 headers=headers,
                 json=payload,
-                timeout=30
+                timeout=60
             )
 
             if response.status_code == 200:
@@ -279,23 +295,43 @@ class RSSAggregator:
 
                 try:
                     parsed = json.loads(content)
-                    ai_summary = parsed.get('summary', '').strip()
-                    category = parsed.get('category', self.category_key_to_name[self.default_category]).strip()
 
-                    # 使用配置的分类映射
-                    category_key = self.category_name_to_key.get(category, self.default_category)
+                    # 确保返回的是数组
+                    if not isinstance(parsed, list):
+                        print(f"⚠️  返回的不是数组格式，使用默认值")
+                        return [(None, None)] * len(articles)
 
-                    return ai_summary, category_key
-                except json.JSONDecodeError:
-                    print(f"⚠️  JSON 解析失败: {content}")
-                    return None, None
+                    # 构建结果
+                    results = []
+                    for i, article in enumerate(articles):
+                        # 查找对应的结果
+                        article_result = None
+                        for item in parsed:
+                            if item.get('article_id') == i + 1:
+                                article_result = item
+                                break
+
+                        if article_result:
+                            ai_summary = article_result.get('summary', '').strip()
+                            category = article_result.get('category', self.category_key_to_name[self.default_category]).strip()
+                            category_key = self.category_name_to_key.get(category, self.default_category)
+                            results.append((ai_summary, category_key))
+                        else:
+                            results.append((None, None))
+
+                    return results
+
+                except json.JSONDecodeError as e:
+                    print(f"⚠️  JSON 解析失败: {str(e)}")
+                    print(f"    响应内容: {content[:200]}...")
+                    return [(None, None)] * len(articles)
             else:
                 print(f"⚠️  DeepSeek API 错误 ({response.status_code}): {response.text}")
-                return None, None
+                return [(None, None)] * len(articles)
 
         except Exception as e:
-            print(f"⚠️  生成 AI 摘要和分类失败: {str(e)}")
-            return None, None
+            print(f"⚠️  批量生成 AI 摘要和分类失败: {str(e)}")
+            return [(None, None)] * len(articles)
 
 
     def fetch_feed(self, feed_config: Dict, tier: str):
@@ -308,7 +344,9 @@ class RSSAggregator:
                 print(f"⚠️  警告: {feed_config['name']} - {feed.bozo_exception}")
                 return
 
-            count = 0
+            # 先收集所有符合条件的文章
+            pending_articles = []
+
             for entry in feed.entries:
                 # 基本信息提取
                 article = {
@@ -339,22 +377,39 @@ class RSSAggregator:
                 if self._is_duplicate(article):
                     continue
 
-                # 生成 AI 摘要和分类
-                if self.enable_ai_summary:
-                    print(f"  🤖 分析文章: {article['title'][:50]}...")
-                    ai_summary, category = self._generate_ai_summary_and_category(article)
-                    if ai_summary:
-                        article['ai_summary'] = ai_summary
-                    if category:
-                        article['category'] = category
-                    time.sleep(0.5)  # 避免 API 调用过快
+                pending_articles.append(article)
 
-                # 添加到结果
+            # 批量处理 AI 摘要和分类
+            if self.enable_ai_summary and pending_articles:
+                print(f"  🤖 批量分析 {len(pending_articles)} 篇文章...")
+
+                # 分批处理
+                for i in range(0, len(pending_articles), self.batch_size):
+                    batch = pending_articles[i:i + self.batch_size]
+                    batch_num = i // self.batch_size + 1
+                    total_batches = (len(pending_articles) + self.batch_size - 1) // self.batch_size
+
+                    print(f"     批次 {batch_num}/{total_batches}: {len(batch)} 篇")
+
+                    results = self._generate_ai_summaries_batch(batch)
+
+                    # 将结果应用到文章
+                    for article, (ai_summary, category) in zip(batch, results):
+                        if ai_summary:
+                            article['ai_summary'] = ai_summary
+                        if category:
+                            article['category'] = category
+
+                    # 批次间延迟
+                    if i + self.batch_size < len(pending_articles):
+                        time.sleep(self.batch_delay)
+
+            # 添加所有文章到结果
+            for article in pending_articles:
                 self.articles.append(article)
                 self.seen_urls.add(self._normalize_url(article['url']))
-                count += 1
 
-            print(f"✅ {feed_config['name']}: {count} 篇新文章")
+            print(f"✅ {feed_config['name']}: {len(pending_articles)} 篇新文章")
 
         except Exception as e:
             print(f"❌ 错误: {feed_config['name']} - {str(e)}")
@@ -372,6 +427,9 @@ class RSSAggregator:
             days = self.config.get('filters', {}).get('days_lookback', 7)
             custom_articles = scrape_all_custom_sources(days_lookback=days)
 
+            # 收集需要 AI 分析的文章
+            pending_articles = []
+
             for article in custom_articles:
                 # 设置 tier（自定义源归为 tier1）
                 article['tier'] = 'tier1'
@@ -384,21 +442,36 @@ class RSSAggregator:
                 if self._is_duplicate(article):
                     continue
 
-                # 生成 AI 摘要和分类
-                if self.enable_ai_summary:
-                    print(f"  🤖 分析文章: {article['title'][:50]}...")
-                    ai_summary, category = self._generate_ai_summary_and_category(article)
-                    if ai_summary:
-                        article['ai_summary'] = ai_summary
-                    if category:
-                        article['category'] = category
-                    time.sleep(0.5)
+                pending_articles.append(article)
 
-                # 添加到结果
+            # 批量生成 AI 摘要和分类
+            if self.enable_ai_summary and pending_articles:
+                print(f"  🤖 批量分析 {len(pending_articles)} 篇文章...")
+
+                for i in range(0, len(pending_articles), self.batch_size):
+                    batch = pending_articles[i:i + self.batch_size]
+                    batch_num = i // self.batch_size + 1
+                    total_batches = (len(pending_articles) + self.batch_size - 1) // self.batch_size
+
+                    print(f"     批次 {batch_num}/{total_batches}: {len(batch)} 篇")
+
+                    results = self._generate_ai_summaries_batch(batch)
+
+                    for article, (ai_summary, category) in zip(batch, results):
+                        if ai_summary:
+                            article['ai_summary'] = ai_summary
+                        if category:
+                            article['category'] = category
+
+                    if i + self.batch_size < len(pending_articles):
+                        time.sleep(self.batch_delay)
+
+            # 添加到结果
+            for article in pending_articles:
                 self.articles.append(article)
                 self.seen_urls.add(self._normalize_url(article['url']))
 
-            print(f"✅ 自定义网页爬取: {len(custom_articles)} 篇文章")
+            print(f"✅ 自定义网页爬取: {len(pending_articles)} 篇文章")
 
         except Exception as e:
             print(f"❌ 自定义网页爬取失败: {str(e)}")
@@ -407,6 +480,9 @@ class RSSAggregator:
         try:
             days = self.config.get('filters', {}).get('days_lookback', 7)
             military_articles = scrape_military_sources(days_lookback=days)
+
+            # 收集需要 AI 分析的文章
+            pending_articles = []
 
             for article in military_articles:
                 # 设置 tier（军事源归为 military）
@@ -420,17 +496,32 @@ class RSSAggregator:
                 if self._is_duplicate(article):
                     continue
 
-                # 生成 AI 摘要和分类（和其他文章一样处理）
-                if self.enable_ai_summary:
-                    print(f"  🤖 分析文章: {article['title'][:50]}...")
-                    ai_summary, category = self._generate_ai_summary_and_category(article)
-                    if ai_summary:
-                        article['ai_summary'] = ai_summary
-                    if category:
-                        article['category'] = category
-                    time.sleep(0.5)
+                pending_articles.append(article)
 
-                # 添加到结果
+            # 批量生成 AI 摘要和分类
+            if self.enable_ai_summary and pending_articles:
+                print(f"  🤖 批量分析 {len(pending_articles)} 篇文章...")
+
+                for i in range(0, len(pending_articles), self.batch_size):
+                    batch = pending_articles[i:i + self.batch_size]
+                    batch_num = i // self.batch_size + 1
+                    total_batches = (len(pending_articles) + self.batch_size - 1) // self.batch_size
+
+                    print(f"     批次 {batch_num}/{total_batches}: {len(batch)} 篇")
+
+                    results = self._generate_ai_summaries_batch(batch)
+
+                    for article, (ai_summary, category) in zip(batch, results):
+                        if ai_summary:
+                            article['ai_summary'] = ai_summary
+                        if category:
+                            article['category'] = category
+
+                    if i + self.batch_size < len(pending_articles):
+                        time.sleep(self.batch_delay)
+
+            # 添加到结果
+            for article in pending_articles:
                 self.articles.append(article)
                 self.seen_urls.add(self._normalize_url(article['url']))
 
