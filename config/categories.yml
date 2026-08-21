@@ -26,6 +26,10 @@ categories:
     name: 军事技术
     description: 关于军事装备、武器系统、国防技术、军事战略、防务政策、军事行动
 
+  - key: compiler
+    name: 编译器
+    description: 关于编译器技术、优化、前端后端、IR设计、JIT、AOT、静态分析、代码生成
+
 # 默认分类（如果无法分类时使用）
 default_category: ai_application
 

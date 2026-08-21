@@ -82,6 +82,21 @@ tier1:
       - "compute-in-memory"
       - "sparse"
 
+  - name: "arXiv cs.PL (编程语言)"
+    url: "http://export.arxiv.org/rss/cs.PL"
+    type: "arxiv"
+    priority: "high"
+    keywords:
+      - "compiler"
+      - "optimization"
+      - "static analysis"
+      - "code generation"
+      - "IR"
+      - "LLVM"
+      - "JIT"
+      - "type system"
+      - "program analysis"
+
   # ============================================================
   # 已验证的官方博客 ✅
   # ============================================================
@@ -209,6 +224,135 @@ tier2:
     # 已验证有产出（3篇）
 
   # ============================================================
+  # 编译器与编程语言 ✅
+  # ============================================================
+
+  - name: "LLVM Blog"
+    url: "https://blog.llvm.org/feeds/posts/default?alt=rss"
+    type: "blog"
+    priority: "medium"
+    keywords:
+      - "LLVM"
+      - "compiler"
+      - "optimization"
+      - "IR"
+      - "code generation"
+
+  - name: "Rust Blog"
+    url: "https://blog.rust-lang.org/feed.xml"
+    type: "blog"
+    priority: "medium"
+    keywords:
+      - "Rust"
+      - "compiler"
+      - "rustc"
+      - "MIR"
+      - "borrow checker"
+
+  - name: "V8 Blog"
+    url: "https://v8.dev/blog.atom"
+    type: "blog"
+    priority: "medium"
+    keywords:
+      - "V8"
+      - "JavaScript"
+      - "JIT"
+      - "compiler"
+      - "optimization"
+      - "TurboFan"
+
+  - name: "WebKit Blog"
+    url: "https://webkit.org/feed/"
+    type: "blog"
+    priority: "medium"
+    keywords:
+      - "WebKit"
+      - "JavaScriptCore"
+      - "compiler"
+      - "JIT"
+      - "optimization"
+
+  - name: "Mozilla Hacks"
+    url: "https://hacks.mozilla.org/feed/"
+    type: "blog"
+    priority: "medium"
+    keywords:
+      - "SpiderMonkey"
+      - "JavaScript"
+      - "WebAssembly"
+      - "compiler"
+      - "optimization"
+
+  - name: "Intel Developer Zone"
+    url: "https://www.intel.com/content/www/us/en/developer/feed.xml"
+    type: "blog"
+    priority: "low"
+    keywords:
+      - "compiler"
+      - "optimization"
+      - "vectorization"
+      - "ICC"
+      - "oneAPI"
+
+  # ============================================================
+  # 编译器领域专家个人博客 ✅
+  # ============================================================
+
+  - name: "MaskRay (Fangrui Song)"
+    url: "https://maskray.me/blog/atom.xml"
+    type: "blog"
+    priority: "high"
+    keywords:
+      - "LLVM"
+      - "compiler"
+      - "linker"
+      - "ELF"
+      - "toolchain"
+      - "optimization"
+
+  - name: "Embedded in Academia (John Regehr)"
+    url: "https://blog.regehr.org/feed"
+    type: "blog"
+    priority: "high"
+    keywords:
+      - "LLVM"
+      - "Clang"
+      - "compiler testing"
+      - "undefined behavior"
+      - "optimization"
+
+  - name: "Eli Bendersky's website"
+    url: "https://eli.thegreenplace.net/feeds/all.atom.xml"
+    type: "blog"
+    priority: "high"
+    keywords:
+      - "LLVM"
+      - "compiler"
+      - "Python"
+      - "systems programming"
+
+  - name: "Adrian Sampson's blog"
+    url: "https://www.cs.cornell.edu/~asampson/blog.xml"
+    type: "blog"
+    priority: "medium"
+    keywords:
+      - "LLVM"
+      - "compiler"
+      - "programming languages"
+      - "computer architecture"
+
+  - name: "Daniel Lemire's blog"
+    url: "https://lemire.me/blog/feed/"
+    type: "blog"
+    priority: "high"
+    keywords:
+      - "performance"
+      - "optimization"
+      - "SIMD"
+      - "compiler"
+      - "algorithms"
+
+  # ============================================================
   # GitHub Releases - 重要开源项目追踪 ✅
   # ============================================================
 
@@ -313,6 +457,27 @@ tier3:
       - "Quantization"
       - "Inference"
       - "Open Source"
+
+  - name: "r/Compilers"
+    url: "https://www.reddit.com/r/Compilers/.rss"
+    type: "forum"
+    priority: "low"
+    keywords:
+      - "compiler"
+      - "optimization"
+      - "LLVM"
+      - "parsing"
+      - "code generation"
+
+  - name: "r/ProgrammingLanguages"
+    url: "https://www.reddit.com/r/ProgrammingLanguages/.rss"
+    type: "forum"
+    priority: "low"
+    keywords:
+      - "compiler"
+      - "language design"
+      - "type system"
+      - "semantics"
 
   # ============================================================
   # 硬件与半导体新闻 ✅
