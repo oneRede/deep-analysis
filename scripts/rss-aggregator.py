@@ -16,6 +16,7 @@ import re
 import os
 import requests
 import time
+from bs4 import BeautifulSoup
 from web_scraper import scrape_all_custom_sources
 from military_scraper import scrape_military_sources
 
@@ -281,16 +282,63 @@ class RSSAggregator:
         return None, None
 
     def _generate_ai_summaries_batch(self, articles: List[Dict]) -> List[tuple]:
-        """批量使用 DeepSeek API 生成文章摘要并分类"""
+        """批量使用 DeepSeek API 生成文章摘要并分类
+
+        根据文章的 tier 决定处理方式：
+        - tier1: 只使用摘要总结（100字）
+        - tier2/tier3/military: 获取全文后总结（200字）
+        """
         if not self.enable_ai_summary or not articles:
             return [(None, None)] * len(articles)
 
+        try:
+            # 按 tier 分组文章
+            tier1_articles = []
+            other_articles = []
+
+            for idx, article in enumerate(articles):
+                tier = article.get('tier', 'tier2')
+                if tier == 'tier1':
+                    tier1_articles.append((idx, article))
+                else:
+                    other_articles.append((idx, article))
+
+            results = [None] * len(articles)
+
+            # 处理 tier1 文章（基于摘要，100字）
+            if tier1_articles:
+                print(f"     处理 tier1 文章: {len(tier1_articles)} 篇（基于摘要）")
+                tier1_results = self._summarize_from_abstract(
+                    [art for _, art in tier1_articles],
+                    max_length=100
+                )
+                for (idx, _), result in zip(tier1_articles, tier1_results):
+                    results[idx] = result
+
+            # 处理其他 tier 文章（获取全文，200字）
+            if other_articles:
+                print(f"     处理 tier2/3/military 文章: {len(other_articles)} 篇（基于全文）")
+                other_results = self._summarize_from_fulltext(
+                    [art for _, art in other_articles],
+                    max_length=200
+                )
+                for (idx, _), result in zip(other_articles, other_results):
+                    results[idx] = result
+
+            return results
+
+        except Exception as e:
+            print(f"⚠️  批量生成 AI 摘要和分类失败: {str(e)}")
+            return [(None, None)] * len(articles)
+
+    def _summarize_from_abstract(self, articles: List[Dict], max_length: int = 100) -> List[tuple]:
+        """基于摘要生成总结（用于 tier1）"""
         try:
             # 构建批量 prompt
             articles_text = []
             for idx, article in enumerate(articles, 1):
                 title = article.get('title', '')
-                summary = article.get('summary', '')[:500]  # 限制输入长度
+                summary = article.get('summary', '')[:1000]  # 限制输入长度
                 articles_text.append(f"文章 {idx}:\n标题：{title}\n摘要：{summary}\n")
 
             # 动态构建分类描述
@@ -304,7 +352,7 @@ class RSSAggregator:
             category_count = len(category_names)
 
             prompt = f"""请分析以下 {len(articles)} 篇文章，为每篇文章完成两个任务：
-1. 生成一个简洁的中文摘要（不超过100字）
+1. 基于标题和摘要，生成一个简洁的中文总结（不超过{max_length}字）
 2. 将文章分类到以下类别之一：
 {chr(10).join(category_descriptions)}
 
@@ -315,7 +363,7 @@ class RSSAggregator:
 [
   {{
     "article_id": 1,
-    "summary": "100字以内的中文摘要",
+    "summary": "{max_length}字以内的中文总结",
     "category": "{category_list}（{category_count}选一）"
   }},
   ...
@@ -323,7 +371,116 @@ class RSSAggregator:
 
 只返回JSON数组，不要有其他内容。"""
 
-            # 调用 DeepSeek API
+            return self._call_deepseek_api(prompt, articles, max_length)
+
+        except Exception as e:
+            print(f"⚠️  基于摘要总结失败: {str(e)}")
+            return [(None, None)] * len(articles)
+
+    def _summarize_from_fulltext(self, articles: List[Dict], max_length: int = 200) -> List[tuple]:
+        """基于全文生成总结（用于 tier2/tier3/military）"""
+        try:
+            # 获取全文
+            articles_with_content = []
+            for article in articles:
+                url = article.get('url', '')
+                title = article.get('title', '')
+
+                # 尝试获取全文
+                full_content = self._fetch_full_content(url)
+
+                if full_content:
+                    articles_with_content.append({
+                        **article,
+                        'full_content': full_content[:3000]  # 限制长度
+                    })
+                else:
+                    # 全文获取失败，回退到摘要
+                    articles_with_content.append(article)
+
+            # 构建批量 prompt
+            articles_text = []
+            for idx, article in enumerate(articles_with_content, 1):
+                title = article.get('title', '')
+
+                if 'full_content' in article:
+                    content = article['full_content']
+                    articles_text.append(f"文章 {idx}:\n标题：{title}\n全文：{content}\n")
+                else:
+                    summary = article.get('summary', '')[:1000]
+                    articles_text.append(f"文章 {idx}:\n标题：{title}\n摘要：{summary}\n")
+
+            # 动态构建分类描述
+            category_descriptions = []
+            category_names = []
+            for cat in self.categories:
+                category_descriptions.append(f"   - {cat['name']}：{cat['description']}")
+                category_names.append(cat['name'])
+
+            category_list = '/'.join(category_names)
+            category_count = len(category_names)
+
+            prompt = f"""请分析以下 {len(articles_with_content)} 篇文章，为每篇文章完成两个任务：
+1. 基于全文内容，生成一个详细的中文总结（不超过{max_length}字）
+2. 将文章分类到以下类别之一：
+{chr(10).join(category_descriptions)}
+
+文章列表：
+{''.join(articles_text)}
+
+请严格按照以下JSON数组格式返回（数组包含 {len(articles_with_content)} 个对象）：
+[
+  {{
+    "article_id": 1,
+    "summary": "{max_length}字以内的中文总结",
+    "category": "{category_list}（{category_count}选一）"
+  }},
+  ...
+]
+
+只返回JSON数组，不要有其他内容。"""
+
+            return self._call_deepseek_api(prompt, articles_with_content, max_length)
+
+        except Exception as e:
+            print(f"⚠️  基于全文总结失败: {str(e)}")
+            return [(None, None)] * len(articles)
+
+    def _fetch_full_content(self, url: str) -> str:
+        """获取文章全文（简化版）"""
+        try:
+            import requests
+            from bs4 import BeautifulSoup
+
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+            }
+
+            response = requests.get(url, headers=headers, timeout=10)
+            response.raise_for_status()
+
+            soup = BeautifulSoup(response.content, 'html.parser')
+
+            # 移除脚本和样式
+            for script in soup(["script", "style"]):
+                script.decompose()
+
+            # 提取文本
+            text = soup.get_text(separator='\n', strip=True)
+
+            # 清理空行
+            lines = [line.strip() for line in text.split('\n') if line.strip()]
+            content = '\n'.join(lines)
+
+            return content[:5000]  # 限制长度
+
+        except Exception as e:
+            # 全文获取失败，静默返回空
+            return ""
+
+    def _call_deepseek_api(self, prompt: str, articles: List[Dict], max_length: int) -> List[tuple]:
+        """调用 DeepSeek API"""
+        try:
             headers = {
                 "Content-Type": "application/json",
                 "Authorization": f"Bearer {self.deepseek_api_key}"
@@ -336,7 +493,7 @@ class RSSAggregator:
                     {"role": "user", "content": prompt}
                 ],
                 "stream": False,
-                "max_tokens": 300 * len(articles),  # 每篇文章约300 tokens
+                "max_tokens": (max_length + 50) * len(articles),  # 每篇文章的 token 估算
                 "temperature": 0.3
             }
 
@@ -392,9 +549,8 @@ class RSSAggregator:
                 return [(None, None)] * len(articles)
 
         except Exception as e:
-            print(f"⚠️  批量生成 AI 摘要和分类失败: {str(e)}")
+            print(f"⚠️  API 调用失败: {str(e)}")
             return [(None, None)] * len(articles)
-
 
     def fetch_feed(self, feed_config: Dict, tier: str):
         """抓取单个 feed"""
