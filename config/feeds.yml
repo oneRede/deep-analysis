@@ -9,7 +9,7 @@ tier1:
   # ============================================================
 
   - name: "arXiv cs.CL (计算与语言)"
-    url: "http://export.arxiv.org/rss/cs.CL"
+    url: "https://export.arxiv.org/rss/cs.CL"
     type: "arxiv"
     priority: "high"
     keywords:
@@ -23,7 +23,7 @@ tier1:
       - "NLP"
 
   - name: "arXiv cs.AI (人工智能)"
-    url: "http://export.arxiv.org/rss/cs.AI"
+    url: "https://export.arxiv.org/rss/cs.AI"
     type: "arxiv"
     priority: "high"
     keywords:
@@ -33,7 +33,7 @@ tier1:
       - "Reinforcement Learning"
 
   - name: "arXiv cs.LG (机器学习)"
-    url: "http://export.arxiv.org/rss/cs.LG"
+    url: "https://export.arxiv.org/rss/cs.LG"
     type: "arxiv"
     priority: "high"
     keywords:
@@ -45,7 +45,7 @@ tier1:
       - "Scaling"
 
   - name: "arXiv cs.RO (机器人)"
-    url: "http://export.arxiv.org/rss/cs.RO"
+    url: "https://export.arxiv.org/rss/cs.RO"
     type: "arxiv"
     priority: "high"
     keywords:
@@ -56,7 +56,7 @@ tier1:
       - "Humanoid"
 
   - name: "arXiv cs.CV (计算机视觉)"
-    url: "http://export.arxiv.org/rss/cs.CV"
+    url: "https://export.arxiv.org/rss/cs.CV"
     type: "arxiv"
     priority: "medium"
     keywords:
@@ -67,7 +67,7 @@ tier1:
       - "3D Vision"
 
   - name: "arXiv cs.AR (硬件架构)"
-    url: "http://export.arxiv.org/rss/cs.AR"
+    url: "https://export.arxiv.org/rss/cs.AR"
     type: "arxiv"
     priority: "high"
     keywords:
@@ -83,7 +83,7 @@ tier1:
       - "sparse"
 
   - name: "arXiv cs.PL (编程语言)"
-    url: "http://export.arxiv.org/rss/cs.PL"
+    url: "https://export.arxiv.org/rss/cs.PL"
     type: "arxiv"
     priority: "high"
     keywords:

@@ -26,11 +26,12 @@
     <key>StandardErrorPath</key>
     <string>/Users/rede/Git/deep_analysis/logs/launchd-stderr.log</string>
 
-    <!-- 每天运行一次 - 早上8点 -->
+    <!-- 每天运行一次 - 早上10点（确保 arXiv 已更新） -->
+    <!-- arXiv 更新时间: 美国东部时间 20:00 = 北京时间次日 08:00 -->
     <key>StartCalendarInterval</key>
     <dict>
         <key>Hour</key>
-        <integer>8</integer>
+        <integer>10</integer>
         <key>Minute</key>
         <integer>0</integer>
     </dict>
