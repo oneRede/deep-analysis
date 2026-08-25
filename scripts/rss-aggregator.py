@@ -50,11 +50,52 @@ class RSSAggregator:
         self.seen_urls: Set[str] = set()
 
         # DeepSeek API 配置
-        self.deepseek_api_key = os.getenv('DEEPSEEK_API_KEY', '')
+        self.deepseek_api_key = os.getenv('DEEPSEEK_API_KEY', '').strip()
         self.deepseek_api_url = "https://api.deepseek.com/chat/completions"
         self.enable_ai_summary = self.config.get('ai_summary', {}).get('enabled', True)
         self.batch_size = self.config.get('ai_summary', {}).get('batch_size', 10)
         self.batch_delay = self.config.get('ai_summary', {}).get('batch_delay', 1.0)
+
+        # 调试信息：检查API密钥
+        if self.enable_ai_summary:
+            if not self.deepseek_api_key:
+                print("⚠️  警告: DEEPSEEK_API_KEY 未设置，AI摘要功能将被禁用")
+                self.enable_ai_summary = False
+            else:
+                print(f"✅ DeepSeek API 已配置 (密钥长度: {len(self.deepseek_api_key)})")
+                # 测试API连接
+                self._test_api_connection()
+
+    def _test_api_connection(self):
+        """测试API连接是否正常"""
+        try:
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.deepseek_api_key}"
+            }
+
+            payload = {
+                "model": "deepseek-chat",
+                "messages": [{"role": "user", "content": "test"}],
+                "max_tokens": 5,
+                "temperature": 0.3
+            }
+
+            response = requests.post(
+                self.deepseek_api_url,
+                headers=headers,
+                json=payload,
+                timeout=10
+            )
+
+            if response.status_code == 200:
+                print("✅ DeepSeek API 连接测试成功")
+            else:
+                print(f"⚠️  DeepSeek API 连接测试失败 ({response.status_code}): {response.text[:200]}")
+                self.enable_ai_summary = False
+        except Exception as e:
+            print(f"⚠️  DeepSeek API 连接测试异常: {str(e)}")
+            self.enable_ai_summary = False
 
     def _load_cache(self) -> Dict:
         """加载缓存（已处理的文章）- 新格式按日期组织"""
