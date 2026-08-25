@@ -541,6 +541,89 @@ tier3:
       - "innovation"
       - "enterprise"
 
+  # ============================================================
+  # 财经媒体 - 主流国际财经新闻源 ✅
+  # ============================================================
+
+  - name: "Financial Times"
+    url: "https://www.ft.com/?format=rss"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "economy"
+      - "markets"
+      - "business"
+      - "finance"
+      - "technology"
+      - "AI"
+      - "innovation"
+
+  - name: "Reuters Business"
+    url: "https://www.reutersagency.com/feed/?taxonomy=best-topics&post_type=best"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "business"
+      - "economy"
+      - "markets"
+      - "finance"
+      - "technology"
+
+  - name: "Bloomberg Technology"
+    url: "https://feeds.bloomberg.com/technology/news.rss"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "technology"
+      - "AI"
+      - "innovation"
+      - "business"
+      - "markets"
+
+  - name: "CNBC Technology"
+    url: "https://www.cnbc.com/id/19854910/device/rss/rss.html"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "technology"
+      - "AI"
+      - "business"
+      - "markets"
+      - "innovation"
+
+  - name: "The New York Times Technology"
+    url: "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml"
+    type: "news"
+    priority: "medium"
+    keywords:
+      - "technology"
+      - "AI"
+      - "innovation"
+      - "business"
+
+  - name: "The Wall Street Journal Technology"
+    url: "https://feeds.a.dj.com/rss/RSSWSJD.xml"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "technology"
+      - "AI"
+      - "business"
+      - "markets"
+      - "innovation"
+
+  - name: "The Economist"
+    url: "https://www.economist.com/rss"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "economy"
+      - "business"
+      - "technology"
+      - "AI"
+      - "markets"
+      - "policy"
+
 # 全局过滤配置
 filters:
   # 排除关键词（降低噪音）
