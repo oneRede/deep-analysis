@@ -625,13 +625,6 @@ tier3:
       - "politics"
 
   - name: "CNBC Technology"
-      - "technology"
-      - "AI"
-      - "innovation"
-      - "business"
-      - "markets"
-
-  - name: "CNBC Technology"
     url: "https://www.cnbc.com/id/19854910/device/rss/rss.html"
     type: "news"
     priority: "high"
