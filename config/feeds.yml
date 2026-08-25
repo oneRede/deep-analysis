@@ -542,11 +542,11 @@ tier3:
       - "enterprise"
 
   # ============================================================
-  # 财经媒体 - 主流国际财经新闻源 ✅
+  # 财经媒体 - 主流国际财经新闻源（全量新闻）✅
   # ============================================================
 
-  - name: "Financial Times"
-    url: "https://www.ft.com/?format=rss"
+  - name: "Financial Times World"
+    url: "https://www.ft.com/world?format=rss"
     type: "news"
     priority: "high"
     keywords:
@@ -556,24 +556,75 @@ tier3:
       - "finance"
       - "technology"
       - "AI"
-      - "innovation"
+      - "politics"
+      - "policy"
 
-  - name: "Reuters Business"
-    url: "https://www.reutersagency.com/feed/?taxonomy=best-topics&post_type=best"
+  # Reuters - 由于 Cloudflare 保护，RSS 源暂时不可用
+  # 备选方案：通过 web scraper 爬取或使用其他新闻聚合服务
+
+  - name: "Bloomberg Markets"
+    url: "https://feeds.bloomberg.com/markets/news.rss"
     type: "news"
     priority: "high"
     keywords:
-      - "business"
-      - "economy"
       - "markets"
       - "finance"
+      - "economy"
+      - "business"
       - "technology"
+
+  - name: "Bloomberg Politics"
+    url: "https://feeds.bloomberg.com/politics/news.rss"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "politics"
+      - "policy"
+      - "government"
+      - "economy"
+
+  - name: "Bloomberg Economics"
+    url: "https://feeds.bloomberg.com/economics/news.rss"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "economy"
+      - "GDP"
+      - "inflation"
+      - "trade"
+      - "policy"
 
   - name: "Bloomberg Technology"
     url: "https://feeds.bloomberg.com/technology/news.rss"
     type: "news"
     priority: "high"
     keywords:
+      - "technology"
+      - "AI"
+      - "innovation"
+      - "startup"
+
+  - name: "CNBC Top News"
+    url: "https://www.cnbc.com/id/100003114/device/rss/rss.html"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "business"
+      - "markets"
+      - "economy"
+      - "finance"
+
+  - name: "CNBC World News"
+    url: "https://www.cnbc.com/id/100727362/device/rss/rss.html"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "world"
+      - "international"
+      - "economy"
+      - "politics"
+
+  - name: "CNBC Technology"
       - "technology"
       - "AI"
       - "innovation"
@@ -591,6 +642,37 @@ tier3:
       - "markets"
       - "innovation"
 
+  - name: "The New York Times HomePage"
+    url: "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "news"
+      - "world"
+      - "politics"
+      - "business"
+      - "technology"
+
+  - name: "The New York Times World"
+    url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "world"
+      - "international"
+      - "politics"
+      - "economy"
+
+  - name: "The New York Times Business"
+    url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "business"
+      - "economy"
+      - "finance"
+      - "markets"
+
   - name: "The New York Times Technology"
     url: "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml"
     type: "news"
@@ -600,6 +682,36 @@ tier3:
       - "AI"
       - "innovation"
       - "business"
+
+  - name: "The Wall Street Journal World News"
+    url: "https://feeds.a.dj.com/rss/RSSWorldNews.xml"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "world"
+      - "international"
+      - "politics"
+      - "economy"
+
+  - name: "The Wall Street Journal US Business"
+    url: "https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "business"
+      - "economy"
+      - "finance"
+      - "markets"
+
+  - name: "The Wall Street Journal Markets"
+    url: "https://feeds.a.dj.com/rss/RSSMarketsMain.xml"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "markets"
+      - "finance"
+      - "stocks"
+      - "economy"
 
   - name: "The Wall Street Journal Technology"
     url: "https://feeds.a.dj.com/rss/RSSWSJD.xml"
@@ -612,16 +724,57 @@ tier3:
       - "markets"
       - "innovation"
 
-  - name: "The Economist"
-    url: "https://www.economist.com/rss"
+  - name: "The Economist - The World This Week"
+    url: "https://www.economist.com/the-world-this-week/rss.xml"
     type: "news"
     priority: "high"
     keywords:
+      - "world"
+      - "politics"
+      - "economy"
+      - "news"
+
+  - name: "The Economist Business"
+    url: "https://www.economist.com/business/rss.xml"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "business"
+      - "economy"
+      - "finance"
+      - "markets"
+
+  - name: "The Economist Finance & Economics"
+    url: "https://www.economist.com/finance-and-economics/rss.xml"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "finance"
+      - "economics"
+      - "markets"
+      - "policy"
+
+  - name: "The Economist International"
+    url: "https://www.economist.com/international/rss.xml"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "international"
+      - "world"
+      - "politics"
+      - "policy"
+
+  - name: "The Economist Science & Technology"
+    url: "https://www.economist.com/science-and-technology/rss.xml"
+    type: "news"
+    priority: "high"
+    keywords:
+      - "technology"
+      - "science"
       - "economy"
       - "business"
-      - "technology"
       - "AI"
-      - "markets"
+      - "innovation"
       - "policy"
 
 # 全局过滤配置

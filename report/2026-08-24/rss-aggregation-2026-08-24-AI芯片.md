@@ -1,109 +1,59 @@
 # RSS 聚合报告 - AI芯片
 
-**生成时间**: 2026-08-25 10:30:41
-**文章数量**: 10 篇
+**生成时间**: 2026-08-25 11:08:55
+**文章数量**: 5 篇
 
 ---
 
-### 1. Hot Chips 2026: Intel Xeon 7 'Diamond Rapids' comes with up to 256 P-cores, 1.28 GB of last-level cache — next-gen 18A-P CPU also brings AVX 10.2 and uses UCIe-S instead of EMIB
-- **来源**: Tom's Hardware (TIER3)
-- **发布日期**: Mon, 24 Aug 2026 21:07:45 +0000 (今天)
+### 1. Marvell's stock pops 10% on AI chip deal that lets Google buy up to $12.2 billion in shares
+- **来源**: CNBC Technology (TIER3)
+- **发布日期**: Wed, 19 Aug 2026 20:01:53 GMT (5 天前)
 - **类型**: news
-- **优先级**: medium
+- **优先级**: high
 - **分类**: AI芯片
-- **链接**: https://www.tomshardware.com/pc-components/cpus/intel-xeon-7-diamond-rapids-comes-with-up-to-256-p-cores-1-28-gb-of-last-level-cache-next-gen-18a-p-cpu-also-brings-avx-10-2-and-uses-ucie-s-instead-of-emib
-- **AI 摘要**: 在Hot Chips 2026大会上，Intel公布了下一代Xeon 7 'Diamond Rapids'处理器，采用18A-P工艺，最多配备256个P核和1.28GB末级缓存。该处理器支持AVX 10.2指令集，并改用UCIe-S接口替代EMIB，用于芯片间互连。这标志着Intel在服务器CPU领域的技术升级，旨在提升AI和高性能计算场景下的处理能力。
-- **原始摘要**: Intel has pulled back the curtain on its next-gen Diamond Rapids Xeon CPUs, packing up to 256 P-cores and 1.28 TB of last-level cache.
+- **链接**: https://www.cnbc.com/2026/08/19/marvell-google-ai-chips.html
+- **AI 摘要**: Marvell Technology股价因谷歌可购买高达122亿美元股份的交易而上涨近10%。该交易是谷歌与Marvell定制芯片合作的一部分，允许谷歌以每股206.58美元购买最多58,970,907股，与2033财年的采购目标挂钩。扩展协议包括"附着于TPU生态系统"的产品，如AI推理加速器、存储和网络接口控制器。
+- **原始摘要**: Google and its competitors have been pursuing custom chips to improve efficiency and reduce reliance on Nvidia.
 
-### 2. Hot Chips 2026: SK hynix pushes hybrid bonding to HBM5 as AI memory hits 775-micron ceiling — firm extends MR-MUF through Nvidia Rubin
-- **来源**: Tom's Hardware (TIER3)
-- **发布日期**: Mon, 24 Aug 2026 17:55:45 +0000 (今天)
+### 2. Nvidia customers reportedly warned about AI-related price hikes
+- **来源**: CNBC Technology (TIER3)
+- **发布日期**: Sat, 22 Aug 2026 20:26:44 GMT (2 天前)
 - **类型**: news
-- **优先级**: medium
+- **优先级**: high
 - **分类**: AI芯片
-- **链接**: https://www.tomshardware.com/tech-industry/semiconductors/sk-hynix-says-hybrid-bonding-wont-be-ready-for-hbm4e-as-ai-memory-runs-into-a-775-micron-ceiling
-- **AI 摘要**: SK hynix在Hot Chips 2026上介绍了HBM5内存技术，推动混合键合（hybrid bonding）以突破775微米的厚度限制。公司计划将MR-MUF技术扩展到Nvidia Rubin平台，以应对AI对高带宽内存的需求。此举旨在解决DRAM短缺问题，并提升AI训练和推理中的内存性能。
-- **原始摘要**: The problem, per SK, is that HBM cubes are capped at a total thickness of 775 microns, the standard thickness of a 300mm logic wafer.
+- **链接**: https://www.cnbc.com/2026/08/22/nvidia-customers-reportedly-warned-about-ai-related-price-hikes-.html
+- **AI 摘要**: 据彭博社报道，英伟达计划提高部分最大客户的价格。该芯片制造商将提高包含其AI芯片（包括Vera Rubin和Grace Blackwell）的服务器成本，在许多情况下涨幅超过15%。价格上涨取决于芯片代次和内存配置。客户预计价格上调将在明年发货的系统上生效。英伟达一直面临内存芯片成本飙升的问题，内存芯片对其GPU和系统至关重要。
+- **原始摘要**: The chipmaker has told some of its largest customers that the prices of servers containing its AI chips could move more than 15% higher, Bloomberg News reported.
 
-### 3. Hot Chips 2026: IBM's first dual-ISA core natively executes ARM and z/Architecture in the same core; all cores run at 5.7 GHz base frequency — next-gen mainframe AI processor is built on 2nm node with 11 cores
-- **来源**: Tom's Hardware (TIER3)
-- **发布日期**: Mon, 24 Aug 2026 17:42:34 +0000 (今天)
+### 3. Nvidia Customers Brace for Higher AI Costs
+- **来源**: Bloomberg Technology (TIER3)
+- **发布日期**: Mon, 24 Aug 2026 18:30:35 GMT (今天)
 - **类型**: news
-- **优先级**: medium
+- **优先级**: high
 - **分类**: AI芯片
-- **链接**: https://www.tomshardware.com/pc-components/cpus/ibms-first-dual-isa-core-natively-executes-arm-and-z-architecture-in-the-same-core-all-cores-run-at-5-7-ghz-base-frequency-next-gen-mainframe-ai-processor-is-built-on-2nm-node-with-11-cores
-- **AI 摘要**: IBM在Hot Chips 2026上发布了首款双ISA核心处理器，该核心能原生执行ARM和z/Architecture指令集，所有核心以5.7GHz基频运行。该处理器基于2nm工艺，配备11个核心，专为下一代大型机AI处理设计，展示了IBM在异构计算和AI加速方面的创新。
-- **原始摘要**: IBM is vastly expanding softwarte support on its mainframes with its first dual-ISA CPU core that natively supports z/Architecture and ARM instructions.
+- **链接**: https://www.bloomberg.com/news/videos/2026-08-24/nvidia-customers-brace-for-higher-ai-costs-video
+- **AI 摘要**: 英伟达客户面临AI成本上升的警告，基于Blackwell和Rubin的AI系统价格可能上涨约15%，原因是内存成本飙升影响了基础设施建设的成本。雷蒙德詹姆斯分析师西蒙·利奥波德解释了涨价并不令人意外，并指出即使新芯片投产，旧一代GPU仍具有价值。这反映了AI硬件供应链的成本压力和产品生命周期管理。
+- **原始摘要**: Nvidia customers are being warned of potential price increases of around 15% for Blackwell and Rubin-based AI systems as soaring memory costs ripple through the infrastructure buildout. Raymond James...
 
-### 4. Marvell VP pushes for DDR4 recycling for use in CXL memory, amid the worst DRAM shortage in years — company introduces three-tier AI memory infrastructure
-- **来源**: Tom's Hardware (TIER3)
-- **发布日期**: Mon, 24 Aug 2026 13:11:37 +0000 (今天)
+### 4. Nvidia says Groq racks will be online this year following $20 billion purchase
+- **来源**: CNBC Technology (TIER3)
+- **发布日期**: Mon, 24 Aug 2026 17:19:34 GMT (今天)
 - **类型**: news
-- **优先级**: medium
-- **分类**: AI芯片
-- **链接**: https://www.tomshardware.com/pc-components/dram/marvell-sells-cxl-memory-recycling-into-the-worst-dram-shortage-in-years
-- **AI 摘要**: Marvell副总裁提议在DRAM短缺期间回收DDR4内存用于CXL内存，以缓解供应压力。公司推出了三层AI内存基础设施，旨在优化内存层级，提升AI工作负载的性能和成本效益。这一策略有助于应对当前最严重的DRAM短缺问题。
-- **原始摘要**: Marvell has introduced a three-tier "AI memory infrastructure" portfolio, announced at FMS 2026 in Santa Clara on August 4.
-
-### 5. Event-triggered Implicit Perturbation for Zeroth-Order Fine-Tuning of Spiking Transformers
-- **来源**: arXiv cs.LG (机器学习) (TIER1)
-- **提交时间**: 2026年08月 (约 10 天前)
-- **类型**: arxiv
 - **优先级**: high
 - **分类**: AI芯片
-- **链接**: https://arxiv.org/abs/2608.21223
-- **AI 摘要**: 本文提出一种隐式扰动零阶优化架构（IPZO），用于脉冲Transformer微调。通过事件触发扰动生成单元与IMC阵列结合，消除显式权重扰动导致的重复读写操作，利用脉冲稀疏性减少硬件开销，提高内存计算加速器上的微调效率。
-- **原始摘要**: arXiv:2608.21223v1 Announce Type: cross Abstract: Zeroth-order (ZO) optimization estimates gradients using only forward-pass evaluations, making it suitable for fine-tuning non-differentiable, event-d...
+- **链接**: https://www.cnbc.com/2026/08/24/nvidia-says-groq-racks-will-be-online-this-year-after-20-billion-deal.html
+- **AI 摘要**: 英伟达宣布其Groq 3 LPX机架全面投产，标志着该公司有史以来最大收购技术的商业化。Groq机架将与Vera中央处理器和Rubin图形处理器一起部署在Nebius neocloud，并于今年晚些时候上线。英伟达竞相制造该芯片并让客户使用，凸显了低延迟推理的重要性，这对于让AI代理响应迅速、无长时间延迟至关重要，尤其是在编码方面。云公司可以为此类token收取更高费用。去年12月，英伟达以200亿美元收购了Groq的资产。
+- **原始摘要**: Nvidia's race to manufacture Groq chips and make them available to customers highlight the growing importance in AI of low-latency inference.
 
-### 6. Assessing Triple Modular Redundancy for Wide-Link, Low-Latency NoC Routers: Reliability and Physical Design Challenges
-- **来源**: arXiv cs.AR (硬件架构) (TIER1)
-- **提交时间**: 2026年08月 (约 10 天前)
-- **类型**: arxiv
+### 5. Taiwan Indicts Nvidia Manager Following Chip Smuggling Probe
+- **来源**: Bloomberg Technology (TIER3)
+- **发布日期**: Mon, 24 Aug 2026 14:12:24 GMT (今天)
+- **类型**: news
 - **优先级**: high
 - **分类**: AI芯片
-- **链接**: https://arxiv.org/abs/2608.21288
-- **AI 摘要**: 本文评估了在宽链路、低延迟NoC路由器中实现三模冗余（TMR）的可靠性与物理设计权衡，涵盖粗粒度、仅状态和全冗余三种粒度，基于TSMC 7nm工艺进行RTL到GDSII设计及故障注入测试。
-- **原始摘要**: arXiv:2608.21288v1 Announce Type: new Abstract: Protecting the Network-on-Chip (NoC) of physical-AI tile-based accelerators deployed in harsh environments against single-event effects (SEEs) is paramo...
-
-### 7. Faults That Fortify: CNN Adversarial Robustness via GPU Undervolting
-- **来源**: arXiv cs.AR (硬件架构) (TIER1)
-- **提交时间**: 2026年08月 (约 10 天前)
-- **类型**: arxiv
-- **优先级**: high
-- **分类**: AI芯片
-- **链接**: https://arxiv.org/abs/2608.20572
-- **AI 摘要**: 本文研究在训练CNN时对GPU进行欠压处理，引入随机扰动作为隐式正则化，提高模型对对抗攻击的鲁棒性并降低功耗，实验表明欠压训练在标准和对抗训练下均优于标压。
-- **原始摘要**: arXiv:2608.20572v1 Announce Type: cross Abstract: Convolutional Neural Networks (CNNs) face a dual challenge: vulnerability to adversarial attacks and prohibitive training cost. Adversarial training i...
-
-### 8. Giga-Scale AI and the Ethernet Evolution: How Spectrum-X Ethernet Rewrites the Rules
-- **来源**: NVIDIA Technical Blog (TIER1)
-- **发布日期**: 2026-08-24T15:08:39Z (今天)
-- **类型**: blog
-- **优先级**: high
-- **分类**: AI芯片
-- **链接**: https://developer.nvidia.com/blog/giga-scale-ai-ethernet-evolution-spectrum-x-ethernet-rewrites-rules/
-- **AI 摘要**: 生成式AI的爆发改变了数据中心设计，分布式训练扩展到数十万GPU规模，NVIDIA Spectrum-X以太网通过优化网络性能，为千兆级AI训练提供高带宽、低延迟的解决方案，重新定义了AI数据中心的网络标准。
-- **原始摘要**: The massive growth of generative AI has fundamentally altered data center design. As distributed model training scales to span hundreds of thousands of GPUs,......
-
-### 9. NVIDIA Vera Rubin and Blackwell Set a New Standard for Agentic AI Performance per Watt
-- **来源**: NVIDIA Technical Blog (TIER1)
-- **发布日期**: 2026-08-24T15:00:05Z (今天)
-- **类型**: blog
-- **优先级**: high
-- **分类**: AI芯片
-- **链接**: https://developer.nvidia.com/blog/nvidia-vera-rubin-and-blackwell-set-a-new-standard-for-agentic-ai-performance-per-watt/
-- **AI 摘要**: AI智能体将推理从单轮交互扩展到多步骤工作流，包括推理、工具调用和子代理协调。NVIDIA Vera Rubin和Blackwell平台通过提升每瓦性能，为智能体AI推理设定新标准，实现更高能效和性能。
-- **原始摘要**: AI agents have expanded inference from single-turn interactions into multi-step workflows that reason, invoke tools, coordinate subagents, and carry growing......
-
-### 10. How NVIDIA Groq 3 LPX Unlocks Ultrafast Interactivity at Long Context on NVIDIA Vera Rubin
-- **来源**: NVIDIA Technical Blog (TIER1)
-- **发布日期**: 2026-08-24T15:00:00Z (今天)
-- **类型**: blog
-- **优先级**: high
-- **分类**: AI芯片
-- **链接**: https://developer.nvidia.com/blog/how-nvidia-groq-3-lpx-unlocks-ultrafast-interactivity-at-long-context-on-nvidia-vera-rubin/
-- **AI 摘要**: NVIDIA Groq 3 LPX是面向Vera Rubin平台的交互式AI推理加速器，核心为Vera Rubin NVL72，旨在解锁长上下文场景下的超快交互性能，提升AI推理的响应速度和效率。
-- **原始摘要**: NVIDIA Groq 3 LPX is the interactive AI inference accelerator for the NVIDIA Vera Rubin platform. At the core of the platform is NVIDIA Vera Rubin NVL72, the......
+- **链接**: https://www.bloomberg.com/news/articles/2026-08-24/taiwan-indicts-nvidia-manager-following-chip-smuggling-probe
+- **AI 摘要**: 台湾检方起诉了一名英伟达高级经理，指控其参与向中国走私先进AI芯片的团伙。这是台湾首次对AI芯片黑市交易进行公开打击。该案件涉及违反出口管制法规，可能对英伟达在台湾的业务产生影响，也凸显了全球AI芯片贸易的敏感性和监管压力。
+- **原始摘要**: Taiwanese prosecutors indicted a senior Nvidia Corp. manager as part of a group that allegedly smuggled advanced AI chips into China, according to people familiar with the matter, advancing the island...
 
 ---
 
