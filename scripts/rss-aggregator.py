@@ -19,6 +19,7 @@ import time
 from bs4 import BeautifulSoup
 from web_scraper import scrape_all_custom_sources
 from military_scraper import scrape_military_sources
+from dotenv import load_dotenv
 
 # 配置路径
 SCRIPT_DIR = Path(__file__).parent
@@ -27,6 +28,12 @@ CONFIG_FILE = ROOT_DIR / "config" / "feeds.yml"
 CATEGORIES_FILE = ROOT_DIR / "config" / "categories.yml"
 REPORT_DIR = ROOT_DIR / "report"
 CACHE_FILE = SCRIPT_DIR / ".rss-cache.json"
+
+# 加载 .env 文件
+ENV_FILE = ROOT_DIR / ".env"
+if ENV_FILE.exists():
+    load_dotenv(ENV_FILE)
+    print(f"✅ 已从 {ENV_FILE} 加载环境变量")
 
 class RSSAggregator:
     def __init__(self, config_path: Path, categories_path: Path = CATEGORIES_FILE):

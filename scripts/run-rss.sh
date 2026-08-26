@@ -9,25 +9,10 @@ ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 
 cd "$ROOT_DIR"
 
-# 加载环境变量 - 修复版
-if [ -f "$ROOT_DIR/.env" ]; then
-    # 使用 set -a 来自动导出所有变量
-    set -a
-    source "$ROOT_DIR/.env"
-    set +a
-    echo "✅ 已加载环境变量"
-
-    # 验证关键环境变量
-    if [ -z "$DEEPSEEK_API_KEY" ]; then
-        echo "⚠️  警告: DEEPSEEK_API_KEY 未设置"
-    else
-        echo "✅ DEEPSEEK_API_KEY 已设置 (长度: ${#DEEPSEEK_API_KEY})"
-    fi
-fi
-
 echo "🚀 运行 RSS 聚合器..."
 echo ""
 
+# Python 脚本会自动从 .env 文件加载环境变量
 python3 "$SCRIPT_DIR/rss-aggregator.py"
 
 echo ""
