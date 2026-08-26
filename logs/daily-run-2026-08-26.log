@@ -1,0 +1,338 @@
+========================================
+开始时间: 2026-08-26 10:00:04
+========================================
+正在运行 RSS 聚合器...
+/Users/rede/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+============================================================
+📰 AI技术追踪 - 每日报告
+📅 报告日期: 2026-08-25 (昨天)
+🕐 运行时间: 2026-08-26 10:00:05
+============================================================
+
+⚠️  警告: DEEPSEEK_API_KEY 未设置，AI摘要功能将被禁用
+
+🚀 开始抓取 RSS feeds - 2026-08-26 10:00:05
+
+
+============================================================
+🕷️  自定义网页爬取
+============================================================
+
+🕷️  爬取: DeepSeek Blog (https://deepseek.ai/blog)
+✅ DeepSeek Blog: 0 篇文章
+🕷️  爬取: DeepSeek Research (https://www.deepseek.ai/research)
+✅ DeepSeek Research: 0 篇文章
+🕷️  爬取: Qwen Blog (https://qwenlm.github.io/blog/)
+✅ Qwen Blog: 5 篇文章
+🕷️  爬取: Zhipu AI Research (https://www.zhipuai.cn/en/research/)
+❌ 爬取 Zhipu AI Research 失败: HTTPSConnectionPool(host='www.zhipuai.cn', port=443): Max retries exceeded with url: /en/research/ (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Kimi Blog (https://platform.kimi.ai/blog)
+✅ Kimi Blog: 9 篇文章
+🕷️  爬取: Anthropic Research (https://www.anthropic.com/research)
+✅ Anthropic Research: 0 篇文章
+🕷️  爬取: OpenAI News (https://openai.com/news)
+  🔄 重试 2/3 (firefox/windows)...
+✅ OpenAI News: 0 篇文章
+🕷️  爬取: OpenAI Research (https://openai.com/research)
+  🔄 重试 2/3 (firefox/windows)...
+✅ OpenAI Research: 0 篇文章
+🕷️  爬取: xAI Blog (https://x.ai/blog)
+✅ xAI Blog: 5 篇文章
+🕷️  爬取: Physical Intelligence (https://www.physicalintelligence.company/blog)
+🕷️  爬取: Physical Intelligence (https://www.physicalintelligence.company/research)
+🕷️  爬取: Skild AI (https://www.skild.ai/blogs)
+🕷️  爬取: Figure AI (https://www.figure.ai/news)
+🕷️  爬取: 1X Technologies (https://www.1x.tech/discover)
+🕷️  爬取: UBTECH (优必选) (https://www.ubtrobot.com/en/news-list)
+🕷️  爬取: Unitree (宇树科技) (https://www.unitree.com/)
+🕷️  爬取: Agibot (智元机器人) (https://agibot.com/news)
+🕷️  爬取: Agibot (智元机器人) (https://agibot.com/research)
+✅ Physical Intelligence: 14 篇文章
+✅ Figure AI: 1 篇文章
+✅ 1X Technologies: 11 篇文章
+✅ UBTECH (优必选): 4 篇文章
+✅ Unitree (宇树科技): 4 篇文章
+✅ Agibot (智元机器人): 8 篇文章
+🕷️  爬取: Cerebras (https://www.cerebras.ai/blog)
+✅ Cerebras: 44 篇文章
+🕷️  爬取: Cerebras (https://www.cerebras.ai/publications)
+✅ Cerebras: 44 篇文章
+🕷️  爬取: SambaNova (https://sambanova.ai/blog)
+✅ SambaNova: 2 篇文章
+🕷️  爬取: Tenstorrent (https://tenstorrent.com/newsroom)
+✅ Tenstorrent: 13 篇文章
+🕷️  爬取: D-Matrix (https://www.d-matrix.ai/blog/)
+  🔄 重试 1/3...
+✅ D-Matrix: 6 篇文章
+🕷️  爬取: Etched (https://etched.com/progress)
+✅ Etched: 3 篇文章
+🕷️  爬取: Etched (https://etched.com/research)
+✅ Etched: 3 篇文章
+🕷️  爬取: Cambricon (寒武纪) (https://www.cambricon.com/)
+✅ Cambricon (寒武纪): 0 篇文章
+🕷️  爬取: Iluvatar (天数智芯) (https://www.iluvatar.com/news)
+✅ Iluvatar (天数智芯): 0 篇文章
+🕷️  爬取: Iluvatar (天数智芯) (https://www.iluvatar.com/en/research)
+✅ Iluvatar (天数智芯): 0 篇文章
+🕷️  爬取: Enflame (燧原科技) (https://www.enflame-tech.com/news)
+✅ Enflame (燧原科技): 8 篇文章
+🕷️  爬取: MetaX (沐曦) (https://www.metax-tech.com/news.html)
+✅ MetaX (沐曦): 0 篇文章
+🕷️  爬取: Biren (壁仞科技) (https://www.birentech.com/news/)
+✅ Biren (壁仞科技): 8 篇文章
+✅ 自定义网页爬取: 2 篇文章
+
+============================================================
+🕷️  军事新闻网站爬取
+============================================================
+
+📡 爬取: Jane's Defence
+  找到 15 个文章链接，开始获取详细内容...
+  [1/10] 获取: https://www.janes.com/defence-intelligence-insights/intelligence-podcasts/post/nato-beyond-the-numbers-capability-commitment-and-alliance-readiness
+    ✓ 已获取: NATO Beyond the Numbers: Capability, Commitment an...
+  [2/10] 获取: https://www.janes.com/defence-intelligence-insights/intelligence-podcasts/post/intelligence-in-the-age-of-ai-adapting-for-a-decade-of-disruption
+    ✓ 已获取: Intelligence in the Age of AI: Adapting for a Deca...
+  [3/10] 获取: https://www.janes.com/defence-intelligence-insights/intelligence-podcasts/post/energy-security-in-crisis
+    ✓ 已获取: Energy Security in Crisis...
+  [4/10] 获取: https://www.janes.com/defence-intelligence-insights/defence-and-national-security-analysis/post/mena-energy-tracker-01-july-26-11-aug-26
+    ✓ 已获取: MENA Energy Activity Tracker – 01 July to 11 Augus...
+  [5/10] 获取: https://www.janes.com/defence-intelligence-insights/defence-and-national-security-analysis/post/inside-ask-janes-bringing-ai-powered-intelligence-discovery-to-defence-users
+    ✓ 已获取: Inside Ask Janes: Bringing AI-Powered Intelligence...
+  [6/10] 获取: https://www.janes.com/defence-intelligence-insights/defence-and-national-security-analysis/post/ethiopian-tplf-clashes-risk-escalation
+    ✓ 已获取: Ethiopian military and TPLF clashes risk broader i...
+  [7/10] 获取: https://www.janes.com/defence-intelligence-insights/defence-and-national-security-analysis/post/south-sudan-stability-report-april-june-2026
+    ✓ 已获取: South Sudan stability report, April–June 2026...
+  [8/10] 获取: https://www.janes.com/defence-intelligence-insights/defence-and-national-security-analysis/post/the-evolution-of-unmanned-systems-use-counters-future-capabilities-and-market-dynamics
+    ✓ 已获取: The evolution of unmanned systems: Use, counters, ...
+  [9/10] 获取: https://www.janes.com/defence-intelligence-insights/defence-and-national-security-analysis/post/chinese-state-backed-operators-shortlisted-to-develop-nato-dual-use-port-in-poland
+    ✓ 已获取: Chinese state-backed operators shortlisted to deve...
+  [10/10] 获取: https://www.janes.com/defence-intelligence-insights/open-source-intelligence-webinars/post/from-investment-to-influence-chinas-expanding-reach-in-latin-america
+    ✓ 已获取: From Investment to Influence: China's Expanding Re...
+✅ Jane's Defence: 10 篇文章
+📡 爬取: Army Technology
+⚠️  Army Technology 爬取失败: 403 Client Error: Forbidden for url: https://www.army-technology.com/
+📡 爬取: 环球网军事
+✅ 环球网军事: 0 篇文章
+
+✅ 军事新闻爬取总计: 10 篇文章
+
+
+============================================================
+📂 TIER1 (10 个信源)
+============================================================
+
+📡 抓取: arXiv cs.CL (计算与语言) (https://export.arxiv.org/rss/cs.CL)
+✅ arXiv cs.CL (计算与语言): 0 篇新文章
+📡 抓取: arXiv cs.AI (人工智能) (https://export.arxiv.org/rss/cs.AI)
+✅ arXiv cs.AI (人工智能): 0 篇新文章
+📡 抓取: arXiv cs.LG (机器学习) (https://export.arxiv.org/rss/cs.LG)
+✅ arXiv cs.LG (机器学习): 0 篇新文章
+📡 抓取: arXiv cs.RO (机器人) (https://export.arxiv.org/rss/cs.RO)
+✅ arXiv cs.RO (机器人): 0 篇新文章
+📡 抓取: arXiv cs.CV (计算机视觉) (https://export.arxiv.org/rss/cs.CV)
+✅ arXiv cs.CV (计算机视觉): 0 篇新文章
+📡 抓取: arXiv cs.AR (硬件架构) (https://export.arxiv.org/rss/cs.AR)
+✅ arXiv cs.AR (硬件架构): 0 篇新文章
+📡 抓取: arXiv cs.PL (编程语言) (https://export.arxiv.org/rss/cs.PL)
+✅ arXiv cs.PL (编程语言): 0 篇新文章
+📡 抓取: NVIDIA Technical Blog (https://developer.nvidia.com/blog/feed/)
+✅ NVIDIA Technical Blog: 2 篇新文章
+📡 抓取: NVIDIA AI Blog (https://blogs.nvidia.com/blog/category/deep-learning/feed/)
+✅ NVIDIA AI Blog: 0 篇新文章
+📡 抓取: Google DeepMind Blog (https://deepmind.google/blog/rss.xml)
+⚠️  警告: Google DeepMind Blog - document declared as us-ascii, but parsed as utf-8
+
+============================================================
+📂 TIER2 (22 个信源)
+============================================================
+
+📡 抓取: Berkeley AI Research (BAIR) (https://bair.berkeley.edu/blog/feed.xml)
+⚠️  警告: Berkeley AI Research (BAIR) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: CMU Machine Learning Blog (https://blog.ml.cmu.edu/feed/)
+✅ CMU Machine Learning Blog: 0 篇新文章
+📡 抓取: Hugging Face Blog (https://huggingface.co/blog/feed.xml)
+✅ Hugging Face Blog: 2 篇新文章
+📡 抓取: The Gradient (https://thegradient.pub/rss/)
+✅ The Gradient: 0 篇新文章
+📡 抓取: Together AI Blog (https://www.together.ai/blog/rss.xml)
+✅ Together AI Blog: 0 篇新文章
+📡 抓取: LLVM Blog (https://blog.llvm.org/feeds/posts/default?alt=rss)
+⚠️  警告: LLVM Blog - <unknown>:2:0: syntax error
+📡 抓取: Rust Blog (https://blog.rust-lang.org/feed.xml)
+✅ Rust Blog: 0 篇新文章
+📡 抓取: V8 Blog (https://v8.dev/blog.atom)
+✅ V8 Blog: 0 篇新文章
+📡 抓取: WebKit Blog (https://webkit.org/feed/)
+✅ WebKit Blog: 0 篇新文章
+📡 抓取: Mozilla Hacks (https://hacks.mozilla.org/feed/)
+✅ Mozilla Hacks: 0 篇新文章
+📡 抓取: Intel Developer Zone (https://www.intel.com/content/www/us/en/developer/feed.xml)
+⚠️  警告: Intel Developer Zone - <unknown>:350:100: not well-formed (invalid token)
+📡 抓取: MaskRay (Fangrui Song) (https://maskray.me/blog/atom.xml)
+⚠️  警告: MaskRay (Fangrui Song) - document declared as us-ascii, but parsed as utf-8
+📡 抓取: Embedded in Academia (John Regehr) (https://blog.regehr.org/feed)
+✅ Embedded in Academia (John Regehr): 0 篇新文章
+📡 抓取: Eli Bendersky's website (https://eli.thegreenplace.net/feeds/all.atom.xml)
+✅ Eli Bendersky's website: 0 篇新文章
+📡 抓取: Adrian Sampson's blog (https://www.cs.cornell.edu/~asampson/blog.xml)
+✅ Adrian Sampson's blog: 0 篇新文章
+📡 抓取: Daniel Lemire's blog (https://lemire.me/blog/feed/)
+✅ Daniel Lemire's blog: 0 篇新文章
+📡 抓取: Meta LLaMA Releases (https://github.com/meta-llama/llama-models/releases.atom)
+✅ Meta LLaMA Releases: 0 篇新文章
+📡 抓取: Mistral AI Releases (https://github.com/mistralai/mistral-inference/releases.atom)
+✅ Mistral AI Releases: 0 篇新文章
+📡 抓取: OpenAI GPT Releases (https://github.com/openai/openai-python/releases.atom)
+✅ OpenAI GPT Releases: 0 篇新文章
+📡 抓取: Anthropic Claude Releases (https://github.com/anthropics/anthropic-sdk-python/releases.atom)
+✅ Anthropic Claude Releases: 0 篇新文章
+📡 抓取: SambaNova Blog (https://sambanova.ai/blog/rss.xml)
+✅ SambaNova Blog: 0 篇新文章
+📡 抓取: TrendForce Insights (https://insights.trendforce.com/feed)
+✅ TrendForce Insights: 0 篇新文章
+
+============================================================
+📂 TIER3 (30 个信源)
+============================================================
+
+📡 抓取: 量子位 (https://www.qbitai.com/feed)
+✅ 量子位: 2 篇新文章
+📡 抓取: r/MachineLearning (https://www.reddit.com/r/MachineLearning/.rss)
+✅ r/MachineLearning: 6 篇新文章
+📡 抓取: r/LocalLLaMA (https://www.reddit.com/r/LocalLLaMA/.rss)
+✅ r/LocalLLaMA: 0 篇新文章
+📡 抓取: r/Compilers (https://www.reddit.com/r/Compilers/.rss)
+✅ r/Compilers: 0 篇新文章
+📡 抓取: r/ProgrammingLanguages (https://www.reddit.com/r/ProgrammingLanguages/.rss)
+✅ r/ProgrammingLanguages: 0 篇新文章
+📡 抓取: Tom's Hardware (https://www.tomshardware.com/feeds/all)
+✅ Tom's Hardware: 17 篇新文章
+📡 抓取: TechCrunch (https://techcrunch.com/feed/)
+✅ TechCrunch: 12 篇新文章
+📡 抓取: TechCrunch AI (https://techcrunch.com/category/artificial-intelligence/feed/)
+✅ TechCrunch AI: 1 篇新文章
+📡 抓取: The Information (https://www.theinformation.com/feed)
+⚠️  警告: The Information - <unknown>:69:50: undefined entity
+📡 抓取: Financial Times World (https://www.ft.com/world?format=rss)
+✅ Financial Times World: 8 篇新文章
+📡 抓取: Bloomberg Markets (https://feeds.bloomberg.com/markets/news.rss)
+✅ Bloomberg Markets: 5 篇新文章
+📡 抓取: Bloomberg Politics (https://feeds.bloomberg.com/politics/news.rss)
+✅ Bloomberg Politics: 3 篇新文章
+📡 抓取: Bloomberg Economics (https://feeds.bloomberg.com/economics/news.rss)
+✅ Bloomberg Economics: 11 篇新文章
+📡 抓取: Bloomberg Technology (https://feeds.bloomberg.com/technology/news.rss)
+✅ Bloomberg Technology: 14 篇新文章
+📡 抓取: CNBC Top News (https://www.cnbc.com/id/100003114/device/rss/rss.html)
+✅ CNBC Top News: 3 篇新文章
+📡 抓取: CNBC World News (https://www.cnbc.com/id/100727362/device/rss/rss.html)
+✅ CNBC World News: 2 篇新文章
+📡 抓取: CNBC Technology (https://www.cnbc.com/id/19854910/device/rss/rss.html)
+✅ CNBC Technology: 3 篇新文章
+📡 抓取: The New York Times HomePage (https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml)
+✅ The New York Times HomePage: 3 篇新文章
+📡 抓取: The New York Times World (https://rss.nytimes.com/services/xml/rss/nyt/World.xml)
+✅ The New York Times World: 2 篇新文章
+📡 抓取: The New York Times Business (https://rss.nytimes.com/services/xml/rss/nyt/Business.xml)
+✅ The New York Times Business: 1 篇新文章
+📡 抓取: The New York Times Technology (https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml)
+✅ The New York Times Technology: 3 篇新文章
+📡 抓取: The Wall Street Journal World News (https://feeds.a.dj.com/rss/RSSWorldNews.xml)
+✅ The Wall Street Journal World News: 0 篇新文章
+📡 抓取: The Wall Street Journal US Business (https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml)
+✅ The Wall Street Journal US Business: 0 篇新文章
+📡 抓取: The Wall Street Journal Markets (https://feeds.a.dj.com/rss/RSSMarketsMain.xml)
+✅ The Wall Street Journal Markets: 0 篇新文章
+📡 抓取: The Wall Street Journal Technology (https://feeds.a.dj.com/rss/RSSWSJD.xml)
+✅ The Wall Street Journal Technology: 0 篇新文章
+📡 抓取: The Economist - The World This Week (https://www.economist.com/the-world-this-week/rss.xml)
+⚠️  警告: The Economist - The World This Week - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist Business (https://www.economist.com/business/rss.xml)
+⚠️  警告: The Economist Business - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist Finance & Economics (https://www.economist.com/finance-and-economics/rss.xml)
+⚠️  警告: The Economist Finance & Economics - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist International (https://www.economist.com/international/rss.xml)
+⚠️  警告: The Economist International - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist Science & Technology (https://www.economist.com/science-and-technology/rss.xml)
+⚠️  警告: The Economist Science & Technology - document declared as us-ascii, but parsed as utf-8
+
+============================================================
+📂 MILITARY (7 个信源)
+============================================================
+
+📡 抓取: Defense News (https://www.defensenews.com/m/rss/)
+⚠️  警告: Defense News - <unknown>:2:1826: not well-formed (invalid token)
+📡 抓取: Military Times (https://www.militarytimes.com/m/rss/)
+⚠️  警告: Military Times - <unknown>:2:1852: not well-formed (invalid token)
+📡 抓取: Breaking Defense (https://breakingdefense.com/full-rss-feed/?v=2)
+✅ Breaking Defense: 6 篇新文章
+📡 抓取: Stars and Stripes (https://subscribe.stripes.com/rss)
+⚠️  警告: Stars and Stripes - document declared as us-ascii, but parsed as utf-8
+📡 抓取: TASS Defense (http://tass.com/rss/v2.xml)
+✅ TASS Defense: 50 篇新文章
+📡 抓取: Military.com (https://www.military.com/feed/)
+✅ Military.com: 3 篇新文章
+📡 抓取: The War Zone (https://www.twz.com/feed)
+✅ The War Zone: 1 篇新文章
+
+============================================================
+📊 总计: 162 篇新文章
+============================================================
+
+
+============================================================
+📄 报告预览 - 2026-08-25
+============================================================
+
+# RSS 聚合报告 - 2026-08-25
+
+**生成时间**: 2026-08-26 10:02:32
+**报告日期**: 2026-08-25 (昨天)
+**新发现文章**: 162 篇
+
+## 📊 分类统计
+
+- **未分类**: 162 篇
+
+---
+
+## 🏷️  未分类
+
+**162 篇文章**
+
+### 1. 从开源走向共建：范式联合优必选等十余家具身巨头发布PhanthyMotus新计划
+- **来源**: 量子位 (TIER3)
+- **发布日期**: Tue, 25 Aug 2026 09:31:16 +0000 (昨天)
+- **类型**: news
+- **优先级**: low
+- **链接**: https://www.qbitai.com/2026/08/479314.html
+- **原始摘要**: 近日，范式正式举办 PhanthyMotus 生态社区共建计划发布会，宣布其首个通用具身Agent底座从“开源”迈入“多方共建”新阶段。
+
+### 2. 开源国产8B模型，比肩闭源Image 2了！
+- **来源**: 量子位 (TIER3)
+- **发布...
+
+
+============================================================
+✅ 报告已保存到: /Users/rede/Git/deep_analysis/report/2026-08-25
+============================================================
+   📄 全部文章: rss-aggregation-2026-08-25.md
+   📄 未分类: rss-aggregation-2026-08-25-未分类.md
+============================================================
+✅ 缓存已更新:
+   • 今日新增: 162 个 URL
+   • 总计: 1254 个 URL，跨 3 天
+   • 缓存日期范围: 2026-08-23 至 2026-08-25
+
+🎉 完成! 昨天(2026-08-25)的文章已整理完毕
+
+退出代码: 0
+结束时间: 2026-08-26 10:02:32
+========================================
+
