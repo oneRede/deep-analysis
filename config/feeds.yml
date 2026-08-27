@@ -803,71 +803,36 @@ military:
     url: "https://www.defensenews.com/m/rss/"
     type: "news"
     priority: "high"
-    keywords:
-      - "military"
-      - "defense"
-      - "weapons"
-      - "procurement"
-      - "technology"
 
   - name: "Military Times"
     url: "https://www.militarytimes.com/m/rss/"
     type: "news"
     priority: "high"
-    keywords:
-      - "military"
-      - "armed forces"
-      - "defense"
-      - "veterans"
 
   - name: "Breaking Defense"
     url: "https://breakingdefense.com/full-rss-feed/?v=2"
     type: "news"
     priority: "high"
-    keywords:
-      - "defense"
-      - "weapons systems"
-      - "military technology"
-      - "procurement"
 
   - name: "Stars and Stripes"
     url: "https://subscribe.stripes.com/rss"
     type: "news"
     priority: "medium"
-    keywords:
-      - "military"
-      - "veterans"
-      - "defense"
 
   - name: "TASS Defense"
     url: "http://tass.com/rss/v2.xml"
     type: "news"
     priority: "medium"
-    keywords:
-      - "defense"
-      - "military"
-      - "weapons"
-      - "Russia"
 
   - name: "Military.com"
     url: "https://www.military.com/feed/"
     type: "news"
     priority: "medium"
-    keywords:
-      - "military"
-      - "veterans"
-      - "defense news"
 
   - name: "The War Zone"
     url: "https://www.twz.com/feed"
     type: "news"
     priority: "high"
-    keywords:
-      - "military"
-      - "aviation"
-      - "defense"
-      - "weapons"
-      - "analysis"
 
   # ============================================================
   # 需要爬取的军事媒体（无RSS）
