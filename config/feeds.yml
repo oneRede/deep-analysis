@@ -78,6 +78,31 @@ tier1:
       - "compute-in-memory"
       - "sparse"
 
+  - name: "arXiv physics.optics (光学/光计算)"
+    url: "https://export.arxiv.org/rss/physics.optics"
+    type: "arxiv"
+    priority: "high"
+    keywords:
+      - "optical computing"
+      - "photonic computing"
+      - "optical neural network"
+      - "photonic chip"
+      - "silicon photonics"
+      - "optical interconnect"
+      - "neuromorphic photonics"
+      - "all-optical"
+
+  - name: "arXiv cs.ET (新兴技术)"
+    url: "https://export.arxiv.org/rss/cs.ET"
+    type: "arxiv"
+    priority: "high"
+    keywords:
+      - "optical computing"
+      - "photonic computing"
+      - "quantum computing"
+      - "neuromorphic"
+      - "emerging technology"
+
   - name: "arXiv cs.PL (编程语言)"
     url: "https://export.arxiv.org/rss/cs.PL"
     type: "arxiv"
@@ -176,6 +201,21 @@ tier1:
   # 关注：AI加速器、推理芯片、训练芯片、国产替代
   #
   # 这些源会在 fetch_all() 中自动爬取，无需在此配置
+
+  # ============================================================
+  # 光计算/光子计算公司 - 通过网页爬取获取
+  # ============================================================
+  # 国际:
+  # ✅ Lightmatter: https://lightmatter.co/news (光子AI芯片，获多轮融资)
+  # ✅ Luminous Computing: https://www.luminous.co/news (光子超级计算机)
+  # ✅ Lightintelligence: https://www.lightintelligence.ai/news (光子AI加速器)
+  #
+  # 中国:
+  # ✅ 曦智科技 (Xizhi Tech): http://www.xizhi-tech.com/news (国内光芯片先驱)
+  # ✅ 鲲游光电 (Kunyu Photonics): https://www.kunyutech.com/ (硅光芯片)
+  # ✅ 量子位报道: 搜索"光计算"相关中文报道
+  #
+  # 关注：光子芯片、光互连、光神经网络、硅光技术
 
 # Tier 2 - 中权重（已验证的技术社区）
 tier2:
@@ -411,6 +451,42 @@ tier2:
       - "memory"
       - "market analysis"
       - "supply chain"
+
+  # ============================================================
+  # 光计算/光子计算领域 ✅
+  # ============================================================
+
+  - name: "Nature Photonics"
+    url: "https://www.nature.com/nphoton.rss"
+    type: "journal"
+    priority: "high"
+    keywords:
+      - "optical computing"
+      - "photonic computing"
+      - "silicon photonics"
+      - "optical neural network"
+      - "photonic chip"
+      - "optical interconnect"
+
+  - name: "OSA Optica (Optical Society)"
+    url: "https://opg.optica.org/rss/optica.xml"
+    type: "journal"
+    priority: "high"
+    keywords:
+      - "optical computing"
+      - "photonics"
+      - "optical processing"
+      - "integrated photonics"
+
+  - name: "IEEE Photonics Society News"
+    url: "https://www.photonicssociety.org/news-center.rss"
+    type: "news"
+    priority: "medium"
+    keywords:
+      - "photonics"
+      - "optical computing"
+      - "silicon photonics"
+      - "optoelectronics"
 
 # Tier 3 - 补充覆盖（已验证的中文媒体）
 tier3:
