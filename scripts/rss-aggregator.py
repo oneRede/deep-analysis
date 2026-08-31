@@ -20,6 +20,7 @@ from bs4 import BeautifulSoup
 from web_scraper import scrape_all_custom_sources
 from military_scraper import scrape_military_sources
 from dotenv import load_dotenv
+from cache_manager_new import CacheManager
 
 # 配置路径
 SCRIPT_DIR = Path(__file__).parent
@@ -27,7 +28,8 @@ ROOT_DIR = SCRIPT_DIR.parent
 CONFIG_FILE = ROOT_DIR / "config" / "feeds.yml"
 CATEGORIES_FILE = ROOT_DIR / "config" / "categories.yml"
 REPORT_DIR = ROOT_DIR / "report"
-CACHE_FILE = SCRIPT_DIR / ".rss-cache.json"
+CACHE_DIR = SCRIPT_DIR / ".cache"
+OLD_CACHE_FILE = SCRIPT_DIR / ".rss-cache.json"  # 用于迁移
 
 # 加载 .env 文件
 ENV_FILE = ROOT_DIR / ".env"
@@ -52,9 +54,19 @@ class RSSAggregator:
         self.category_name_to_key = {cat['name']: cat['key'] for cat in self.categories}
         self.category_key_to_name = {cat['key']: cat['name'] for cat in self.categories}
 
-        self.cache = self._load_cache()
+        # 使用新的缓存管理器
+        self.cache_manager = CacheManager(CACHE_DIR)
+
+        # 迁移旧缓存（如果存在）
+        if OLD_CACHE_FILE.exists():
+            print("  🔄 检测到旧缓存格式，正在迁移到新格式...")
+            self.cache_manager.migrate_from_old_cache(OLD_CACHE_FILE)
+
         self.articles = []
         self.seen_urls: Set[str] = set()
+
+        # 当前运行日期（用于缓存）
+        self.run_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
         # DeepSeek API 配置
         self.deepseek_api_key = os.getenv('DEEPSEEK_API_KEY', '').strip()
@@ -104,85 +116,10 @@ class RSSAggregator:
             print(f"⚠️  DeepSeek API 连接测试异常: {str(e)}")
             self.enable_ai_summary = False
 
-    def _load_cache(self) -> Dict:
-        """加载缓存（已处理的文章）- 新格式按日期组织"""
-        if CACHE_FILE.exists():
-            with open(CACHE_FILE, 'r', encoding='utf-8') as f:
-                cache = json.load(f)
-
-                # 兼容旧格式：如果是旧的列表格式，转换为新格式
-                if isinstance(cache.get('processed_urls'), list):
-                    print("  🔄 检测到旧缓存格式，正在迁移...")
-                    old_urls = cache['processed_urls']
-                    yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-
-                    # 将旧 URL 列表迁移到昨天的日期
-                    cache = {
-                        "by_date": {
-                            yesterday: old_urls
-                        },
-                        "last_run": cache.get("last_run"),
-                        "version": "2.0"
-                    }
-                    print(f"  ✅ 已迁移 {len(old_urls)} 个 URL 到 {yesterday}")
-
-                return cache
-
-        # 默认新格式
-        return {
-            "by_date": {},
-            "last_run": None,
-            "version": "2.0"
-        }
-
-    def _save_cache(self):
-        """保存缓存"""
-        self.cache["last_run"] = datetime.now().isoformat()
-        self.cache["version"] = "2.0"
-
-        with open(CACHE_FILE, 'w', encoding='utf-8') as f:
-            json.dump(self.cache, f, indent=2, ensure_ascii=False)
-
-    def _cleanup_old_cache(self, keep_days: int = 30):
-        """清理超过指定天数的缓存
-
-        Args:
-            keep_days: 保留最近多少天的缓存（默认30天）
-        """
-        if "by_date" not in self.cache:
-            return
-
-        cutoff_date = datetime.now() - timedelta(days=keep_days)
-        cutoff_str = cutoff_date.strftime('%Y-%m-%d')
-
-        dates_to_remove = []
-        for date_str in self.cache["by_date"].keys():
-            if date_str < cutoff_str:
-                dates_to_remove.append(date_str)
-
-        if dates_to_remove:
-            total_urls_removed = 0
-            for date_str in dates_to_remove:
-                urls_count = len(self.cache["by_date"][date_str])
-                total_urls_removed += urls_count
-                del self.cache["by_date"][date_str]
-
-            print(f"  🧹 清理了 {len(dates_to_remove)} 天的旧缓存（{total_urls_removed} 个 URL）")
-            print(f"     保留范围: {cutoff_str} 至今")
-
     def _get_all_cached_urls(self) -> Set[str]:
         """获取最近 days_lookback 天内已缓存的 URL"""
-        all_urls = set()
-        if "by_date" in self.cache:
-            # 只检查最近 days_lookback 天的缓存
-            days_lookback = self.config.get('filters', {}).get('days_lookback', 7)
-            cutoff_date = datetime.now() - timedelta(days=days_lookback)
-            cutoff_str = cutoff_date.strftime('%Y-%m-%d')
-
-            for date_str, date_urls in self.cache["by_date"].items():
-                if date_str >= cutoff_str:
-                    all_urls.update(date_urls)
-        return all_urls
+        days_lookback = self.config.get('filters', {}).get('days_lookback', 7)
+        return self.cache_manager.get_urls_in_range(days_lookback)
 
     def _is_recent(self, published_parsed) -> bool:
         """检查文章是否在时间窗口内 - 使用配置的 days_lookback 参数"""
@@ -1025,30 +962,20 @@ class RSSAggregator:
             print(f"   📄 {name}: {path.name}")
         print(f"{'='*60}")
 
-        # 更新缓存 - 按日期保存
-        yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-
-        if yesterday not in self.cache['by_date']:
-            self.cache['by_date'][yesterday] = []
-
-        for article in self.articles:
-            url = self._normalize_url(article['url'])
-            if url not in self.cache['by_date'][yesterday]:
-                self.cache['by_date'][yesterday].append(url)
+        # 更新缓存 - 使用新的缓存管理器
+        urls_to_cache = [self._normalize_url(article['url']) for article in self.articles]
+        self.cache_manager.add_urls(self.run_date, urls_to_cache)
 
         # 清理超过30天的旧缓存
-        self._cleanup_old_cache(keep_days=30)
-
-        self._save_cache()
+        self.cache_manager.cleanup_old_caches(keep_days=30)
 
         # 统计缓存信息
-        total_urls = sum(len(urls) for urls in self.cache['by_date'].values())
-        date_count = len(self.cache['by_date'])
+        stats = self.cache_manager.get_statistics()
 
         print(f"✅ 缓存已更新:")
-        print(f"   • 今日新增: {len(self.articles)} 个 URL")
-        print(f"   • 总计: {total_urls} 个 URL，跨 {date_count} 天")
-        print(f"   • 缓存日期范围: {min(self.cache['by_date'].keys())} 至 {max(self.cache['by_date'].keys())}")
+        print(f"   • 今日新增: {len(urls_to_cache)} 个 URL")
+        print(f"   • 总计: {stats['total_urls']} 个 URL，跨 {stats['total_files']} 天")
+        print(f"   • 缓存日期范围: {stats['date_range']}")
 
 def main():
     """主函数 - 每日运行，获取昨天的文章"""
