@@ -150,6 +150,20 @@ tier1:
     priority: "high"
     # 虽有解析警告但可用
 
+  - name: "SK hynix Newsroom"
+    url: "https://news.skhynix.com/en/feed/"
+    type: "blog"
+    priority: "high"
+    keywords:
+      - "HBM"
+      - "memory"
+      - "DRAM"
+      - "NAND"
+      - "AI"
+      - "semiconductor"
+      - "chip"
+      - "manufacturing"
+
   # ============================================================
   # 主流大模型公司 - 通过网页爬取获取（见 web_scraper.py）
   # ============================================================
