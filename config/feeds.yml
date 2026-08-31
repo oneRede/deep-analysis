@@ -223,10 +223,11 @@ tier2:
   # 学术机构博客 - 已验证可用 ✅
   # ============================================================
 
-  - name: "Berkeley AI Research (BAIR)"
-    url: "https://bair.berkeley.edu/blog/feed.xml"
-    type: "blog"
-    priority: "medium"
+  # Berkeley AI Research (BAIR) - SSL问题，暂时禁用
+  # - name: "Berkeley AI Research (BAIR)"
+  #   url: "https://bair.berkeley.edu/blog/feed.xml"
+  #   type: "blog"
+  #   priority: "medium"
 
   - name: "CMU Machine Learning Blog"
     url: "https://blog.ml.cmu.edu/feed/"
@@ -264,7 +265,7 @@ tier2:
   # ============================================================
 
   - name: "LLVM Blog"
-    url: "https://blog.llvm.org/feeds/posts/default?alt=rss"
+    url: "https://blog.llvm.org/index.xml"
     type: "blog"
     priority: "medium"
     keywords:
@@ -319,16 +320,17 @@ tier2:
       - "compiler"
       - "optimization"
 
-  - name: "Intel Developer Zone"
-    url: "https://www.intel.com/content/www/us/en/developer/feed.xml"
-    type: "blog"
-    priority: "low"
-    keywords:
-      - "compiler"
-      - "optimization"
-      - "vectorization"
-      - "ICC"
-      - "oneAPI"
+  # Intel Developer Zone - RSS格式问题，暂时禁用
+  # - name: "Intel Developer Zone"
+  #   url: "https://www.intel.com/content/www/us/en/developer/feed.xml"
+  #   type: "blog"
+  #   priority: "low"
+  #   keywords:
+  #     - "compiler"
+  #     - "optimization"
+  #     - "vectorization"
+  #     - "ICC"
+  #     - "oneAPI"
 
   # ============================================================
   # 编译器领域专家个人博客 ✅
@@ -468,25 +470,27 @@ tier2:
       - "photonic chip"
       - "optical interconnect"
 
-  - name: "OSA Optica (Optical Society)"
-    url: "https://opg.optica.org/rss/optica.xml"
-    type: "journal"
-    priority: "high"
-    keywords:
-      - "optical computing"
-      - "photonics"
-      - "optical processing"
-      - "integrated photonics"
+  # OSA Optica - RSS格式问题，暂时禁用
+  # - name: "OSA Optica (Optical Society)"
+  #   url: "https://opg.optica.org/rss/optica.xml"
+  #   type: "journal"
+  #   priority: "high"
+  #   keywords:
+  #     - "optical computing"
+  #     - "photonics"
+  #     - "optical processing"
+  #     - "integrated photonics"
 
-  - name: "IEEE Photonics Society News"
-    url: "https://www.photonicssociety.org/news-center.rss"
-    type: "news"
-    priority: "medium"
-    keywords:
-      - "photonics"
-      - "optical computing"
-      - "silicon photonics"
-      - "optoelectronics"
+  # IEEE Photonics Society News - RSS格式问题，暂时禁用
+  # - name: "IEEE Photonics Society News"
+  #   url: "https://www.photonicssociety.org/news-center.rss"
+  #   type: "news"
+  #   priority: "medium"
+  #   keywords:
+  #     - "photonics"
+  #     - "optical computing"
+  #     - "silicon photonics"
+  #     - "optoelectronics"
 
 # Tier 3 - 补充覆盖（已验证的中文媒体）
 tier3:
@@ -872,7 +876,7 @@ military:
   # ============================================================
 
   - name: "Defense News"
-    url: "https://www.defensenews.com/m/rss/"
+    url: "https://www.defensenews.com/arc/outboundfeeds/rss/"
     type: "news"
     priority: "high"
 

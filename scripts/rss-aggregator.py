@@ -171,11 +171,17 @@ class RSSAggregator:
             print(f"     保留范围: {cutoff_str} 至今")
 
     def _get_all_cached_urls(self) -> Set[str]:
-        """获取所有已缓存的 URL（跨所有日期）"""
+        """获取最近 days_lookback 天内已缓存的 URL"""
         all_urls = set()
         if "by_date" in self.cache:
-            for date_urls in self.cache["by_date"].values():
-                all_urls.update(date_urls)
+            # 只检查最近 days_lookback 天的缓存
+            days_lookback = self.config.get('filters', {}).get('days_lookback', 7)
+            cutoff_date = datetime.now() - timedelta(days=days_lookback)
+            cutoff_str = cutoff_date.strftime('%Y-%m-%d')
+
+            for date_str, date_urls in self.cache["by_date"].items():
+                if date_str >= cutoff_str:
+                    all_urls.update(date_urls)
         return all_urls
 
     def _is_recent(self, published_parsed) -> bool:
