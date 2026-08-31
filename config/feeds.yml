@@ -468,6 +468,21 @@ tier2:
       - "market analysis"
       - "supply chain"
 
+  - name: "SemiEngineering"
+    url: "https://semiengineering.com/feed/"
+    type: "blog"
+    priority: "high"
+    keywords:
+      - "semiconductor"
+      - "chip design"
+      - "EDA"
+      - "verification"
+      - "hardware"
+      - "AI chip"
+      - "advanced packaging"
+      - "manufacturing"
+      - "process technology"
+
   # ============================================================
   # 光计算/光子计算领域 ✅
   # ============================================================
