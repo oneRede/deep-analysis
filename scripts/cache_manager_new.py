@@ -103,13 +103,13 @@ class CacheManager:
             print(f"⚠️  读取缓存文件失败 {date_str}: {e}")
             return set()
 
-    def get_urls_in_range(self, days_back: int = 7, exclude_today: bool = True) -> Set[str]:
+    def get_urls_in_range(self, days_back: int = 7, exclude_date: str = None) -> Set[str]:
         """
         获取最近N天的所有缓存URL
 
         Args:
             days_back: 往前追溯的天数
-            exclude_today: 是否排除今天的缓存（防止同一天多次运行时的重复去重）
+            exclude_date: 要排除的日期字符串(YYYY-MM-DD)，防止同一天多次运行时的重复去重
 
         Returns:
             URL集合
@@ -117,11 +117,15 @@ class CacheManager:
         all_urls = set()
 
         today = datetime.now()
-        start_offset = 1 if exclude_today else 0
 
-        for i in range(start_offset, days_back + start_offset):
+        for i in range(days_back + 1):
             date = today - timedelta(days=i)
             date_str = date.strftime('%Y-%m-%d')
+
+            # 跳过要排除的日期
+            if exclude_date and date_str == exclude_date:
+                continue
+
             all_urls.update(self.get_urls(date_str))
 
         return all_urls

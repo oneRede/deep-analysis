@@ -1,181 +1,190 @@
 # RSS 聚合报告 - Harness工程
 
-**生成时间**: 2026-08-31 09:39:19
-**文章数量**: 19 篇
+**生成时间**: 2026-08-31 10:19:47
+**文章数量**: 20 篇
 
 ---
 
-### 1. Never Loop Without VerifiersJune 24, 2026
+### 1. Accelerating GPT-5.6 Sol UltrafastAugust 13, 2026
+- **来源**: Cerebras (TIER1)
+- **发布日期**: ust 13, 2026
+- **类型**: blog
+- **优先级**: high
+- **分类**: Harness工程
+- **链接**: https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai
+- **AI 摘要**: 文章聚焦于加速GPT-5.6 Sol的推理速度，可能涉及硬件优化或软件加速技术，以提升模型运行效率。
+
+### 2. Never Loop Without VerifiersJune 24, 2026
 - **来源**: Cerebras (TIER1)
 - **发布日期**: une 24, 2026
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://www.cerebras.ai/blog/never-loop-without-verifiers
-- **AI 摘要**: 文章标题强调在循环中必须使用验证器，可能讨论AI代理或工作流中验证机制的重要性，以确保正确性和可靠性。
+- **AI 摘要**: 文章标题强调在循环中必须使用验证器，可能讨论AI推理或代码生成中的验证机制，确保循环过程的正确性和可靠性。
 
-### 2. How We Built Our Knowledge BaseJuly 15, 2026
+### 3. Which is faster: Kimi K2.6 on Cerebras or Gemini Flash?June 05, 2026
+- **来源**: Cerebras (TIER1)
+- **发布日期**: une 05, 2026
+- **类型**: blog
+- **优先级**: high
+- **分类**: Harness工程
+- **链接**: https://www.cerebras.ai/blog/which-is-faster-gemini-3-5-flash-or-kimi-k2-6-on-cerebras
+- **AI 摘要**: 文章对比Kimi K2.6在Cerebras平台与Gemini Flash的推理速度，属于AI推理性能评测，关注硬件加速下的速度差异。
+
+### 4. Getting the most out of GPT-5.6: Sol, Terra, and LunaJuly 27, 2026
+- **来源**: Cerebras (TIER1)
+- **发布日期**: uly 27, 2026
+- **类型**: blog
+- **优先级**: high
+- **分类**: Harness工程
+- **链接**: https://www.cerebras.ai/blog/getting-the-most-out-of-gpt-5-6-sol-terra-and-luna
+- **AI 摘要**: 探讨如何充分利用GPT-5.6的Sol、Terra和Luna版本，可能涉及部署、调优或应用最佳实践。
+
+### 5. How We Built Our Knowledge BaseJuly 15, 2026
 - **来源**: Cerebras (TIER1)
 - **发布日期**: uly 15, 2026
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://www.cerebras.ai/blog/how-we-built-our-knowledge-base
-- **AI 摘要**: 分享构建知识库的方法论，涵盖数据组织、检索和AI集成实践。
+- **AI 摘要**: 分享了构建知识库的方法论，可能涉及数据管理、检索增强生成（RAG）或工程实践。
 
-### 3. Lessons learned from building multi-agent workflowsApril 16, 2026
+### 6. Lessons learned from building multi-agent workflowsApril 16, 2026
 - **来源**: Cerebras (TIER1)
 - **发布日期**: ril 16, 2026
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://www.cerebras.ai/blog/lessons-learned-from-building-multi-agent-workflows
-- **AI 摘要**: 文章分享构建多智能体工作流的经验教训，可能涉及架构设计、协调和常见陷阱。
+- **AI 摘要**: 文章分享构建多智能体工作流的经验教训，涉及工程实践、架构设计和部署挑战，属于AI工程领域。
 
-### 4. The Debate of MCP vs. CLI Centers on SpeedApril 06, 2026
+### 7. The Debate of MCP vs. CLI Centers on SpeedApril 06, 2026
 - **来源**: Cerebras (TIER1)
 - **发布日期**: ril 06, 2026
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://www.cerebras.ai/blog/MCPvsCLI
-- **AI 摘要**: 文章讨论MCP与CLI的辩论，聚焦于速度，可能比较两种协议在AI交互中的性能。
+- **AI 摘要**: 文章辩论MCP与CLI的速度差异，可能涉及AI工具链中协议选择对性能的影响，属于工程工具评估。
 
-### 5. How to stop your autoresearch loop from cheatingMarch 19, 2026
+### 8. How to stop your autoresearch loop from cheatingMarch 19, 2026
 - **来源**: Cerebras (TIER1)
 - **发布日期**: rch 19, 2026
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://www.cerebras.ai/blog/how-to-stop-your-autoresearch-loop-from-cheating
-- **AI 摘要**: 文章讨论如何防止自动研究循环中的作弊行为，可能涉及评估方法、数据污染防护或实验设计，以确保AI研究过程的真实性和可靠性。
+- **AI 摘要**: 文章讨论了如何防止自动研究循环中的作弊行为，可能涉及评估指标设计、数据污染防护或实验完整性保障，属于AI工程实践中的评估与测试范畴。
 
-### 6. Scaling SWE Agent Data Collection with Dockerized Environments for ExecutionNovember 24, 2025
+### 9. Scaling SWE Agent Data Collection with Dockerized Environments for ExecutionNovember 24, 2025
 - **来源**: Cerebras (TIER1)
 - **发布日期**: ber 24, 2025
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://www.cerebras.ai/blog/scaling-swe-agent-data-collection-with-dockerized-environments-for-execution
-- **AI 摘要**: 利用Docker化环境扩展SWE智能体数据收集，涉及AI工程实践与工具链优化。
+- **AI 摘要**: 利用Docker化环境扩展SWE代理数据收集，支持执行与评估，优化AI工程实践。
 
-### 7. Scaling Code-Repair Agents with Reinforcement Learning: Extending OpenHands for Real-World RepositoriesNovember 24, 2025
-- **来源**: Cerebras (TIER1)
-- **发布日期**: ber 24, 2025
-- **类型**: blog
-- **优先级**: high
-- **分类**: Harness工程
-- **链接**: https://www.cerebras.ai/blog/scaling-code-repair-agents-with-reinforcement-learning-extending-openhands-for-real-world
-- **AI 摘要**: 通过强化学习扩展代码修复智能体，应用于真实仓库，属于AI工程与模型训练结合。
-
-### 8. OpenAI GPT-OSS 120B Benchmarked – NVIDIA Blackwell vs. CerebrasNovember 06, 2025
-- **来源**: Cerebras (TIER1)
-- **发布日期**: ber 06, 2025
-- **类型**: blog
-- **优先级**: high
-- **分类**: Harness工程
-- **链接**: https://www.cerebras.ai/blog/blackwell-vs-cerebras
-- **AI 摘要**: 对OpenAI GPT-OSS 120B模型在NVIDIA Blackwell与Cerebras平台进行基准测试，比较推理性能。
-
-### 9. Cerebras at NeurIPS 2025: Nine Papers From Pretraining to InferenceDecember 04, 2025
+### 10. Cerebras at NeurIPS 2025: Nine Papers From Pretraining to InferenceDecember 04, 2025
 - **来源**: Cerebras (TIER1)
 - **发布日期**: ber 04, 2025
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://www.cerebras.ai/blog/cerebras-at-neurips-2025-nine-papers-from-pretraining-to-inference
-- **AI 摘要**: Cerebras在NeurIPS 2025发表九篇论文，覆盖从预训练到推理的AI工程与模型研究。
+- **AI 摘要**: Cerebras在NeurIPS 2025发表九篇论文，覆盖从预训练到推理的AI工程与模型优化研究。
 
-### 10. The Year of Latency Debt (And How Big Tech Is Paying It Down)January 28, 2026
+### 11. The Year of Latency Debt (And How Big Tech Is Paying It Down)January 28, 2026
 - **来源**: Cerebras (TIER1)
 - **发布日期**: ary 28, 2026
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://www.cerebras.ai/blog/latency-debt
-- **AI 摘要**: 文章讨论“延迟债务”现象，分析大型科技公司如何应对系统延迟问题，可能涉及基础设施优化和性能工程。
+- **AI 摘要**: 文章讨论“延迟债务”概念，分析大型科技公司如何应对系统延迟问题，可能涉及基础设施优化和性能工程。
 
-### 11. ExomeBench: A Benchmark for Clinical Variant Interpretation in Exome RegionsFebruary 23, 2026
+### 12. ExomeBench: A Benchmark for Clinical Variant Interpretation in Exome RegionsFebruary 23, 2026
 - **来源**: Cerebras (TIER1)
 - **发布日期**: ary 23, 2026
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://www.cerebras.ai/blog/exomebench
-- **AI 摘要**: ExomeBench是一个用于临床外显子组变异解读的基准测试，旨在评估AI在基因诊断中的准确性，推动精准医疗发展。
+- **AI 摘要**: ExomeBench是一个用于临床外显子组变异解读的基准测试，属于医疗AI领域的评估工具，用于衡量变异解读算法的性能。
 
-### 12. 2026: Fast Inference Finds its GrooveJanuary 06, 2026
+### 13. Why speed wins: faster inference is about more than just quicker answers–it’s the new path to accuracyFebruary 19, 2026
+- **来源**: Cerebras (TIER1)
+- **发布日期**: ary 19, 2026
+- **类型**: blog
+- **优先级**: high
+- **分类**: Harness工程
+- **链接**: https://www.cerebras.ai/blog/speedandaccuracyblog
+- **AI 摘要**: 文章强调推理速度的重要性，认为更快的推理不仅是响应更快，更是提升准确性的新途径，涉及AI推理性能优化与模型部署。
+
+### 14. 2026: Fast Inference Finds its GrooveJanuary 06, 2026
 - **来源**: Cerebras (TIER1)
 - **发布日期**: ary 06, 2026
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://www.cerebras.ai/blog/2026Insights
-- **AI 摘要**: 2026年快速推理技术迎来发展机遇，探讨推理速度优化与硬件加速趋势，属于AI工程实践领域。
+- **AI 摘要**: 2026年快速推理技术迎来发展高潮，探讨推理速度提升对AI部署和工程实践的影响。
 
-### 13. GSPO: Towards Scalable Reinforcement Learning for Language Models
+### 15. GSPO: Towards Scalable Reinforcement Learning for Language Models
 - **来源**: Qwen Blog (TIER1)
 - **发布日期**: 2026-08-31
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://qwenlm.github.io/blog/gspo/
-- **AI 摘要**: GSPO是一种用于语言模型的可扩展强化学习算法，针对现有算法如GRPO在长训练中的不稳定性和模型崩溃问题，提出组序列策略优化，以支持强化学习的稳定扩展。
+- **AI 摘要**: GSPO是一种新的强化学习算法，旨在解决现有算法（如GRPO）在长训练中的不稳定性和模型崩溃问题，通过组序列策略优化实现稳定可扩展的RL训练，提升语言模型的推理能力。
 - **原始摘要**: PAPER DISCORD Introduction Reinforcement Learning (RL) has emerged as a pivotal paradigm for scaling language models and enhancing their deep reasoning and problem-solving capabilities. To scale RL, t...
 
-### 14. ICYMI: The Kimi Playground: Your faster way to iterate and test
+### 16. Kimi Open Platform: New Feature Release Log
+- **来源**: Kimi Blog (TIER1)
+- **发布日期**: 2026-08-31
+- **类型**: blog
+- **优先级**: high
+- **分类**: Harness工程
+- **链接**: https://platform.kimi.ai/blog/posts/changelog
+- **AI 摘要**: Kimi开放平台发布新功能更新日志，记录平台新增特性、改进和修复，面向开发者提供API服务。
+
+### 17. ICYMI: The Kimi Playground: Your faster way to iterate and test
 - **来源**: Kimi Blog (TIER1)
 - **发布日期**: 2026-08-31
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://platform.kimi.ai/blog/posts/ICYMI_The_Kimi_Playground
-- **AI 摘要**: 介绍Kimi Playground，一个用于快速迭代和测试的工具，旨在提升AI开发者的工作效率。
+- **AI 摘要**: 介绍Kimi Playground，一个用于快速迭代和测试AI模型的工具，帮助开发者更高效地实验和验证。
 
-### 15. K2-Vendor-Verifier Now Includes "Kimi K2 Thinking"
+### 18. K2-Vendor-Verifier Now Includes "Kimi K2 Thinking"
 - **来源**: Kimi Blog (TIER1)
 - **发布日期**: 2026-08-31
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://platform.kimi.ai/blog/posts/K2_Vendor_Verifier_Newsletter
-- **AI 摘要**: K2-Vendor-Verifier新增了Kimi K2 Thinking功能，用于验证供应商，可能涉及AI评估或工具链。
+- **AI 摘要**: K2-Vendor-Verifier工具新增“Kimi K2 Thinking”功能，可能用于验证供应商或模型输出，增强推理能力。
 
-### 16. The First Disaggregated Inference Demo for AI Agents Is Live
+### 19. The First Disaggregated Inference Demo for AI Agents Is Live
 - **来源**: SambaNova (TIER1)
 - **发布日期**: 2026-08-31
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://sambanova.ai/blog/first-disaggregated-inference-demo-for-ai-agents-live
-- **AI 摘要**: 首次展示面向AI代理的分离式推理演示，可能涉及分布式推理架构或服务。
+- **AI 摘要**: 首次展示面向AI代理的解耦推理演示，强调通过分离计算与存储提升推理效率和可扩展性。
 
-### 17. System Engineering1
+### 20. System Engineering1
 - **来源**: Tenstorrent (TIER1)
 - **发布日期**: 2026-08-31
 - **类型**: blog
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://tenstorrent.com/newsroom/newsroom/tags/system-engineering
-- **AI 摘要**: 关于系统工程的一篇文章，可能涉及系统架构、集成或优化。
-
-### 18. Fast token generation emerges as the key differentiator as heterogeneous inference takes hold
-- **来源**: D-Matrix (TIER1)
-- **发布日期**: 2026-08-31
-- **类型**: blog
-- **优先级**: high
-- **分类**: Harness工程
-- **链接**: https://www.d-matrix.ai/announcements/fast-token-generation-emerges-as-the-key-differentiator-as-heterogeneous-inference-takes-hold/
-- **AI 摘要**: 随着异构推理的普及，快速token生成成为关键差异化因素，影响AI推理性能和用户体验。
-
-### 19. d-Matrix Acquires Wallaroo.ai to Speed up Deployment of Heterogeneous AI Inference Workloads
-- **来源**: D-Matrix (TIER1)
-- **发布日期**: 2026-08-31
-- **类型**: blog
-- **优先级**: high
-- **分类**: Harness工程
-- **链接**: https://www.d-matrix.ai/announcements/d-matrix-acquires-wallaroo/
-- **AI 摘要**: d-Matrix收购Wallaroo.ai，旨在加速异构AI推理工作负载的部署，提升推理效率和灵活性。
+- **AI 摘要**: 系统工程相关文章1篇，可能涉及系统架构、集成或优化，具体内容未在摘要中详述。
 
 ---
 

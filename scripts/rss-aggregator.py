@@ -117,9 +117,9 @@ class RSSAggregator:
             self.enable_ai_summary = False
 
     def _get_all_cached_urls(self) -> Set[str]:
-        """获取最近 days_lookback 天内已缓存的 URL"""
+        """获取最近 days_lookback 天内已缓存的 URL（排除 run_date 当天）"""
         days_lookback = self.config.get('filters', {}).get('days_lookback', 7)
-        return self.cache_manager.get_urls_in_range(days_lookback)
+        return self.cache_manager.get_urls_in_range(days_lookback, exclude_date=self.run_date)
 
     def _is_recent(self, published_parsed) -> bool:
         """检查文章是否在时间窗口内 - 使用配置的 days_lookback 参数"""
