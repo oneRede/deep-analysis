@@ -4474,3 +4474,353 @@ Some characters could not be decoded, and were replaced with REPLACEMENT CHARACT
      处理 tier1 文章: 10 篇（基于摘要）
      批次 4/5: 10 篇
      处理 tier1 文章: 10 篇（基于摘要）
+     批次 5/5: 8 篇
+     处理 tier1 文章: 8 篇（基于摘要）
+✅ arXiv cs.RO (机器人): 48 篇新文章
+📡 抓取: arXiv cs.CV (计算机视觉) (https://export.arxiv.org/rss/cs.CV)
+  🤖 批量分析 37 篇文章...
+     批次 1/4: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 2/4: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 3/4: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 4/4: 7 篇
+     处理 tier1 文章: 7 篇（基于摘要）
+✅ arXiv cs.CV (计算机视觉): 37 篇新文章
+📡 抓取: arXiv cs.AR (硬件架构) (https://export.arxiv.org/rss/cs.AR)
+  🤖 批量分析 9 篇文章...
+     批次 1/1: 9 篇
+     处理 tier1 文章: 9 篇（基于摘要）
+✅ arXiv cs.AR (硬件架构): 9 篇新文章
+📡 抓取: arXiv physics.optics (光学/光计算) (https://export.arxiv.org/rss/physics.optics)
+  🤖 批量分析 1 篇文章...
+     批次 1/1: 1 篇
+     处理 tier1 文章: 1 篇（基于摘要）
+✅ arXiv physics.optics (光学/光计算): 1 篇新文章
+📡 抓取: arXiv cs.ET (新兴技术) (https://export.arxiv.org/rss/cs.ET)
+✅ arXiv cs.ET (新兴技术): 0 篇新文章
+📡 抓取: arXiv cs.PL (编程语言) (https://export.arxiv.org/rss/cs.PL)
+  🤖 批量分析 7 篇文章...
+     批次 1/1: 7 篇
+     处理 tier1 文章: 7 篇（基于摘要）
+✅ arXiv cs.PL (编程语言): 7 篇新文章
+📡 抓取: NVIDIA Technical Blog (https://developer.nvidia.com/blog/feed/)
+  🤖 批量分析 2 篇文章...
+     批次 1/1: 2 篇
+     处理 tier1 文章: 2 篇（基于摘要）
+✅ NVIDIA Technical Blog: 2 篇新文章
+📡 抓取: NVIDIA AI Blog (https://blogs.nvidia.com/blog/category/deep-learning/feed/)
+✅ NVIDIA AI Blog: 0 篇新文章
+📡 抓取: Google DeepMind Blog (https://deepmind.google/blog/rss.xml)
+  🤖 批量分析 2 篇文章...
+     批次 1/1: 2 篇
+     处理 tier1 文章: 2 篇（基于摘要）
+✅ Google DeepMind Blog: 2 篇新文章
+📡 抓取: SK hynix Newsroom (https://news.skhynix.com/en/feed/)
+✅ SK hynix Newsroom: 0 篇新文章
+
+============================================================
+📂 TIER2 (22 个信源)
+============================================================
+
+📡 抓取: CMU Machine Learning Blog (https://blog.ml.cmu.edu/feed/)
+✅ CMU Machine Learning Blog: 0 篇新文章
+📡 抓取: Hugging Face Blog (https://huggingface.co/blog/feed.xml)
+  🤖 批量分析 1 篇文章...
+     批次 1/1: 1 篇
+     处理 tier2/3/military 文章: 1 篇（基于全文）
+✅ Hugging Face Blog: 1 篇新文章
+📡 抓取: The Gradient (https://thegradient.pub/rss/)
+✅ The Gradient: 0 篇新文章
+📡 抓取: Together AI Blog (https://www.together.ai/blog/rss.xml)
+✅ Together AI Blog: 0 篇新文章
+📡 抓取: LLVM Blog (https://blog.llvm.org/index.xml)
+✅ LLVM Blog: 0 篇新文章
+📡 抓取: Rust Blog (https://blog.rust-lang.org/feed.xml)
+✅ Rust Blog: 0 篇新文章
+📡 抓取: V8 Blog (https://v8.dev/blog.atom)
+✅ V8 Blog: 0 篇新文章
+📡 抓取: WebKit Blog (https://webkit.org/feed/)
+  🤖 批量分析 1 篇文章...
+     批次 1/1: 1 篇
+     处理 tier2/3/military 文章: 1 篇（基于全文）
+✅ WebKit Blog: 1 篇新文章
+📡 抓取: Mozilla Hacks (https://hacks.mozilla.org/feed/)
+✅ Mozilla Hacks: 0 篇新文章
+📡 抓取: MaskRay (Fangrui Song) (https://maskray.me/blog/atom.xml)
+⚠️  警告: MaskRay (Fangrui Song) - document declared as us-ascii, but parsed as utf-8
+📡 抓取: Embedded in Academia (John Regehr) (https://blog.regehr.org/feed)
+✅ Embedded in Academia (John Regehr): 0 篇新文章
+📡 抓取: Eli Bendersky's website (https://eli.thegreenplace.net/feeds/all.atom.xml)
+✅ Eli Bendersky's website: 0 篇新文章
+📡 抓取: Adrian Sampson's blog (https://www.cs.cornell.edu/~asampson/blog.xml)
+✅ Adrian Sampson's blog: 0 篇新文章
+📡 抓取: Daniel Lemire's blog (https://lemire.me/blog/feed/)
+✅ Daniel Lemire's blog: 0 篇新文章
+📡 抓取: Meta LLaMA Releases (https://github.com/meta-llama/llama-models/releases.atom)
+✅ Meta LLaMA Releases: 0 篇新文章
+📡 抓取: Mistral AI Releases (https://github.com/mistralai/mistral-inference/releases.atom)
+✅ Mistral AI Releases: 0 篇新文章
+📡 抓取: OpenAI GPT Releases (https://github.com/openai/openai-python/releases.atom)
+✅ OpenAI GPT Releases: 0 篇新文章
+📡 抓取: Anthropic Claude Releases (https://github.com/anthropics/anthropic-sdk-python/releases.atom)
+✅ Anthropic Claude Releases: 0 篇新文章
+📡 抓取: SambaNova Blog (https://sambanova.ai/blog/rss.xml)
+✅ SambaNova Blog: 0 篇新文章
+📡 抓取: TrendForce Insights (https://insights.trendforce.com/feed)
+✅ TrendForce Insights: 0 篇新文章
+📡 抓取: SemiEngineering (https://semiengineering.com/feed/)
+  🤖 批量分析 8 篇文章...
+     批次 1/1: 8 篇
+     处理 tier2/3/military 文章: 8 篇（基于全文）
+✅ SemiEngineering: 8 篇新文章
+📡 抓取: Nature Photonics (https://www.nature.com/nphoton.rss)
+✅ Nature Photonics: 0 篇新文章
+
+============================================================
+📂 TIER3 (30 个信源)
+============================================================
+
+📡 抓取: 量子位 (https://www.qbitai.com/feed)
+  🤖 批量分析 3 篇文章...
+     批次 1/1: 3 篇
+     处理 tier2/3/military 文章: 3 篇（基于全文）
+✅ 量子位: 3 篇新文章
+📡 抓取: r/MachineLearning (https://www.reddit.com/r/MachineLearning/.rss)
+  🤖 批量分析 7 篇文章...
+     批次 1/1: 7 篇
+     处理 tier2/3/military 文章: 7 篇（基于全文）
+✅ r/MachineLearning: 7 篇新文章
+📡 抓取: r/LocalLLaMA (https://www.reddit.com/r/LocalLLaMA/.rss)
+✅ r/LocalLLaMA: 0 篇新文章
+📡 抓取: r/Compilers (https://www.reddit.com/r/Compilers/.rss)
+✅ r/Compilers: 0 篇新文章
+📡 抓取: r/ProgrammingLanguages (https://www.reddit.com/r/ProgrammingLanguages/.rss)
+✅ r/ProgrammingLanguages: 0 篇新文章
+📡 抓取: Tom's Hardware (https://www.tomshardware.com/feeds/all)
+  🤖 批量分析 18 篇文章...
+     批次 1/2: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 2/2: 8 篇
+     处理 tier2/3/military 文章: 8 篇（基于全文）
+✅ Tom's Hardware: 18 篇新文章
+📡 抓取: TechCrunch (https://techcrunch.com/feed/)
+  🤖 批量分析 14 篇文章...
+     批次 1/2: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 2/2: 4 篇
+     处理 tier2/3/military 文章: 4 篇（基于全文）
+✅ TechCrunch: 14 篇新文章
+📡 抓取: TechCrunch AI (https://techcrunch.com/category/artificial-intelligence/feed/)
+  🤖 批量分析 2 篇文章...
+     批次 1/1: 2 篇
+     处理 tier2/3/military 文章: 2 篇（基于全文）
+✅ TechCrunch AI: 2 篇新文章
+📡 抓取: The Information (https://www.theinformation.com/feed)
+⚠️  警告: The Information - <unknown>:69:50: undefined entity
+📡 抓取: Financial Times World (https://www.ft.com/world?format=rss)
+  🤖 批量分析 11 篇文章...
+     批次 1/2: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 2/2: 1 篇
+     处理 tier2/3/military 文章: 1 篇（基于全文）
+✅ Financial Times World: 11 篇新文章
+📡 抓取: Bloomberg Markets (https://feeds.bloomberg.com/markets/news.rss)
+  🤖 批量分析 1 篇文章...
+     批次 1/1: 1 篇
+     处理 tier2/3/military 文章: 1 篇（基于全文）
+✅ Bloomberg Markets: 1 篇新文章
+📡 抓取: Bloomberg Politics (https://feeds.bloomberg.com/politics/news.rss)
+  🤖 批量分析 5 篇文章...
+     批次 1/1: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+✅ Bloomberg Politics: 5 篇新文章
+📡 抓取: Bloomberg Economics (https://feeds.bloomberg.com/economics/news.rss)
+  🤖 批量分析 9 篇文章...
+     批次 1/1: 9 篇
+     处理 tier2/3/military 文章: 9 篇（基于全文）
+✅ Bloomberg Economics: 9 篇新文章
+📡 抓取: Bloomberg Technology (https://feeds.bloomberg.com/technology/news.rss)
+  🤖 批量分析 14 篇文章...
+     批次 1/2: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 2/2: 4 篇
+     处理 tier2/3/military 文章: 4 篇（基于全文）
+✅ Bloomberg Technology: 14 篇新文章
+📡 抓取: CNBC Top News (https://www.cnbc.com/id/100003114/device/rss/rss.html)
+  🤖 批量分析 3 篇文章...
+     批次 1/1: 3 篇
+     处理 tier2/3/military 文章: 3 篇（基于全文）
+✅ CNBC Top News: 3 篇新文章
+📡 抓取: CNBC World News (https://www.cnbc.com/id/100727362/device/rss/rss.html)
+  🤖 批量分析 1 篇文章...
+     批次 1/1: 1 篇
+     处理 tier2/3/military 文章: 1 篇（基于全文）
+✅ CNBC World News: 1 篇新文章
+📡 抓取: CNBC Technology (https://www.cnbc.com/id/19854910/device/rss/rss.html)
+  🤖 批量分析 7 篇文章...
+     批次 1/1: 7 篇
+     处理 tier2/3/military 文章: 7 篇（基于全文）
+✅ CNBC Technology: 7 篇新文章
+📡 抓取: The New York Times HomePage (https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml)
+  🤖 批量分析 2 篇文章...
+     批次 1/1: 2 篇
+     处理 tier2/3/military 文章: 2 篇（基于全文）
+✅ The New York Times HomePage: 2 篇新文章
+📡 抓取: The New York Times World (https://rss.nytimes.com/services/xml/rss/nyt/World.xml)
+  🤖 批量分析 3 篇文章...
+     批次 1/1: 3 篇
+     处理 tier2/3/military 文章: 3 篇（基于全文）
+✅ The New York Times World: 3 篇新文章
+📡 抓取: The New York Times Business (https://rss.nytimes.com/services/xml/rss/nyt/Business.xml)
+  🤖 批量分析 1 篇文章...
+     批次 1/1: 1 篇
+     处理 tier2/3/military 文章: 1 篇（基于全文）
+✅ The New York Times Business: 1 篇新文章
+📡 抓取: The New York Times Technology (https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml)
+  🤖 批量分析 2 篇文章...
+     批次 1/1: 2 篇
+     处理 tier2/3/military 文章: 2 篇（基于全文）
+✅ The New York Times Technology: 2 篇新文章
+📡 抓取: The Wall Street Journal World News (https://feeds.a.dj.com/rss/RSSWorldNews.xml)
+✅ The Wall Street Journal World News: 0 篇新文章
+📡 抓取: The Wall Street Journal US Business (https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml)
+✅ The Wall Street Journal US Business: 0 篇新文章
+📡 抓取: The Wall Street Journal Markets (https://feeds.a.dj.com/rss/RSSMarketsMain.xml)
+✅ The Wall Street Journal Markets: 0 篇新文章
+📡 抓取: The Wall Street Journal Technology (https://feeds.a.dj.com/rss/RSSWSJD.xml)
+✅ The Wall Street Journal Technology: 0 篇新文章
+📡 抓取: The Economist - The World This Week (https://www.economist.com/the-world-this-week/rss.xml)
+⚠️  警告: The Economist - The World This Week - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist Business (https://www.economist.com/business/rss.xml)
+⚠️  警告: The Economist Business - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist Finance & Economics (https://www.economist.com/finance-and-economics/rss.xml)
+⚠️  警告: The Economist Finance & Economics - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist International (https://www.economist.com/international/rss.xml)
+⚠️  警告: The Economist International - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist Science & Technology (https://www.economist.com/science-and-technology/rss.xml)
+⚠️  警告: The Economist Science & Technology - document declared as us-ascii, but parsed as utf-8
+
+============================================================
+📂 MILITARY (7 个信源)
+============================================================
+
+📡 抓取: Defense News (https://www.defensenews.com/arc/outboundfeeds/rss/)
+  🤖 批量分析 4 篇文章...
+     批次 1/1: 4 篇
+     处理 tier2/3/military 文章: 4 篇（基于全文）
+✅ Defense News: 4 篇新文章
+📡 抓取: Military Times (https://www.militarytimes.com/m/rss/)
+⚠️  警告: Military Times - <unknown>:2:1852: not well-formed (invalid token)
+📡 抓取: Breaking Defense (https://breakingdefense.com/full-rss-feed/?v=2)
+  🤖 批量分析 7 篇文章...
+     批次 1/1: 7 篇
+     处理 tier2/3/military 文章: 7 篇（基于全文）
+✅ Breaking Defense: 7 篇新文章
+📡 抓取: Stars and Stripes (https://subscribe.stripes.com/rss)
+⚠️  警告: Stars and Stripes - document declared as us-ascii, but parsed as utf-8
+📡 抓取: TASS Defense (http://tass.com/rss/v2.xml)
+  🤖 批量分析 94 篇文章...
+     批次 1/10: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 2/10: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 3/10: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 4/10: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 5/10: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 6/10: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 7/10: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 8/10: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 9/10: 10 篇
+     处理 tier2/3/military 文章: 10 篇（基于全文）
+     批次 10/10: 4 篇
+     处理 tier2/3/military 文章: 4 篇（基于全文）
+✅ TASS Defense: 94 篇新文章
+📡 抓取: Military.com (https://www.military.com/feed/)
+  🤖 批量分析 9 篇文章...
+     批次 1/1: 9 篇
+     处理 tier2/3/military 文章: 9 篇（基于全文）
+✅ Military.com: 9 篇新文章
+📡 抓取: The War Zone (https://www.twz.com/feed)
+  🤖 批量分析 4 篇文章...
+     批次 1/1: 4 篇
+     处理 tier2/3/military 文章: 4 篇（基于全文）
+✅ The War Zone: 4 篇新文章
+
+============================================================
+📊 总计: 642 篇新文章
+============================================================
+
+
+============================================================
+📄 报告预览 - 2026-09-02
+============================================================
+
+# RSS 聚合报告 - 2026-09-02
+
+**生成时间**: 2026-09-03 07:18:03
+**报告日期**: 2026-09-02 (昨天)
+**新发现文章**: 642 篇
+
+## 📊 分类统计
+
+- **AI应用**: 117 篇
+- **Harness工程**: 111 篇
+- **AI模型**: 152 篇
+- **具身智能**: 50 篇
+- **AI芯片**: 15 篇
+- **光计算**: 2 篇
+- **军事技术**: 44 篇
+- **编译器**: 10 篇
+- **经济**: 55 篇
+- **时政**: 86 篇
+
+---
+
+## 🏷️  AI应用
+
+**117 篇文章**
+
+### 1. CABiNet (ICRA 2021) vs YOLO26-sem on UAVid: accuracy, compute, and GPU latency [P]
+- **来源**: r/MachineLearning (TIER3)
+- **发布日期**: 2026-09-02T14:46:43+00:00 (今天)
+- **类型**: forum
+- ...
+
+
+============================================================
+✅ 报告已保存到: /Users/rede/Git/deep_analysis/report/2026-09-02
+============================================================
+   📄 全部文章: rss-aggregation-2026-09-02.md
+   📄 AI应用: rss-aggregation-2026-09-02-AI应用.md
+   📄 Harness工程: rss-aggregation-2026-09-02-Harness工程.md
+   📄 AI模型: rss-aggregation-2026-09-02-AI模型.md
+   📄 具身智能: rss-aggregation-2026-09-02-具身智能.md
+   📄 AI芯片: rss-aggregation-2026-09-02-AI芯片.md
+   📄 光计算: rss-aggregation-2026-09-02-光计算.md
+   📄 军事技术: rss-aggregation-2026-09-02-军事技术.md
+   📄 编译器: rss-aggregation-2026-09-02-编译器.md
+   📄 经济: rss-aggregation-2026-09-02-经济.md
+   📄 时政: rss-aggregation-2026-09-02-时政.md
+============================================================
+✅ 缓存已更新:
+   • 今日新增: 642 个 URL
+   • 总计: 5429 个 URL，跨 12 天
+   • 缓存日期范围: 2026-08-23 至 2026-09-02
+
+🎉 完成! 昨天(2026-09-02)的文章已整理完毕
+
+📄 查看报告：
+   open report/rss-aggregation-2026-09-03.md
+
+💡 下一步：
+   1. 浏览报告，标记感兴趣的文章
+   2. 将候选 URL 喂给 Claude，运行深度分析
+   3. 对确认收录的内容使用 /curate-research skill
