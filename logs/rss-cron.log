@@ -4281,3 +4281,196 @@ Some characters could not be decoded, and were replaced with REPLACEMENT CHARACT
    1. 浏览报告，标记感兴趣的文章
    2. 将候选 URL 喂给 Claude，运行深度分析
    3. 对确认收录的内容使用 /curate-research skill
+🚀 运行 RSS 聚合器...
+
+/Users/rede/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+✅ 已从 /Users/rede/Git/deep_analysis/.env 加载环境变量
+============================================================
+📰 AI技术追踪 - 每日报告
+📅 报告日期: 2026-09-02 (昨天)
+🕐 运行时间: 2026-09-03 07:00:02
+============================================================
+
+✅ DeepSeek API 已配置 (密钥长度: 35)
+✅ DeepSeek API 连接测试成功
+
+🚀 开始抓取 RSS feeds - 2026-09-03 07:00:04
+
+
+============================================================
+🕷️  自定义网页爬取
+============================================================
+
+🕷️  爬取: DeepSeek Blog (https://deepseek.ai/blog)
+✅ DeepSeek Blog: 0 篇文章
+🕷️  爬取: DeepSeek Research (https://www.deepseek.ai/research)
+✅ DeepSeek Research: 0 篇文章
+🕷️  爬取: Qwen Blog (https://qwenlm.github.io/blog/)
+✅ Qwen Blog: 5 篇文章
+🕷️  爬取: Zhipu AI Research (https://www.zhipuai.cn/en/research/)
+✅ Zhipu AI Research: 4 篇文章
+🕷️  爬取: Kimi Blog (https://platform.kimi.ai/blog)
+✅ Kimi Blog: 9 篇文章
+🕷️  爬取: Anthropic Research (https://www.anthropic.com/research)
+✅ Anthropic Research: 0 篇文章
+🕷️  爬取: OpenAI News (https://openai.com/news)
+  🔄 重试 2/3 (firefox/windows)...
+  🔄 重试 3/3 (chrome/windows)...
+❌ 爬取 OpenAI News 失败: HTTPSConnectionPool(host='openai.com', port=443): Max retries exceeded with url: /news (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: OpenAI Research (https://openai.com/research)
+  🔄 重试 2/3 (firefox/windows)...
+  🔄 重试 3/3 (chrome/windows)...
+❌ 爬取 OpenAI Research 失败: HTTPSConnectionPool(host='openai.com', port=443): Max retries exceeded with url: /research (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: xAI Blog (https://x.ai/blog)
+✅ xAI Blog: 4 篇文章
+🕷️  爬取: Physical Intelligence (https://www.physicalintelligence.company/blog)
+🕷️  爬取: Physical Intelligence (https://www.physicalintelligence.company/research)
+🕷️  爬取: Skild AI (https://www.skild.ai/blogs)
+🕷️  爬取: Figure AI (https://www.figure.ai/news)
+🕷️  爬取: 1X Technologies (https://www.1x.tech/discover)
+🕷️  爬取: UBTECH (优必选) (https://www.ubtrobot.com/en/news-list)
+🕷️  爬取: Unitree (宇树科技) (https://www.unitree.com/)
+🕷️  爬取: Agibot (智元机器人) (https://agibot.com/news)
+🕷️  爬取: Agibot (智元机器人) (https://agibot.com/research)
+✅ Physical Intelligence: 14 篇文章
+✅ 1X Technologies: 11 篇文章
+✅ UBTECH (优必选): 4 篇文章
+✅ Unitree (宇树科技): 4 篇文章
+✅ Agibot (智元机器人): 8 篇文章
+🕷️  爬取: Cerebras (https://www.cerebras.ai/blog)
+✅ Cerebras: 44 篇文章
+🕷️  爬取: Cerebras (https://www.cerebras.ai/publications)
+✅ Cerebras: 44 篇文章
+🕷️  爬取: SambaNova (https://sambanova.ai/blog)
+✅ SambaNova: 2 篇文章
+🕷️  爬取: Tenstorrent (https://tenstorrent.com/newsroom)
+✅ Tenstorrent: 13 篇文章
+🕷️  爬取: D-Matrix (https://www.d-matrix.ai/blog/)
+✅ D-Matrix: 6 篇文章
+🕷️  爬取: Etched (https://etched.com/progress)
+✅ Etched: 3 篇文章
+🕷️  爬取: Etched (https://etched.com/research)
+✅ Etched: 3 篇文章
+🕷️  爬取: Cambricon (寒武纪) (https://www.cambricon.com/)
+✅ Cambricon (寒武纪): 0 篇文章
+🕷️  爬取: Iluvatar (天数智芯) (https://www.iluvatar.com/news)
+✅ Iluvatar (天数智芯): 0 篇文章
+🕷️  爬取: Iluvatar (天数智芯) (https://www.iluvatar.com/en/research)
+✅ Iluvatar (天数智芯): 0 篇文章
+🕷️  爬取: Enflame (燧原科技) (https://www.enflame-tech.com/news)
+✅ Enflame (燧原科技): 8 篇文章
+🕷️  爬取: MetaX (沐曦) (https://www.metax-tech.com/news.html)
+✅ MetaX (沐曦): 0 篇文章
+🕷️  爬取: Biren (壁仞科技) (https://www.birentech.com/news/)
+✅ Biren (壁仞科技): 8 篇文章
+  🤖 批量分析 4 篇文章...
+     批次 1/1: 4 篇
+     处理 tier1 文章: 4 篇（基于摘要）
+✅ 自定义网页爬取: 4 篇文章
+
+============================================================
+🕷️  军事新闻网站爬取
+============================================================
+
+📡 爬取: Jane's Defence
+  找到 0 个文章链接，开始获取详细内容...
+✅ Jane's Defence: 0 篇文章
+📡 爬取: Army Technology
+⚠️  Army Technology 爬取失败: 403 Client Error: Forbidden for url: https://www.army-technology.com/
+📡 爬取: 环球网军事
+✅ 环球网军事: 0 篇文章
+
+✅ 军事新闻爬取总计: 0 篇文章
+
+
+============================================================
+📂 TIER1 (13 个信源)
+============================================================
+
+📡 抓取: arXiv cs.CL (计算与语言) (https://export.arxiv.org/rss/cs.CL)
+  🤖 批量分析 205 篇文章...
+     批次 1/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 2/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 3/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 4/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 5/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 6/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 7/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 8/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 9/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 10/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 11/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 12/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 13/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 14/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 15/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 16/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 17/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 18/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 19/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 20/21: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 21/21: 5 篇
+     处理 tier1 文章: 5 篇（基于摘要）
+✅ arXiv cs.CL (计算与语言): 205 篇新文章
+📡 抓取: arXiv cs.AI (人工智能) (https://export.arxiv.org/rss/cs.AI)
+  🤖 批量分析 42 篇文章...
+     批次 1/5: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 2/5: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 3/5: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 4/5: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 5/5: 2 篇
+     处理 tier1 文章: 2 篇（基于摘要）
+✅ arXiv cs.AI (人工智能): 42 篇新文章
+📡 抓取: arXiv cs.LG (机器学习) (https://export.arxiv.org/rss/cs.LG)
+  🤖 批量分析 54 篇文章...
+     批次 1/6: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 2/6: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 3/6: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 4/6: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 5/6: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 6/6: 4 篇
+     处理 tier1 文章: 4 篇（基于摘要）
+✅ arXiv cs.LG (机器学习): 54 篇新文章
+📡 抓取: arXiv cs.RO (机器人) (https://export.arxiv.org/rss/cs.RO)
+  🤖 批量分析 48 篇文章...
+     批次 1/5: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 2/5: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 3/5: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
+     批次 4/5: 10 篇
+     处理 tier1 文章: 10 篇（基于摘要）
