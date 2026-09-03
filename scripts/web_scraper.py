@@ -709,6 +709,97 @@ class WebScraper:
         return articles
 
 
+    def scrape_agibot_research(self, days_lookback: int = 7) -> List[Dict]:
+        """
+        爬取 Agibot Research 页面的研究项目
+        URL: https://agibot.com/research/
+        注意：内容存储在 JavaScript 文件中
+        """
+        articles = []
+
+        try:
+            print(f"🕷️  爬取: Agibot Research (https://agibot.com/research/)")
+
+            # 直接获取包含数据的 JavaScript 文件
+            js_url = "https://agibot.com/research/content/featured.js"
+            response = self.session.get(js_url, timeout=30)
+            response.raise_for_status()
+
+            # 解析 JavaScript 数组
+            js_content = response.text
+
+            # 提取 window.FEATURED = [...]; 中的数组内容
+            # 使用正则表达式提取数组部分
+            match = re.search(r'window\.FEATURED\s*=\s*(\[[\s\S]*?\]);', js_content)
+
+            if match:
+                json_str = match.group(1)
+                # 解析为 JSON
+                research_items = json.loads(json_str)
+
+                cutoff_date = datetime.now() - timedelta(days=days_lookback)
+
+                for item in research_items:
+                    # 解析日期 (格式: "YYYY-MM")
+                    date_str = item.get('date', '')
+                    if date_str:
+                        try:
+                            # 将 "YYYY-MM" 转换为日期对象
+                            article_date = datetime.strptime(date_str, '%Y-%m')
+
+                            # 检查是否在时间窗口内
+                            if article_date < cutoff_date:
+                                continue
+
+                            # 格式化为可读日期
+                            published = article_date.strftime('%Y-%m')
+                        except:
+                            published = date_str
+                    else:
+                        # 如果没有日期，跳过（因为我们无法判断是否在时间窗口内）
+                        continue
+
+                    title = item.get('title', '')
+                    venue = item.get('venue', '')
+                    desc = item.get('desc', '')
+                    project_url = item.get('project', '')
+                    github_url = item.get('github', '')
+
+                    # 优先使用 project URL，其次使用 GitHub URL
+                    url = project_url or github_url
+
+                    if not title or not url:
+                        continue
+
+                    # 构建摘要
+                    summary_parts = []
+                    if venue:
+                        summary_parts.append(f"发表于 {venue}")
+                    if desc:
+                        summary_parts.append(desc)
+                    summary = '. '.join(summary_parts)
+
+                    articles.append({
+                        'title': title,
+                        'url': url,
+                        'summary': summary,
+                        'published': published,
+                        'published_raw': None,
+                        'source': 'Agibot Research',
+                        'type': 'research',
+                        'priority': 'high',
+                    })
+
+                print(f"✅ Agibot Research: {len(articles)} 篇研究")
+            else:
+                print(f"⚠️  无法解析 Agibot Research JavaScript 数据")
+
+        except Exception as e:
+            print(f"❌ 爬取 Agibot Research 失败: {str(e)}")
+
+        return articles
+
+
     def scrape_embodied_ai_companies(self, days_lookback: int = 7) -> List[Dict]:
         """
         爬取具身智能公司的博客/新闻
@@ -760,7 +851,7 @@ class WebScraper:
                 'name': 'Agibot (智元机器人)',
                 'urls': [
                     ('https://agibot.com/news', ['/news', '/article']),
-                    ('https://agibot.com/research', '/research'),
+                    # Research page handled by scrape_agibot_research() - JavaScript-based
                 ]
             }
         ]
@@ -1131,6 +1222,10 @@ def scrape_all_custom_sources(days_lookback: int = 1) -> List[Dict]:
     # ============================================================
 
     all_articles.extend(scraper.scrape_embodied_ai_companies(days_lookback))
+    time.sleep(1)
+
+    # 爬取 Agibot Research (JavaScript-based, 需要特殊处理)
+    all_articles.extend(scraper.scrape_agibot_research(days_lookback))
     time.sleep(1)
 
     # ============================================================
