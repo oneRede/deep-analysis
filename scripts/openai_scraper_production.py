@@ -53,9 +53,10 @@ class OpenAIScraper:
                          article_type: str, days_lookback: int) -> List[Dict]:
         """
         从HTML中提取文章信息
+        不进行日期过滤，由RSS聚合器的缓存机制处理重复
         """
         articles = []
-        cutoff_date = datetime.now() - timedelta(days=days_lookback)
+        # 移除日期过滤 - 由缓存处理
 
         # 查找所有链接
         all_links = soup.find_all('a', href=True)

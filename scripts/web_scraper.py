@@ -64,6 +64,7 @@ class WebScraper:
         URL: https://deepseek.ai/blog 和 https://www.deepseek.ai/research
         注意：这是一个动态加载的网站，使用备用方案
         使用curl解决LibreSSL SSL/TLS版本问题
+        不进行日期过滤，由RSS聚合器的缓存机制处理重复
         """
         articles = []
 
@@ -97,7 +98,7 @@ class WebScraper:
 
                         # 检查是否包含博客文章或研究
                         if isinstance(data, dict) and 'blogPost' in data:
-                            cutoff_date = datetime.now() - timedelta(days=days_lookback)
+                            # 移除日期过滤 - 获取所有文章
 
                             for post in data['blogPost']:
                                 if isinstance(post, dict):
@@ -109,10 +110,7 @@ class WebScraper:
                                     if not title or not url_path:
                                         continue
 
-                                    # 解析日期
-                                    article_date = self._parse_date(date_str)
-                                    if article_date and article_date < cutoff_date:
-                                        continue
+                                    # 不再进行日期过滤 - 由缓存处理
 
                                     articles.append({
                                         'title': title,
@@ -402,6 +400,7 @@ class WebScraper:
         爬取 Anthropic 研究页面
         URL: https://www.anthropic.com/research
         修复：使用curl解决编码/解压问题
+        不进行日期过滤，由RSS聚合器的缓存机制处理重复
         """
         articles = []
         url = "https://www.anthropic.com/research"
@@ -418,7 +417,7 @@ class WebScraper:
                 content = response.content
 
             soup = BeautifulSoup(content, 'html.parser')
-            cutoff_date = datetime.now() - timedelta(days=days_lookback)
+            # 移除日期过滤 - 由缓存处理
 
             # 查找所有包含研究内容的链接
             all_links = soup.find_all('a', href=True)
@@ -478,10 +477,7 @@ class WebScraper:
                     if not title or len(title) < 10:
                         continue
 
-                    # 解析日期
-                    article_date = self._parse_date(date_str) if date_str else None
-                    if article_date and article_date < cutoff_date:
-                        continue
+                    # 不再进行日期过滤 - 由缓存处理
 
                     articles.append({
                         'title': title,
