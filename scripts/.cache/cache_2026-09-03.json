@@ -317,6 +317,7 @@
     "https://tass.com/economy/2182401",
     "https://tass.com/emergencies/2182283",
     "https://tass.com/emergencies/2182379",
+    "https://tass.com/emergencies/2182405",
     "https://tass.com/politics/2182165",
     "https://tass.com/politics/2182167",
     "https://tass.com/politics/2182169",
@@ -402,12 +403,14 @@
     "https://tenstorrent.com/newsroom/newsroom/tt-deploy",
     "https://www.bloomberg.com/news/articles/2026-09-03/canada-trade-surplus-narrows-to-c-769-million",
     "https://www.bloomberg.com/news/articles/2026-09-03/carney-says-he-s-open-to-us-pact-if-auto-steel-terms-are-competitive",
+    "https://www.bloomberg.com/news/articles/2026-09-03/chipmaker-longsys-is-said-to-price-hong-kong-listing-at-hk-236",
     "https://www.bloomberg.com/news/articles/2026-09-03/crusoe-raises-over-3-billion-in-funding-at-30-billion-valuation",
     "https://www.bloomberg.com/news/articles/2026-09-03/crusoe-signs-roughly-13-billion-ai-cloud-deal-with-jane-street",
     "https://www.bloomberg.com/news/articles/2026-09-03/dollar-falls-to-weakest-since-may-on-waller-comments-yen-surge",
     "https://www.bloomberg.com/news/articles/2026-09-03/fed-s-waller-says-september-rate-decision-hinges-on-august-cpi",
     "https://www.bloomberg.com/news/articles/2026-09-03/hungary-is-said-to-pause-interest-rate-cuts-and-lower-inflation-goal-to-2-5",
     "https://www.bloomberg.com/news/articles/2026-09-03/india-launches-rocket-in-boost-to-space-ambitions-after-failures",
+    "https://www.bloomberg.com/news/articles/2026-09-03/india-s-sebi-to-review-f-o-settlement-prices-on-auction-feedback",
     "https://www.bloomberg.com/news/articles/2026-09-03/japan-s-households-cut-outlays-for-eighth-month-amid-inflation",
     "https://www.bloomberg.com/news/articles/2026-09-03/los-angeles-schools-bar-students-from-ai-on-district-devices",
     "https://www.bloomberg.com/news/articles/2026-09-03/polish-rates-seen-on-hold-for-rest-of-2026-mpc-member-duda-says",
@@ -515,6 +518,6 @@
     "https://x.ai/news/designing-grok-bot",
     "https://x.ai/news/grok-bot-for-enterprise"
   ],
-  "count": 513,
-  "updated": "2026-09-04T09:34:25.426028"
+  "count": 516,
+  "updated": "2026-09-04T10:16:22.060742"
 }
