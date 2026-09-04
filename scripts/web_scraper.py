@@ -507,144 +507,35 @@ class WebScraper:
     def scrape_openai_blog(self, days_lookback: int = 7) -> List[Dict]:
         """
         爬取 OpenAI 新闻和研究页面
-        URL: https://openai.com/news 和 https://openai.com/research
-        使用 cloudscraper 绕过 Cloudflare，智能重试多种配置
+        使用独立的Playwright爬虫（openai_scraper_production.py）
         """
         articles = []
-        urls = [
-            ('https://openai.com/news', 'OpenAI News'),
-            ('https://openai.com/research', 'OpenAI Research')
-        ]
 
-        # 多种浏览器配置，按成功率排序
-        browser_configs = [
-            {'browser': 'chrome', 'platform': 'darwin', 'desktop': True},
-            {'browser': 'firefox', 'platform': 'windows', 'desktop': True},
-            {'browser': 'chrome', 'platform': 'windows', 'desktop': True},
-        ]
+        try:
+            # 检查是否安装了playwright
+            try:
+                import sys
+                import os
+                # 添加scripts目录到path
+                script_dir = os.path.dirname(os.path.abspath(__file__))
+                if script_dir not in sys.path:
+                    sys.path.insert(0, script_dir)
 
-        for url, source_name in urls:
-            success = False
+                from openai_scraper_production import OpenAIScraper
 
-            for attempt, config in enumerate(browser_configs):
-                try:
-                    if attempt > 0:
-                        print(f"  🔄 重试 {attempt+1}/{len(browser_configs)} ({config['browser']}/{config['platform']})...")
-                        time.sleep(3)
-                    else:
-                        print(f"🕷️  爬取: {source_name} ({url})")
+                print(f"🕷️  爬取 OpenAI (使用Playwright)")
+                scraper = OpenAIScraper(headless=True, timeout=90)
+                articles = scraper.scrape_all(days_lookback)
 
-                    # 使用 cloudscraper 绕过 Cloudflare
-                    if CLOUDSCRAPER_AVAILABLE:
-                        scraper = cloudscraper.create_scraper(browser=config)
+                print(f"✅ OpenAI 总计: {len(articles)} 篇文章")
 
-                        # 添加完整的请求头
-                        scraper.headers.update({
-                            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webif,*/*;q=0.8',
-                            'Accept-Language': 'en-US,en;q=0.5',
-                            'Accept-Encoding': 'gzip, deflate, br',
-                            'DNT': '1',
-                            'Connection': 'keep-alive',
-                            'Upgrade-Insecure-Requests': '1',
-                        })
+            except ImportError as e:
+                print(f"⚠️  无法加载OpenAI爬虫: {str(e)}")
+                print(f"   可能原因: Playwright未安装")
+                print(f"   安装命令: pip3 install playwright && python3 -m playwright install chromium")
 
-                        response = scraper.get(url, timeout=30)
-                    else:
-                        print(f"⚠️  cloudscraper 未安装，使用标准请求...")
-                        response = self.session.get(url, timeout=30)
-
-                    if response.status_code == 403:
-                        if attempt < len(browser_configs) - 1:
-                            continue  # 尝试下一个配置
-                        else:
-                            raise Exception(f"403 Forbidden (尝试了 {len(browser_configs)} 种配置)")
-
-                    response.raise_for_status()
-                    success = True
-                    break  # 成功，跳出重试循环
-
-                except Exception as e:
-                    if attempt == len(browser_configs) - 1:  # 最后一次尝试
-                        print(f"❌ 爬取 {source_name} 失败: {str(e)}")
-                        break
-                    # 否则继续下一个配置
-
-            if not success:
-                continue  # 跳过这个URL，继续下一个
-
-            # 成功获取，开始解析
-            soup = BeautifulSoup(response.content, 'html.parser')
-            cutoff_date = datetime.now() - timedelta(days=days_lookback)
-
-            # 查找所有新闻/研究文章链接
-            all_links = soup.find_all('a', href=True)
-
-            for link_tag in all_links:
-                try:
-                    href = link_tag.get('href', '')
-
-                    # 过滤文章链接
-                    if not href or href == '#':
-                        continue
-
-                    # 只保留 news 或 research 路径的链接
-                    if '/news/' not in href and '/research/' not in href:
-                        continue
-
-                    # 提取标题
-                    title = link_tag.get_text(strip=True)
-                    if not title or len(title) < 10:
-                        title_elem = link_tag.find(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
-                        if title_elem:
-                            title = title_elem.get_text(strip=True)
-                        else:
-                            continue
-
-                    # 构建完整URL
-                    if href.startswith('/'):
-                        full_url = f"https://openai.com{href}"
-                    elif href.startswith('http'):
-                        full_url = href
-                    else:
-                        continue
-
-                    # 查找日期
-                    parent = link_tag.parent
-                    date_str = ""
-                    if parent:
-                        date_elem = parent.find(['time', 'span'], class_=re.compile(r'date|time', re.I))
-                        if date_elem:
-                            date_str = date_elem.get_text(strip=True)
-                        else:
-                            text = parent.get_text()
-                            date_match = re.search(r'(\w{3}\s+\d{1,2},\s+\d{4})', text)
-                            if date_match:
-                                date_str = date_match.group(1)
-
-                    # 解析日期
-                    article_date = self._parse_date(date_str)
-                    if article_date and article_date < cutoff_date:
-                        continue
-
-                    # 避免重复
-                    if any(a['url'] == full_url for a in articles):
-                        continue
-
-                    articles.append({
-                        'title': title,
-                        'url': full_url,
-                        'summary': '',
-                        'published': date_str or datetime.now().strftime('%Y-%m-%d'),
-                        'published_raw': None,
-                        'source': source_name,
-                        'type': 'news' if 'news' in url else 'research',
-                        'priority': 'high',
-                    })
-
-                except Exception as e:
-                    continue
-
-            print(f"✅ {source_name}: {len([a for a in articles if a['source'] == source_name])} 篇文章")
+        except Exception as e:
+            print(f"❌ OpenAI爬取失败: {str(e)}")
 
         return articles
 
@@ -1096,37 +987,57 @@ class WebScraper:
                 print(f"🕷️  爬取: {company['name']} ({company['url']})")
 
                 if CLOUDSCRAPER_AVAILABLE:
-                    # D-Matrix 需要特殊处理：使用 Firefox/Windows，先访问主页建立会话，多次重试
+                    # D-Matrix 需要特殊处理：优先使用curl，cloudscraper作为备选
                     if company['name'] == 'D-Matrix':
                         success = False
-                        for attempt in range(3):  # 最多尝试3次
-                            try:
-                                if attempt > 0:
-                                    print(f"  🔄 重试 {attempt}/3...")
-                                    time.sleep(5 * attempt)  # 递增延迟
 
-                                # 每次重试都重新创建 scraper，使用正确的配置
-                                scraper = cloudscraper.create_scraper(browser={
-                                    'browser': 'firefox', 'platform': 'windows', 'desktop': True
-                                })
+                        # 策略1: 先尝试curl（最可靠）
+                        try:
+                            print(f"  📡 尝试curl方式...")
+                            content = self._fetch_with_curl(company['url'])
+                            if content:
+                                # 创建一个模拟的response对象
+                                class FakeResponse:
+                                    def __init__(self, content):
+                                        self.content = content
+                                        self.status_code = 200
+                                    def raise_for_status(self):
+                                        pass
 
-                                # 先访问主页建立会话
-                                homepage_resp = scraper.get('https://www.d-matrix.ai/', timeout=30)
-                                if homepage_resp.status_code == 200:
-                                    time.sleep(3)  # 等待更长时间
-                                    response = scraper.get(company['url'], timeout=30)
-                                    if response.status_code == 200:
-                                        success = True
-                                        break
-                                    elif response.status_code == 403 and attempt < 2:
-                                        continue  # 尝试下一次
-                            except Exception as e:
-                                if attempt == 2:  # 最后一次尝试
-                                    print(f"  ⚠️  多次尝试后仍失败，跳过 D-Matrix")
-                                continue
+                                response = FakeResponse(content)
+                                success = True
+                                print(f"  ✅ curl成功访问")
+                        except Exception as e:
+                            print(f"  ⚠️  curl失败: {str(e)}")
+
+                        # 策略2: 如果curl失败，尝试cloudscraper
+                        if not success:
+                            for attempt in range(3):
+                                try:
+                                    if attempt > 0:
+                                        print(f"  🔄 重试 {attempt}/3 (cloudscraper)...")
+                                        time.sleep(5 * attempt)
+
+                                    scraper = cloudscraper.create_scraper(browser={
+                                        'browser': 'firefox', 'platform': 'windows', 'desktop': True
+                                    })
+
+                                    homepage_resp = scraper.get('https://www.d-matrix.ai/', timeout=30)
+                                    if homepage_resp.status_code == 200:
+                                        time.sleep(3)
+                                        response = scraper.get(company['url'], timeout=30)
+                                        if response.status_code == 200:
+                                            success = True
+                                            break
+                                        elif response.status_code == 403 and attempt < 2:
+                                            continue
+                                except Exception as e:
+                                    if attempt == 2:
+                                        print(f"  ⚠️  cloudscraper多次尝试后仍失败")
+                                    continue
 
                         if not success:
-                            print(f"❌ D-Matrix: Cloudflare 保护（403），暂时跳过")
+                            print(f"❌ D-Matrix: 所有方法失败，跳过")
                             continue
                     else:
                         # 其他公司使用标准配置
