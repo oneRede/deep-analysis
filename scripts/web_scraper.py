@@ -11,6 +11,7 @@ from typing import List, Dict, Optional
 import time
 import re
 import json
+import subprocess
 
 try:
     import cloudscraper
@@ -40,11 +41,29 @@ class WebScraper:
             'Cache-Control': 'max-age=0',
         })
 
+    def _fetch_with_curl(self, url: str, timeout: int = 30) -> Optional[bytes]:
+        """
+        使用系统curl获取网页内容（解决LibreSSL版本问题）
+        系统curl使用较新的SSL/TLS实现，可以访问某些Python requests无法访问的网站
+        """
+        try:
+            result = subprocess.run(
+                ['curl', '-L', '--max-time', str(timeout), '-s', url],
+                capture_output=True,
+                timeout=timeout + 5
+            )
+            if result.returncode == 0:
+                return result.stdout
+            return None
+        except Exception:
+            return None
+
     def scrape_deepseek_blog(self, days_lookback: int = 7) -> List[Dict]:
         """
         爬取 DeepSeek 官方博客和研究页面
         URL: https://deepseek.ai/blog 和 https://www.deepseek.ai/research
         注意：这是一个动态加载的网站，使用备用方案
+        使用curl解决LibreSSL SSL/TLS版本问题
         """
         articles = []
 
@@ -57,11 +76,17 @@ class WebScraper:
         for url, source_name, content_type in urls:
             try:
                 print(f"🕷️  爬取: {source_name} ({url})")
-                response = self.session.get(url, timeout=30)
-                response.raise_for_status()
+
+                # 先尝试使用curl（解决SSL问题）
+                content = self._fetch_with_curl(url)
+                if not content:
+                    # 如果curl失败，回退到requests
+                    response = self.session.get(url, timeout=30)
+                    response.raise_for_status()
+                    content = response.content
 
                 # 尝试从页面中提取 JSON-LD 或内联数据
-                soup = BeautifulSoup(response.content, 'html.parser')
+                soup = BeautifulSoup(content, 'html.parser')
 
                 # 查找 JSON-LD 结构化数据
                 json_ld_scripts = soup.find_all('script', type='application/ld+json')
@@ -376,38 +401,41 @@ class WebScraper:
         """
         爬取 Anthropic 研究页面
         URL: https://www.anthropic.com/research
+        修复：使用curl解决编码/解压问题
         """
         articles = []
         url = "https://www.anthropic.com/research"
 
         try:
             print(f"🕷️  爬取: Anthropic Research ({url})")
-            response = self.session.get(url, timeout=30)
-            response.raise_for_status()
 
-            soup = BeautifulSoup(response.content, 'html.parser')
+            # 使用curl获取内容（避免编码问题）
+            content = self._fetch_with_curl(url)
+            if not content:
+                # 如果curl失败，尝试requests
+                response = self.session.get(url, timeout=30)
+                response.raise_for_status()
+                content = response.content
+
+            soup = BeautifulSoup(content, 'html.parser')
             cutoff_date = datetime.now() - timedelta(days=days_lookback)
 
             # 查找所有包含研究内容的链接
             all_links = soup.find_all('a', href=True)
 
+            seen_urls = set()
+
             for link_tag in all_links:
                 try:
                     href = link_tag.get('href', '')
 
-                    # 过滤掉非研究内容的链接
-                    if not href or href == '#' or not ('/research/' in href or '/news/' in href):
+                    # 只要包含 /research/ 且不是team页面
+                    if not href or '/research/' not in href:
                         continue
 
-                    # 提取标题
-                    title = link_tag.get_text(strip=True)
-                    if not title or len(title) < 10:
-                        # 尝试从子元素获取
-                        title_elem = link_tag.find(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
-                        if title_elem:
-                            title = title_elem.get_text(strip=True)
-                        else:
-                            continue
+                    # 排除团队页面和主页
+                    if href == '/research/' or '/research/team/' in href:
+                        continue
 
                     # 构建完整URL
                     if href.startswith('/'):
@@ -417,28 +445,42 @@ class WebScraper:
                     else:
                         continue
 
-                    # 查找日期
-                    parent = link_tag.parent
-                    date_str = ""
-                    if parent:
-                        date_elem = parent.find(['time', 'span'], class_=re.compile(r'date|time', re.I))
-                        if date_elem:
-                            date_str = date_elem.get_text(strip=True)
-                        else:
-                            # 尝试从周围文本提取日期
-                            text = parent.get_text()
-                            # 匹配 "Aug 18, 2026" 格式
-                            date_match = re.search(r'(\w{3}\s+\d{1,2},\s+\d{4})', text)
-                            if date_match:
-                                date_str = date_match.group(1)
+                    # 去重
+                    if full_url in seen_urls:
+                        continue
+                    seen_urls.add(full_url)
 
-                    # 解析日期
-                    article_date = self._parse_date(date_str)
-                    if article_date and article_date < cutoff_date:
+                    # 提取标题 - 从链接文本中提取
+                    raw_text = link_tag.get_text(strip=True)
+                    if not raw_text or len(raw_text) < 10:
                         continue
 
-                    # 避免重复
-                    if any(a['url'] == full_url for a in articles):
+                    # 从文本中提取日期（格式：CategoryMonDD, YYYYTitle）
+                    date_str = ""
+                    date_match = re.search(r'(\w{3}\s+\d{1,2},\s+\d{4})', raw_text)
+                    if date_match:
+                        date_str = date_match.group(1)
+
+                    # 清理标题：
+                    # 1. 去掉分类标签（Alignment, Economics等）
+                    title = re.sub(r'^(Alignment|Economics|Interpretability|Science|Societal Impacts|Safety)', '', raw_text).strip()
+                    # 2. 去掉日期
+                    title = re.sub(r'\w{3}\s+\d{1,2},\s+\d{4}', '', title).strip()
+                    # 3. 截取前100个字符（这些是长描述文本）
+                    if len(title) > 100:
+                        # 找到第一个句号或换行，截取标题部分
+                        first_sentence = re.split(r'[.\n]', title)[0].strip()
+                        if len(first_sentence) > 15:
+                            title = first_sentence
+                        else:
+                            title = title[:100].strip()
+
+                    if not title or len(title) < 10:
+                        continue
+
+                    # 解析日期
+                    article_date = self._parse_date(date_str) if date_str else None
+                    if article_date and article_date < cutoff_date:
                         continue
 
                     articles.append({

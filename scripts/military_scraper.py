@@ -13,6 +13,13 @@ from datetime import datetime, timedelta
 from typing import List, Dict
 import time
 import re
+import subprocess
+
+try:
+    import cloudscraper
+    CLOUDSCRAPER_AVAILABLE = True
+except ImportError:
+    CLOUDSCRAPER_AVAILABLE = False
 
 class MilitaryScraper:
     def __init__(self, days_lookback: int = 7):
@@ -21,6 +28,27 @@ class MilitaryScraper:
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
         }
         self.cutoff_date = datetime.now() - timedelta(days=days_lookback)
+
+    def _fetch_with_curl(self, url: str, timeout: int = 30) -> bytes:
+        """
+        使用系统curl获取网页内容（用于绕过反爬虫）
+        """
+        try:
+            result = subprocess.run(
+                ['curl', '-L', '--max-time', str(timeout), '-s',
+                 '-H', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+                 '-H', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                 '-H', 'Accept-Language: en-US,en;q=0.9',
+                 url],
+                capture_output=True,
+                timeout=timeout + 5
+            )
+            if result.returncode == 0:
+                return result.stdout
+            return None
+        except Exception:
+            return None
+
 
     def scrape_janes(self) -> List[Dict]:
         """爬取 Jane's Defence 文章"""
@@ -184,28 +212,51 @@ class MilitaryScraper:
         return articles
 
     def scrape_army_technology(self) -> List[Dict]:
-        """爬取 Army Technology 文章"""
+        """
+        爬取 Army Technology 文章
+        使用cloudscraper绕过DataDome反爬虫保护
+        """
         print("📡 爬取: Army Technology")
         articles = []
 
         try:
-            # 尝试主页
             url = "https://www.army-technology.com/"
 
-            # 使用更完整的headers来避免403
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.9',
-                'Accept-Encoding': 'gzip, deflate, br',
-                'Connection': 'keep-alive',
-                'Upgrade-Insecure-Requests': '1'
-            }
+            # 方案1: 使用cloudscraper（推荐）
+            if CLOUDSCRAPER_AVAILABLE:
+                try:
+                    scraper = cloudscraper.create_scraper(
+                        browser={
+                            'browser': 'chrome',
+                            'platform': 'darwin',
+                            'desktop': True
+                        }
+                    )
+                    scraper.headers.update({
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                        'Accept-Language': 'en-US,en;q=0.9',
+                        'Referer': 'https://www.google.com/'
+                    })
 
-            response = requests.get(url, headers=headers, timeout=15)
-            response.raise_for_status()
+                    response = scraper.get(url, timeout=30)
+                    response.raise_for_status()
+                    content = response.content
+                    print(f"  ✓ 使用cloudscraper成功访问")
 
-            soup = BeautifulSoup(response.content, 'html.parser')
+                except Exception as e:
+                    print(f"  ⚠️  cloudscraper失败: {str(e)}")
+                    # 回退到curl方案
+                    content = self._fetch_with_curl(url)
+                    if not content:
+                        raise Exception("cloudscraper和curl都失败")
+            else:
+                # 方案2: 使用系统curl（如果没有cloudscraper）
+                print(f"  ⚠️  cloudscraper未安装，使用curl...")
+                content = self._fetch_with_curl(url)
+                if not content:
+                    raise Exception("curl获取失败")
+
+            soup = BeautifulSoup(content, 'html.parser')
 
             # 查找文章链接 - 更宽泛的搜索
             article_links = soup.find_all('a', href=re.compile(r'/news/|/features/|/analysis/'))
