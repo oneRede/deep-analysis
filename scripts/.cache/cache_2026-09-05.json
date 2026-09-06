@@ -41,6 +41,9 @@
     "https://tass.com/politics/2183211",
     "https://tass.com/politics/2183221",
     "https://tass.com/politics/2183237",
+    "https://tass.com/politics/2183261",
+    "https://tass.com/politics/2183265",
+    "https://tass.com/politics/2183269",
     "https://tass.com/science/2183151",
     "https://tass.com/society/2183007",
     "https://tass.com/society/2183021",
@@ -110,6 +113,7 @@
     "https://www.reddit.com/r/MachineLearning/comments/1w7sgf3/language_models_can_control_their_own_attention_r/",
     "https://www.reddit.com/r/MachineLearning/comments/1w7sljy/neurips_2026_automatic_reference_checker_r/",
     "https://www.reddit.com/r/MachineLearning/comments/1w89m36/gpt6_reportedly_jailbroken_within_24_hours_using/",
+    "https://www.reddit.com/r/MachineLearning/comments/1w8g1gk/astra_vs_fable_51_on_real_ml_tasks_tradeoffs/",
     "https://www.tomshardware.com/pc-components/cpus/amd-reportedly-prepping-ryzen-5-7500-non-f-cpu-with-integrated-graphics-at-double-the-price-six-core-zen-4-chip-rumored-to-share-identical-specs-with-its-f-moniker-cousin",
     "https://www.tomshardware.com/pc-components/dodge-the-rampocalypse-with-20-percent-discounts-on-corsair-ram-hundreds-off-on-32gb-and-64gb-ddr5-6400-kits",
     "https://www.tomshardware.com/pc-components/gpus/modder-gets-nvidias-dlss-5-working-on-amds-rdna-4-gpus-rx-9070-xt-only-manages-30-fps-at-1080p-right-now-but-5070-ti-level-performance-is-the-eventual-goal",
@@ -122,6 +126,6 @@
     "https://www.tomshardware.com/video-games/pc-gaming/we-tested-dlss-5-in-nba-2k27-with-every-rtx-50-series-gpu-first-official-release-comes-with-a-big-performance-hit-but-almost-every-blackwell-card-can-run-it-at-1080p",
     "https://x.ai/news/grok-bot-and-x"
   ],
-  "count": 120,
-  "updated": "2026-09-06T07:06:15.172763"
+  "count": 124,
+  "updated": "2026-09-06T10:06:29.211906"
 }
