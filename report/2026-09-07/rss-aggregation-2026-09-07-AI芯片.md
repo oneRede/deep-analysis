@@ -1,0 +1,163 @@
+# RSS 聚合报告 - AI芯片
+
+**生成时间**: 2026-09-08 07:11:32
+**文章数量**: 15 篇
+
+---
+
+### 1. Japan’s Preferred Networks Seeks IPO to Keep Up in AI Chip Race
+- **来源**: Bloomberg Technology (TIER3)
+- **发布日期**: Mon, 07 Sep 2026 09:10:50 GMT (今天)
+- **类型**: news
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://www.bloomberg.com/news/articles/2026-09-07/japan-s-preferred-networks-seeks-ipo-to-keep-up-in-ai-chip-race
+- **AI 摘要**: 日本初创公司Preferred Networks正寻求通过IPO来大规模生产其AI芯片。此举反映了在全球AI竞赛中保持竞争力所需的成本和规模不断上升。该公司专注于开发面向AI应用的专用芯片，以应对日益激烈的国际竞争。
+- **原始摘要**: Japanese startup Preferred Networks Inc. is seeking to go public to mass-produce its chips, a reflection of the rising cost and scale needed to stay relevant in a global AI race.
+
+### 2. How Cerebras serves GPT-5.6 Sol at up to 750 tokens per secondAugust 27, 2026
+- **来源**: Cerebras (TIER1)
+- **发布日期**: ust 27, 2026
+- **类型**: blog
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://www.cerebras.ai/blog/how-cerebras-serves-gpt-5-6-sol-at-up-to-750-tokens-per-second
+- **AI 摘要**: Cerebras公司展示了其如何以每秒高达750个令牌的速度为GPT-5.6 Sol模型提供服务，体现了其在AI推理性能和硬件加速方面的技术优势。
+
+### 3. APEX-RBD: Mixed-Precision Exploration Framework for Hardware-Efficient Robot Dynamics Accelerator Design
+- **来源**: arXiv cs.RO (机器人) (TIER1)
+- **提交时间**: 2026年09月 (约 -7 天前)
+- **类型**: arxiv
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://arxiv.org/abs/2609.05161
+- **AI 摘要**: 提出APEX-RBD框架，自动化探索混合精度量化方案，用于设计硬件高效的机器人刚体动力学加速器，降低资源消耗并保持运动精度。
+- **原始摘要**: arXiv:2609.05161v1 Announce Type: cross Abstract: Rigid Body Dynamics (RBD) forms the computational core of real-time robotic control, but its immense computational complexity creates a performance bo...
+
+### 4. Budgeting Bytes: A Windowed Storage Roofline and Dual-Budget Architecture Ablations for Storage-Bound LLM Decoding
+- **来源**: arXiv cs.AR (硬件架构) (TIER1)
+- **提交时间**: 2026年09月 (约 -7 天前)
+- **类型**: arxiv
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://arxiv.org/abs/2609.04238
+- **AI 摘要**: 本文提出窗口化存储Roofline模型和双预算架构消融方法，用于分析存储受限的LLM解码性能。通过地址确定性分类法优化预取调度，并在真实MoE部署中验证了模型预测，揭示了边缘设备上内存带宽瓶颈导致的性能限制。
+- **原始摘要**: arXiv:2609.04238v1 Announce Type: new Abstract: Autoregressive decoding on cheap hardware is bound not by FLOPs but by the bytes each generated token must move across the slowest populated tier of a m...
+
+### 5. MonoMoE: An Efficient Fused Mega-kernel for Quantized MoE Decoding
+- **来源**: arXiv cs.AR (硬件架构) (TIER1)
+- **提交时间**: 2026年09月 (约 -7 天前)
+- **类型**: arxiv
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://arxiv.org/abs/2609.04244
+- **AI 摘要**: 本文提出MonoMoE，一种面向量化MoE解码的高效融合Mega-kernel。采用权重主序的持久化内核设计，将完整解码token块映射到张量核N维度，消除专家局部token物化，融合路由、top-k选择等操作，提升解码效率。
+- **原始摘要**: arXiv:2609.04244v1 Announce Type: new Abstract: Mixture-of-Experts (MoE) layers increase model capacity without proportionally increasing arithmetic, but their sparse expert computation is difficult t...
+
+### 6. Hardware-conscious Software Training for Deep Neural Network Inference Accelerator Chips to Recover Accuracy Degradation due to Hardware Variabilities
+- **来源**: arXiv cs.AR (硬件架构) (TIER1)
+- **提交时间**: 2026年09月 (约 -7 天前)
+- **类型**: arxiv
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://arxiv.org/abs/2609.04259
+- **AI 摘要**: 本文提出硬件感知的软件训练方法（HCST），用于恢复因芯片制造过程中硬件变异导致的推理精度下降。该方法使深度神经网络在硬件变异影响下仍能保持高推理精度，适用于专用推理加速芯片。
+- **原始摘要**: arXiv:2609.04259v1 Announce Type: new Abstract: Deep neural network (DNN) has been widely applied in various industries. Specialized chips are being discussed for the purpose of achieving lower power...
+
+### 7. Compute-in-Memory Attention: A Time-Domain Analog Softmax Circuit with RC-Tunable Temperature
+- **来源**: arXiv cs.AR (硬件架构) (TIER1)
+- **提交时间**: 2026年09月 (约 -7 天前)
+- **类型**: arxiv
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://arxiv.org/abs/2609.04266
+- **AI 摘要**: 本文提出一种时域模拟Softmax电路，采用RC可调温度技术，可直接处理CIM生成的模拟注意力分数，无需模数转换。通过共享下降斜坡和RC衰减参考实现指数权重，并集成归一化级，在22nm FDSOI工艺中实现。
+- **原始摘要**: arXiv:2609.04266v1 Announce Type: new Abstract: Softmax is a key operation in Transformer attention, but its exponentiation and normalization add significant overhead in compute-in-memory (CIM) accele...
+
+### 8. Huawei's $\tau$ Chip Was Supposed to Melt?
+- **来源**: arXiv cs.AR (硬件架构) (TIER1)
+- **提交时间**: 2026年09月 (约 -7 天前)
+- **类型**: arxiv
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://arxiv.org/abs/2609.04287
+- **AI 摘要**: 本文针对华为τ芯片的散热问题展开研究，基于Kirin芯片测量发现，芯片能耗主要来自数据传输而非计算本身，挑战了传统对τ扩展定律热效应的担忧，为折叠硅技术提供了新的热管理视角。
+- **原始摘要**: arXiv:2609.04287v1 Announce Type: new Abstract: Heat is the sharpest concern on $\tau$ scaling law --- the time-scaling principle behind Huawei's folded silicon, named for the delay $\tau$ (``Tao'') i...
+
+### 9. FlexPosit: Tunable Fractional Precision for LLM Inference Accelerators
+- **来源**: arXiv cs.AR (硬件架构) (TIER1)
+- **提交时间**: 2026年09月 (约 -7 天前)
+- **类型**: arxiv
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://arxiv.org/abs/2609.04724
+- **AI 摘要**: 本文提出FlexPosit，一种可调分数精度的LLM推理加速器。通过Posit量化与精度可调位串行架构的协同设计，实现分布感知量化与敏感度引导的混合精度分配，填补了离散精度模式之间的空白。
+- **原始摘要**: arXiv:2609.04724v1 Announce Type: new Abstract: Large language models (LLMs) offer remarkable capabilities but impose prohibitive compute and energy costs. Quantization governs the trade-offs between...
+
+### 10. A Piecewise-Linear Approximation-based Energy-Efficient Error-Optimized Unsigned Square Rooter for Accuracy-Critical Applications
+- **来源**: arXiv cs.AR (硬件架构) (TIER1)
+- **提交时间**: 2026年09月 (约 -7 天前)
+- **类型**: arxiv
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://arxiv.org/abs/2609.04783
+- **AI 摘要**: 本文提出一种基于分段线性近似的节能无符号平方根器（EOSQR），面向精度关键应用。采用简单算术和移位操作实现高精度低复杂度，在FPGA上相比精确实现节省61.91%资源、77.54%功耗和53.11%延迟。
+- **原始摘要**: arXiv:2609.04783v1 Announce Type: new Abstract: Approximate computing improves energy efficiency in error-resilient applications, but square root units remain challenging due to the trade-off between...
+
+### 11. Proton Irradiation Characterization of an Open-Source ML Accelerator on a Zynq UltraScale+ MPSoC
+- **来源**: arXiv cs.AR (硬件架构) (TIER1)
+- **提交时间**: 2026年09月 (约 -7 天前)
+- **类型**: arxiv
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://arxiv.org/abs/2609.05249
+- **AI 摘要**: 本文对开源Tensil ML加速器在Zynq UltraScale+ SoC上进行质子辐照表征，建立系统级辐射响应基线。在20-58MeV质子辐照下，观察到多次工作中断和输出损坏事件，为空间计算系统的辐射缓解策略提供参考。
+- **原始摘要**: arXiv:2609.05249v1 Announce Type: new Abstract: As spaceborne computing systems increasingly rely on neural network (NN) accelerators, the opacity of commercial, black-box architectures severely restr...
+
+### 12. TETRIS-Q: Tiling-based Effective Transient-fault Reduction on Interleaved Superconducting Qubits
+- **来源**: arXiv cs.AR (硬件架构) (TIER1)
+- **提交时间**: 2026年09月 (约 -7 天前)
+- **类型**: arxiv
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://arxiv.org/abs/2609.05226
+- **AI 摘要**: 本文提出TETRIS-Q算法，结合衬底级声子屏障和QEC交织，通过平面网格平铺有效抑制超导量子比特中辐射诱导的瞬态故障。该跨层方案在不增加QEC执行或解码时间的情况下实现高效抑制。
+- **原始摘要**: arXiv:2609.05226v1 Announce Type: cross Abstract: The struggle of the hour in quantum computing research is achieving effective suppression of the error mechanisms induced by the interaction of extern...
+
+### 13. GoldenFloat: A Phi-Derived Static-Split Floating-Point Family from GF4 to GF1024 with a Lucas-Exact Integer Identity
+- **来源**: arXiv cs.AR (硬件架构) (TIER1)
+- **提交时间**: 2026年06月
+- **类型**: arxiv
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://arxiv.org/abs/2606.05017
+- **AI 摘要**: 本文提出GoldenFloat静态分割浮点格式族，基于黄金比例规则生成，提供RTL生成器、整数累加路径和FPGA编解码器，并附带一致性验证工具，用于硬件数值格式实现。
+- **原始摘要**: arXiv:2606.05017v4 Announce Type: replace Abstract: We present a hardware-oriented description of GoldenFloat (GF), a static-split floating-point family generated by a single closed rule, and three co...
+
+### 14. 2026-09-07壁仞科技斩获中国专利银奖，自研GPU技术再获国家级认可
+- **来源**: Biren (壁仞科技) (TIER1)
+- **发布日期**: 2026-09-08
+- **类型**: blog
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://www.birentech.com/news//news/nc9aodl93m390l96hsdcxolr/
+- **AI 摘要**: 壁仞科技凭借自研GPU技术荣获中国专利银奖，这是国家级认可，彰显了公司在芯片设计领域的创新实力和知识产权积累。
+
+### 15. 2026-09-07DAY0适配 | 壁仞科技完成智谱GLM-5.3-Flash大模型推理验证
+- **来源**: Biren (壁仞科技) (TIER1)
+- **发布日期**: 2026-09-08
+- **类型**: blog
+- **优先级**: high
+- **分类**: AI芯片
+- **链接**: https://www.birentech.com/news//news/egy64w6zdtrkwy3pxr7hxpo4/
+- **AI 摘要**: 壁仞科技完成智谱GLM-5.3-Flash大模型的推理验证，实现DAY0适配，表明其GPU平台对新模型的快速支持能力，加速AI应用落地。
+
+---
+
+## 📋 下一步行动
+
+1. **人工审查**: 阅读上述文章，标记高价值候选
+2. **深度分析**: 将候选 URL 喂给 Claude，运行 `prompts/deep-research-tracker.md` 的 Prompt B
+3. **启动流水线**: 对确认收录的内容，使用 `/curate-research` skill
+
+**提示**: 可以将本报告内容复制到 Claude，让 AI 帮助初步筛选。
