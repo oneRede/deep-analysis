@@ -1,6 +1,6 @@
 # RSS 聚合报告 - 光计算
 
-**生成时间**: 2026-09-08 07:11:32
+**生成时间**: 2026-09-08 10:13:28
 **文章数量**: 1 篇
 
 ---
@@ -12,7 +12,7 @@
 - **优先级**: high
 - **分类**: 光计算
 - **链接**: https://arxiv.org/abs/2609.04666
-- **AI 摘要**: 本文提出一种基于集成光子芯片上光学计算的分析偏振控制方法，利用四个移相器实现无需盲搜索的偏振控制，并设计了校准与无端控制方案，仿真验证了其有效性。
+- **AI 摘要**: 本文提出一种基于集成光子芯片上光计算的分析式偏振控制方法，利用四个移相器实现精确偏振控制，无需传统盲搜索，并设计了校准与无端控制方法，仿真验证了其有效性。
 - **原始摘要**: arXiv:2609.04666v1 Announce Type: new Abstract: Dynamic polarization controllers are key devices with broad applications in many fields. However, most on-chip polarization controllers still rely on tr...
 
 ---
