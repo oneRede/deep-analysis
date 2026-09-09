@@ -1,6 +1,6 @@
 # RSS 聚合报告 - 编译器
 
-**生成时间**: 2026-09-09 07:09:05
+**生成时间**: 2026-09-09 10:10:13
 **文章数量**: 1 篇
 
 ---
@@ -12,7 +12,7 @@
 - **优先级**: high
 - **分类**: 编译器
 - **链接**: https://developer.nvidia.com/blog/introducing-cuda-rust-two-tracks-for-writing-gpu-kernels/
-- **AI 摘要**: NVIDIA于2026年9月宣布支持在Rust中编写GPU内核，提供两条开发路径。CUDA C++和CUDA Python已成熟，此次扩展旨在让Rust开发者也能高效利用GPU编程能力。
+- **AI 摘要**: NVIDIA于2026年9月宣布支持在Rust中编写GPU内核，提供两条开发路径。CUDA C++和CUDA Python已成熟，此次扩展旨在为Rust开发者提供原生GPU编程能力，丰富CUDA生态。
 - **原始摘要**: In September 2026, NVIDIA announced it is leaning into native GPU programming in Rust. CUDA C++ and CUDA Python are mature, enterprise-grade toolchains, and......
 
 ---
