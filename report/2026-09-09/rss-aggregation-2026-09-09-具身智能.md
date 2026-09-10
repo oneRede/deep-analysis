@@ -1,6 +1,6 @@
 # RSS 聚合报告 - 具身智能
 
-**生成时间**: 2026-09-10 07:11:07
+**生成时间**: 2026-09-10 10:10:04
 **文章数量**: 2 篇
 
 ---
@@ -12,7 +12,7 @@
 - **优先级**: high
 - **分类**: 具身智能
 - **链接**: https://agibot.com/article/231/detail/93.html
-- **AI 摘要**: AGIBOT在LEAP 2026展会上展示了人形机器人和机器人即服务（RaaS）解决方案，发布于2026年9月2日，但摘要为空。
+- **AI 摘要**: AGIBOT在LEAP 2026上展示人形机器人及RaaS解决方案，发布时间为2026年9月2日。
 
 ### 2. AGIBOT Wins 18 Gold Medals on World Humanoid Robot Games Debut, Tops Gold and Overall Medal Tables2026-08-26
 - **来源**: Agibot (智元机器人) (TIER1)
@@ -21,7 +21,7 @@
 - **优先级**: high
 - **分类**: 具身智能
 - **链接**: https://agibot.com/article/231/detail/91.html
-- **AI 摘要**: AGIBOT在世界人形机器人运动会上首次亮相，赢得18枚金牌，位列金牌榜和总奖牌榜首位，展示了其在人形机器人领域的领先实力。
+- **AI 摘要**: 智元机器人（AGIBOT）首次参加世界人形机器人运动会，斩获18枚金牌，位列金牌榜和奖牌榜首位。
 
 ---
 
