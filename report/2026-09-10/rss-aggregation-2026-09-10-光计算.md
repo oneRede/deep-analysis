@@ -1,6 +1,6 @@
 # RSS 聚合报告 - 光计算
 
-**生成时间**: 2026-09-11 07:13:59
+**生成时间**: 2026-09-11 10:14:31
 **文章数量**: 4 篇
 
 ---
@@ -12,7 +12,7 @@
 - **优先级**: high
 - **分类**: 光计算
 - **链接**: https://arxiv.org/abs/2609.06796
-- **AI 摘要**: 研究多芯粒光子神经网络加速器（MCPNA）面临的硬件木马威胁，从机密性、完整性和可用性三个维度分析其分布式架构与第三方芯粒带来的安全风险。
+- **AI 摘要**: 研究多芯粒光子神经网络加速器面临的硬件木马威胁，从机密性、完整性和可用性三个维度分析其分布式架构与第三方芯粒引入的安全风险。
 - **原始摘要**: arXiv:2609.06796v1 Announce Type: cross Abstract: Multi-chiplet photonic neural network accelerators (MCPNAs) combine photonic computation, photonic communica-tion, and heterogeneous chiplet integrati...
 
 ### 2. A Fully Wave-Domain Wideband MU MIMO OFDM Transmitter via Stacked Intelligent Metasurfaces
@@ -22,7 +22,7 @@
 - **优先级**: high
 - **分类**: 光计算
 - **链接**: https://arxiv.org/abs/2609.09727
-- **AI 摘要**: 提出基于级联堆叠智能超表面的全波域宽带多用户MIMO OFDM发射机，将基带链在波域物理合成，SIM_1完成符号加载与预编码，SIM_2实现IDFT与循环前缀插入。
+- **AI 摘要**: 提出基于堆叠智能超表面的全波域宽带多用户MIMO OFDM发射机，将基带链在波域物理合成，通过两级SIM分别实现预编码与IDFT及循环前缀插入，实现无基带架构。
 - **原始摘要**: arXiv:2609.09727v1 Announce Type: cross Abstract: This paper proposes an advanced realization principle for wideband multiuser multiple-input multiple-output orthogonal frequency-division multiplexing...
 
 ### 3. Coherent control of photon pairs via quantum interference between second- and third-order quantum nonlinear processes
@@ -32,7 +32,7 @@
 - **优先级**: high
 - **分类**: 光计算
 - **链接**: https://arxiv.org/abs/2601.18746
-- **AI 摘要**: 在集成光子平台上利用二阶与三阶量子非线性过程的干涉，实现光子对的相干控制，可调控双光子产生率与光谱结构，为量子非线性光学提供新型相干调控手段。
+- **AI 摘要**: 在集成光子平台上利用二阶与三阶量子非线性过程的干涉，实现光子对的相干控制，可调控双光子产生率、光谱结构及量子关联。
 - **原始摘要**: arXiv:2601.18746v2 Announce Type: replace Abstract: Genuine quantum interference between independent nonlinear processes of different order provides a route to coherent control that cannot be reduced...
 
 ### 4. All-optical control of coherent perfect absorption via frequency conversion
@@ -42,7 +42,7 @@
 - **优先级**: high
 - **分类**: 光计算
 - **链接**: https://arxiv.org/abs/2607.04682
-- **AI 摘要**: 基于周期极化铌酸锂波导谐振腔中的频率转换，实现全光可控的相干完美吸收，通过泵浦驱动将信号场耦合至环境模式，形成可调损耗通道，吸收率达92%。
+- **AI 摘要**: 基于周期极化铌酸锂波导谐振腔中的频率转换，实现全光可控的相干完美吸收，吸收率达92%，并可将环境模式作为相干控制端口。
 - **原始摘要**: arXiv:2607.04682v2 Announce Type: replace Abstract: Coherent perfect absorption (CPA) extinguishes optical fields through interference and dissipation, but conventional implementations rely on materia...
 
 ---
