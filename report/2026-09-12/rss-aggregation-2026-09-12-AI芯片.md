@@ -1,6 +1,6 @@
 # RSS 聚合报告 - AI芯片
 
-**生成时间**: 2026-09-13 07:06:51
+**生成时间**: 2026-09-13 10:07:48
 **文章数量**: 1 篇
 
 ---
@@ -12,7 +12,7 @@
 - **优先级**: medium
 - **分类**: AI芯片
 - **链接**: https://www.tomshardware.com/pc-components/cpus/apples-a20-pro-shatters-geekbench-7-single-core-record-2nm-chip-beats-desktop-intel-core-i9-and-amd-ryzen-9-by-up-to-32-percent
-- **AI 摘要**: 文章报道苹果A20 Pro在Geekbench 7单核测试中打破纪录，2nm芯片比桌面级Intel Core i9和AMD Ryzen 9快达32%。这展示了苹果芯片设计的领先地位及2nm工艺的性能优势。
+- **AI 摘要**: Tom's Hardware报道，苹果A20 Pro在Geekbench 7单核测试中打破纪录，这款2nm芯片比桌面级Intel Core i9和AMD Ryzen 9快高达32%。文章还包含Tom's Hardware的会员推广、硬件评测数据库、路线图等付费内容，以及CPU、GPU等硬件的最新资讯和购买建议。
 - **原始摘要**: Apple's A20 Pro smartphone SoC outperforms all smartphone processors by a wide margin and manages to leave behind latest laptop processors.
 
 ---
