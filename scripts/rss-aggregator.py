@@ -21,6 +21,7 @@ from web_scraper import scrape_all_custom_sources
 from military_scraper import scrape_military_sources
 from dotenv import load_dotenv
 from cache_manager_new import CacheManager
+from local_classifier import LocalClassifier, get_recommended_model
 
 # 配置路径
 SCRIPT_DIR = Path(__file__).parent
@@ -68,22 +69,45 @@ class RSSAggregator:
         # 当前运行日期（用于缓存）
         self.run_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
-        # DeepSeek API 配置
-        self.deepseek_api_key = os.getenv('DEEPSEEK_API_KEY', '').strip()
-        self.deepseek_api_url = "https://api.deepseek.com/chat/completions"
+        # AI 分类配置
         self.enable_ai_summary = self.config.get('ai_summary', {}).get('enabled', True)
-        self.batch_size = self.config.get('ai_summary', {}).get('batch_size', 10)
-        self.batch_delay = self.config.get('ai_summary', {}).get('batch_delay', 1.0)
+        self.batch_size = self.config.get('ai_summary', {}).get('batch_size', 5)  # 本地模型建议减小批次
+        self.batch_delay = self.config.get('ai_summary', {}).get('batch_delay', 0.5)
 
-        # 调试信息：检查API密钥
+        # 分类器类型：'local' 或 'deepseek'
+        self.classifier_type = self.config.get('ai_summary', {}).get('classifier', 'local')
+
+        # 初始化分类器
         if self.enable_ai_summary:
-            if not self.deepseek_api_key:
-                print("⚠️  警告: DEEPSEEK_API_KEY 未设置，AI摘要功能将被禁用")
-                self.enable_ai_summary = False
+            if self.classifier_type == 'local':
+                # 本地模型分类器
+                model_name = self.config.get('ai_summary', {}).get('local_model', None)
+                if not model_name:
+                    model_name = get_recommended_model()
+
+                ollama_url = self.config.get('ai_summary', {}).get('ollama_url', 'http://localhost:11434')
+
+                print(f"🤖 使用本地模型: {model_name}")
+                self.local_classifier = LocalClassifier(
+                    model=model_name,
+                    base_url=ollama_url,
+                    temperature=0.3
+                )
+
+                if not self.local_classifier.test_connection():
+                    print("⚠️  本地模型不可用，AI摘要功能将被禁用")
+                    self.enable_ai_summary = False
             else:
-                print(f"✅ DeepSeek API 已配置 (密钥长度: {len(self.deepseek_api_key)})")
-                # 测试API连接
-                self._test_api_connection()
+                # DeepSeek API 分类器（保留兼容性）
+                self.deepseek_api_key = os.getenv('DEEPSEEK_API_KEY', '').strip()
+                self.deepseek_api_url = "https://api.deepseek.com/chat/completions"
+
+                if not self.deepseek_api_key:
+                    print("⚠️  警告: DEEPSEEK_API_KEY 未设置，AI摘要功能将被禁用")
+                    self.enable_ai_summary = False
+                else:
+                    print(f"✅ DeepSeek API 已配置 (密钥长度: {len(self.deepseek_api_key)})")
+                    self._test_api_connection()
 
     def _test_api_connection(self):
         """测试API连接是否正常"""
@@ -273,7 +297,7 @@ class RSSAggregator:
         return None, None
 
     def _generate_ai_summaries_batch(self, articles: List[Dict]) -> List[tuple]:
-        """批量使用 DeepSeek API 生成文章摘要并分类
+        """批量使用 AI 生成文章摘要并分类
 
         根据文章的 tier 决定处理方式：
         - tier1: 只使用摘要总结（100字）
@@ -299,9 +323,10 @@ class RSSAggregator:
             # 处理 tier1 文章（基于摘要，100字）
             if tier1_articles:
                 print(f"     处理 tier1 文章: {len(tier1_articles)} 篇（基于摘要）")
-                tier1_results = self._summarize_from_abstract(
+                tier1_results = self._summarize_articles(
                     [art for _, art in tier1_articles],
-                    max_length=100
+                    max_length=100,
+                    use_fulltext=False
                 )
                 for (idx, _), result in zip(tier1_articles, tier1_results):
                     results[idx] = result
@@ -309,9 +334,10 @@ class RSSAggregator:
             # 处理其他 tier 文章（获取全文，200字）
             if other_articles:
                 print(f"     处理 tier2/3/military 文章: {len(other_articles)} 篇（基于全文）")
-                other_results = self._summarize_from_fulltext(
+                other_results = self._summarize_articles(
                     [art for _, art in other_articles],
-                    max_length=200
+                    max_length=200,
+                    use_fulltext=True
                 )
                 for (idx, _), result in zip(other_articles, other_results):
                     results[idx] = result
@@ -321,6 +347,50 @@ class RSSAggregator:
         except Exception as e:
             print(f"⚠️  批量生成 AI 摘要和分类失败: {str(e)}")
             return [(None, None)] * len(articles)
+
+    def _summarize_articles(self, articles: List[Dict], max_length: int, use_fulltext: bool) -> List[tuple]:
+        """统一的文章摘要接口，根据 classifier_type 选择实现"""
+        if self.classifier_type == 'local':
+            return self._summarize_with_local_model(articles, max_length, use_fulltext)
+        else:
+            return self._summarize_with_deepseek(articles, max_length, use_fulltext)
+
+    def _summarize_with_local_model(self, articles: List[Dict], max_length: int, use_fulltext: bool) -> List[tuple]:
+        """使用本地模型进行摘要和分类"""
+        try:
+            # 如果需要全文，先获取
+            articles_to_process = []
+            for article in articles:
+                if use_fulltext:
+                    url = article.get('url', '')
+                    full_content = self._fetch_full_content(url)
+                    if full_content:
+                        articles_to_process.append({
+                            **article,
+                            'full_content': full_content[:2000]
+                        })
+                    else:
+                        articles_to_process.append(article)
+                else:
+                    articles_to_process.append(article)
+
+            # 调用本地分类器
+            return self.local_classifier.classify_and_summarize_batch(
+                articles_to_process,
+                self.categories,
+                self.default_category,
+                max_length
+            )
+        except Exception as e:
+            print(f"⚠️  本地模型处理失败: {str(e)}")
+            return [(None, None)] * len(articles)
+
+    def _summarize_with_deepseek(self, articles: List[Dict], max_length: int, use_fulltext: bool) -> List[tuple]:
+        """使用 DeepSeek API 进行摘要和分类（保留原有实现）"""
+        if use_fulltext:
+            return self._summarize_from_fulltext(articles, max_length)
+        else:
+            return self._summarize_from_abstract(articles, max_length)
 
     def _summarize_from_abstract(self, articles: List[Dict], max_length: int = 100) -> List[tuple]:
         """基于摘要生成总结（用于 tier1）"""

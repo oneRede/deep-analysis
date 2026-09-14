@@ -957,5 +957,10 @@ output:
 # AI 摘要与分类配置
 ai_summary:
   enabled: true
-  batch_size: 10  # 每批处理的文章数量（建议5-20篇）
-  batch_delay: 1.0  # 批次之间的延迟（秒）
+  classifier: "local"  # 分类器类型: "local" (本地模型) 或 "deepseek" (DeepSeek API)
+  batch_size: 5  # 每批处理的文章数量（本地模型建议3-5篇，API可用10-20篇）
+  batch_delay: 0.5  # 批次之间的延迟（秒）
+
+  # 本地模型配置（当 classifier="local" 时使用）
+  local_model: "qwen2.5:3b"  # Ollama 模型名称，推荐: qwen2.5:3b, llama3.2:3b, gemma2:2b
+  ollama_url: "http://localhost:11434"  # Ollama API 地址
