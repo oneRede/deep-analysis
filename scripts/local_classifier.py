@@ -6,12 +6,64 @@
 
 import requests
 import json
+import re
 from typing import List, Dict, Tuple, Optional
 import time
 
 
 class LocalClassifier:
     """本地模型分类器，使用 Ollama API"""
+
+    # 高置信度来源 → 分类名提示，避免小模型把所有内容都归入 AI应用
+    SOURCE_HINTS = [
+        ("cs.RO", "具身智能"),
+        ("机器人", "具身智能"),
+        ("cs.AR", "AI芯片"),
+        ("硬件架构", "AI芯片"),
+        ("cs.PL", "编译器"),
+        ("编程语言", "编译器"),
+        ("physics.optics", "光计算"),
+        ("光学", "光计算"),
+        ("Defense News", "军事技术"),
+        ("Military Times", "军事技术"),
+        ("Breaking Defense", "军事技术"),
+        ("Stars and Stripes", "军事技术"),
+        ("Military.com", "军事技术"),
+        ("The War Zone", "军事技术"),
+        ("Army Technology", "军事技术"),
+        ("Jane", "军事技术"),
+        ("环球网", "军事技术"),
+        ("Bloomberg Markets", "经济"),
+        ("Bloomberg Economics", "经济"),
+        ("Financial Times", "经济"),
+        ("Wall Street Journal Markets", "经济"),
+        ("Wall Street Journal US Business", "经济"),
+        ("Economist Business", "经济"),
+        ("Economist Finance", "经济"),
+        ("CNBC Top News", "经济"),
+        ("New York Times Business", "经济"),
+        ("Bloomberg Politics", "时政"),
+        ("CNBC World News", "时政"),
+        ("New York Times World", "时政"),
+        ("New York Times HomePage", "时政"),
+        ("Economist International", "时政"),
+        ("Economist - The World", "时政"),
+        ("Wall Street Journal World", "时政"),
+    ]
+
+    # 无 routing_rules 配置时的内置兜底规则
+    DEFAULT_ROUTING_RULES = [
+        "与机器人/机械臂/人形机器人/运动控制/操作/导航/自动驾驶相关 → 具身智能",
+        "发布新模型、模型架构、训练方法、参数规模、MoE/RLHF/蒸馏/量化相关 → AI模型",
+        "基准测试(benchmark)/评估/部署/推理服务/工具链/Agent框架/RAG系统相关 → Harness工程",
+        "芯片/加速器/GPU/HBM/ASIC/NPU/存算一体/半导体制造相关 → AI芯片",
+        "编译器/IR/JIT/静态分析/代码生成相关 → 编译器",
+        "光子/光芯片/硅光/光神经网络/光互连相关 → 光计算",
+        "军事装备/武器系统/国防/军队/军事行动相关 → 军事技术",
+        "金融/股市/债券/IPO/通胀/央行/商业/企业财报相关 → 经济",
+        "国际政治/外交/政府决策/选举/制裁/国家安全相关 → 时政",
+        "仅当文章是 AI 在具体行业落地的产品/解决方案时才 → AI应用",
+    ]
 
     def __init__(
         self,
@@ -90,12 +142,62 @@ class LocalClassifier:
             print(f"⚠️  Ollama API 调用失败: {str(e)}")
             return None
 
+    def _build_routing_block(self, routing_rules: Optional[List[str]]) -> str:
+        """构建分类路由规则文本"""
+        rules = routing_rules or self.DEFAULT_ROUTING_RULES
+        return "\n".join(f"{i}. {rule}" for i, rule in enumerate(rules, 1))
+
+    def _build_source_hint(self, article: Dict) -> str:
+        """根据来源给出分类提示，帮助小模型避免一律归入 AI应用"""
+        source = article.get('source', '') or ''
+        for needle, category_name in self.SOURCE_HINTS:
+            if needle in source:
+                return (
+                    f"\n来源提示：该文章来自「{source}」，通常属于「{category_name}」，"
+                    f"若无明显理由请优先归入该类别。\n"
+                )
+        return ""
+
+    def _resolve_category_key(
+        self, category_name: str, name_to_key: Dict[str, str], default_category: str
+    ) -> str:
+        """把模型返回的分类名解析为分类 key，容忍空白/引号/轻微偏差"""
+        normalized = (category_name or '').strip().strip('"').strip("'").strip()
+        if normalized in name_to_key:
+            return name_to_key[normalized]
+        for name, key in name_to_key.items():
+            if name in normalized or normalized in name:
+                return key
+        return default_category
+
+    def _parse_json_response(self, response: str) -> Optional[Dict]:
+        """从模型响应中稳健地提取 JSON 对象"""
+        if not response:
+            return None
+
+        cleaned = response.replace('```json', '').replace('```', '').strip()
+
+        start = cleaned.find('{')
+        end = cleaned.rfind('}')
+        candidate = cleaned[start:end + 1] if start != -1 and end > start else cleaned
+
+        try:
+            return json.loads(candidate)
+        except json.JSONDecodeError:
+            # 修复非法的反斜杠转义（小模型常见问题）
+            fixed = re.sub(r'\\(?!["\\/bfnrtu])', r'\\\\', candidate)
+            try:
+                return json.loads(fixed)
+            except json.JSONDecodeError:
+                return None
+
     def classify_and_summarize_batch(
         self,
         articles: List[Dict],
         categories: List[Dict],
         default_category: str,
-        max_length: int = 200
+        max_length: int = 200,
+        routing_rules: Optional[List[str]] = None
     ) -> List[Tuple[Optional[str], Optional[str]]]:
         """
         批量分类和生成摘要
@@ -105,6 +207,7 @@ class LocalClassifier:
             categories: 分类配置列表
             default_category: 默认分类 key
             max_length: 摘要最大长度
+            routing_rules: 分类路由规则（来自 categories.yml）
 
         Returns:
             List of (summary, category_key) tuples
@@ -113,13 +216,11 @@ class LocalClassifier:
 
         # 构建分类描述
         category_descriptions = []
-        category_names = []
         for cat in categories:
             category_descriptions.append(f"   - {cat['name']}：{cat['description']}")
-            category_names.append(cat['name'])
 
         category_name_to_key = {cat['name']: cat['key'] for cat in categories}
-        category_key_to_name = {cat['key']: cat['name'] for cat in categories}
+        routing_block = self._build_routing_block(routing_rules)
 
         system_prompt = "你是一个专业的AI技术文章分析助手。请严格按照JSON格式返回结果。"
 
@@ -137,18 +238,24 @@ class LocalClassifier:
                 content = article.get('summary', '')[:1000]
                 content_type = "摘要"
 
-            prompt = f"""请分析以下文章，完成两个任务：
-1. 生成一个简洁的中文总结（{max_length}字以内）
-2. 将文章分类到以下类别之一：
+            source_hint = self._build_source_hint(article)
+
+            prompt = f"""你是专业的AI技术文章分类助手。请先判断文章主题，再选择最贴切的类别。
+
+分类路由规则（按优先级判断）：
+{routing_block}
+注意：AI应用不是兜底类别。无法归入上述具体类别时优先考虑 AI模型 或 Harness工程，只有确实是 AI 在具体行业落地的产品/解决方案时才选 AI应用。
+{source_hint}
+可选类别：
 {chr(10).join(category_descriptions)}
 
 文章信息：
 标题：{title}
 {content_type}：{content}
 
-请严格按照以下JSON格式返回（不要有markdown代码块标记）：
+请只返回JSON对象（不要有markdown代码块标记）：
 {{
-  "summary": "简洁的中文总结",
+  "summary": "{max_length}字以内的中文总结",
   "category": "类别名称"
 }}
 
@@ -156,34 +263,23 @@ class LocalClassifier:
 
             response = self._call_ollama(prompt, system_prompt)
 
-            if response:
-                try:
-                    # 清理可能的 markdown 代码块标记
-                    response = response.replace('```json', '').replace('```', '').strip()
+            parsed = self._parse_json_response(response) if response else None
 
-                    # 尝试解析 JSON
-                    parsed = json.loads(response)
+            if parsed:
+                summary = (parsed.get('summary') or '').strip()
+                category_name = parsed.get('category') or ''
+                category_key = self._resolve_category_key(
+                    category_name, category_name_to_key, default_category
+                )
 
-                    summary = parsed.get('summary', '').strip()
-                    category_name = parsed.get('category', '').strip()
+                # 截断过长的摘要
+                if len(summary) > max_length + 50:
+                    summary = summary[:max_length] + "..."
 
-                    # 转换分类名称为 key
-                    category_key = category_name_to_key.get(
-                        category_name,
-                        default_category
-                    )
-
-                    # 截断过长的摘要
-                    if len(summary) > max_length + 50:
-                        summary = summary[:max_length] + "..."
-
-                    results.append((summary, category_key))
-
-                except json.JSONDecodeError as e:
-                    print(f"⚠️  JSON 解析失败: {str(e)}")
-                    print(f"    响应内容: {response[:200]}...")
-                    results.append((None, None))
+                results.append((summary, category_key))
             else:
+                if response:
+                    print(f"⚠️  JSON 解析失败: {response[:200]}...")
                 results.append((None, None))
 
             # 短暂延迟，避免过载
@@ -196,7 +292,8 @@ class LocalClassifier:
         article: Dict,
         categories: List[Dict],
         default_category: str,
-        max_length: int = 200
+        max_length: int = 200,
+        routing_rules: Optional[List[str]] = None
     ) -> Tuple[Optional[str], Optional[str]]:
         """
         单篇文章分类和生成摘要
@@ -206,6 +303,7 @@ class LocalClassifier:
             categories: 分类配置列表
             default_category: 默认分类 key
             max_length: 摘要最大长度
+            routing_rules: 分类路由规则（来自 categories.yml）
 
         Returns:
             (summary, category_key) tuple
@@ -214,7 +312,8 @@ class LocalClassifier:
             [article],
             categories,
             default_category,
-            max_length
+            max_length,
+            routing_rules
         )
         return results[0] if results else (None, None)
 

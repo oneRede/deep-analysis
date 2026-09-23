@@ -1,46 +1,60 @@
 # AI 文章分类配置
 # 用于 RSS 聚合器的文章分类
 
+# 分类路由规则：写入分类 prompt，按优先级帮助小模型正确归类。
+# 顺序即优先级，AI应用必须放在最后，避免成为兜底类别。
+routing_rules:
+  - "与机器人/机械臂/人形机器人/运动控制/操作/导航/自动驾驶相关 → 具身智能"
+  - "发布新模型、模型架构、训练方法、参数规模、MoE/RLHF/蒸馏/量化相关 → AI模型"
+  - "基准测试(benchmark)/评估/部署/推理服务/工具链/Agent框架/RAG系统相关 → Harness工程"
+  - "芯片/加速器/GPU/HBM/ASIC/NPU/存算一体/半导体制造相关 → AI芯片"
+  - "编译器/IR/JIT/静态分析/代码生成相关 → 编译器"
+  - "光子/光芯片/硅光/光神经网络/光互连相关 → 光计算"
+  - "军事装备/武器系统/国防/军队/军事行动相关 → 军事技术"
+  - "金融/股市/债券/IPO/通胀/央行/商业/企业财报相关 → 经济"
+  - "国际政治/外交/政府决策/选举/制裁/国家安全相关 → 时政"
+  - "仅当文章是 AI 在具体行业落地的产品/解决方案（如 AI 影视制作平台、AI 客服）时才 → AI应用"
+
 categories:
-  - key: ai_application
-    name: AI应用
-    description: 关于AI在实际场景中的应用、产品、解决方案
+  - key: ai_model
+    name: AI模型
+    description: "新模型发布、模型架构、训练方法、参数规模、蒸馏/量化/微调、MoE、RLHF（关键词：model, GPT, Claude, Llama, training, parameters, fine-tuning）"
 
   - key: harness_engineering
     name: Harness工程
-    description: 关于AI工程实践、评估、测试、部署、监控、工具链、MLOps
-
-  - key: ai_model
-    name: AI模型
-    description: 关于新模型、模型架构、训练方法、模型优化
+    description: "AI工程实践、评估、基准测试(benchmark)、部署、推理服务、监控、工具链、MLOps、Agent框架、RAG系统（关键词：benchmark, evaluation, pipeline, deployment, inference, agent, RAG）"
 
   - key: embodied_ai
     name: 具身智能
-    description: 关于机器人、物理世界交互、embodied AI
+    description: "机器人、机械臂、人形机器人、运动控制、操作/抓取、导航、自动驾驶、embodied AI（关键词：robot, manipulation, locomotion, humanoid, grasp, navigation）"
 
   - key: ai_chip
     name: AI芯片
-    description: 关于AI训练芯片、AI推理芯片
-
-  - key: optical_computing
-    name: 光计算
-    description: 关于光子计算、光芯片、硅光技术、光神经网络、光互连、光学处理器
-
-  - key: military_tech
-    name: 军事技术
-    description: 关于军事装备、武器系统、国防技术、军事战略、防务政策、军事行动
+    description: "AI训练/推理芯片、加速器、GPU、HBM、ASIC、NPU、存算一体、半导体制造（关键词：chip, accelerator, GPU, HBM, ASIC, NPU）"
 
   - key: compiler
     name: 编译器
-    description: 关于编译器技术、优化、前端后端、IR设计、JIT、AOT、静态分析、代码生成
+    description: "编译器技术、优化、前端后端、IR设计、JIT、AOT、静态分析、代码生成（关键词：compiler, JIT, IR, codegen, LLVM）"
+
+  - key: optical_computing
+    name: 光计算
+    description: "光子计算、光芯片、硅光技术、光神经网络、光互连、光学处理器（关键词：photonic, optical, silicon photonics）"
+
+  - key: military_tech
+    name: 军事技术
+    description: "军事装备、武器系统、国防技术、军事战略、防务政策、军事行动、军队（关键词：military, defense, weapon, missile, army, navy, troops）"
 
   - key: economy
     name: 经济
-    description: 关于经济动态、金融市场、商业趋势、宏观经济、产业分析、企业财报
+    description: "经济动态、金融市场、股市、债券、IPO、通胀、央行、商业趋势、企业财报（关键词：market, stock, IPO, inflation, Fed, earnings, business）"
 
   - key: politics
     name: 时政
-    description: 关于国际政治、地缘政治、外交关系、政策法规、政府决策、国家安全、社会治理
+    description: "国际政治、地缘政治、外交关系、政策法规、政府决策、国家安全、社会治理、选举（关键词：politics, government, election, diplomacy, sanctions）"
+
+  - key: ai_application
+    name: AI应用
+    description: "AI 在具体行业/场景落地的产品与解决方案（如 AI 影视制作平台、AI 客服、AI 医疗产品）。注意：学术论文、模型发布、基准测试、机器人研究、芯片，以及非 AI 的时政/财经/军事新闻都不得归入此类"
 
 # 默认分类（如果无法分类时使用）
 default_category: ai_application

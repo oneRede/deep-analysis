@@ -50,6 +50,7 @@ class RSSAggregator:
             self.categories = categories_config['categories']
             self.default_category = categories_config.get('default_category', 'ai_application')
             self.enable_uncategorized = categories_config.get('enable_uncategorized', True)
+            self.routing_rules = categories_config.get('routing_rules', [])
 
         # 构建分类映射
         self.category_name_to_key = {cat['name']: cat['key'] for cat in self.categories}
@@ -379,7 +380,8 @@ class RSSAggregator:
                 articles_to_process,
                 self.categories,
                 self.default_category,
-                max_length
+                max_length,
+                self.routing_rules
             )
         except Exception as e:
             print(f"⚠️  本地模型处理失败: {str(e)}")
@@ -411,11 +413,18 @@ class RSSAggregator:
 
             category_list = '/'.join(category_names)
             category_count = len(category_names)
+            routing_block = "\n".join(
+                f"{i}. {rule}" for i, rule in enumerate(self.routing_rules, 1)
+            )
 
             prompt = f"""请分析以下 {len(articles)} 篇文章，为每篇文章完成两个任务：
 1. 基于标题和摘要，生成一个简洁的中文总结（不超过{max_length}字）
 2. 将文章分类到以下类别之一：
 {chr(10).join(category_descriptions)}
+
+分类路由规则（按优先级判断）：
+{routing_block}
+注意：AI应用不是兜底类别，只有确实是 AI 在具体行业落地的产品/解决方案时才选 AI应用。
 
 文章列表：
 {''.join(articles_text)}
@@ -480,11 +489,18 @@ class RSSAggregator:
 
             category_list = '/'.join(category_names)
             category_count = len(category_names)
+            routing_block = "\n".join(
+                f"{i}. {rule}" for i, rule in enumerate(self.routing_rules, 1)
+            )
 
             prompt = f"""请分析以下 {len(articles_with_content)} 篇文章，为每篇文章完成两个任务：
 1. 基于全文内容，生成一个详细的中文总结（不超过{max_length}字）
 2. 将文章分类到以下类别之一：
 {chr(10).join(category_descriptions)}
+
+分类路由规则（按优先级判断）：
+{routing_block}
+注意：AI应用不是兜底类别，只有确实是 AI 在具体行业落地的产品/解决方案时才选 AI应用。
 
 文章列表：
 {''.join(articles_text)}
