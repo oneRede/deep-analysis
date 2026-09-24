@@ -14199,3 +14199,170 @@ Call log:
    1. 浏览报告，标记感兴趣的文章
    2. 将候选 URL 喂给 Claude，运行深度分析
    3. 对确认收录的内容使用 /curate-research skill
+🚀 运行 RSS 聚合器...
+
+/Users/rede/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+✅ 已从 /Users/rede/Git/deep_analysis/.env 加载环境变量
+============================================================
+📰 AI技术追踪 - 每日报告
+📅 报告日期: 2026-09-24 (昨天)
+🕐 运行时间: 2026-09-25 07:00:00
+============================================================
+
+🤖 使用本地模型: qwen2.5:3b
+✅ Ollama 连接成功，模型 qwen2.5:3b 可用
+
+🚀 开始抓取 RSS feeds - 2026-09-25 07:00:00
+
+
+============================================================
+🕷️  自定义网页爬取
+============================================================
+
+🕷️  爬取: DeepSeek Blog (https://deepseek.ai/blog)
+✅ DeepSeek Blog: 10 篇文章
+🕷️  爬取: DeepSeek Research (https://www.deepseek.ai/research)
+✅ DeepSeek Research: 10 篇文章
+🕷️  爬取: Qwen Blog (https://qwenlm.github.io/blog/)
+✅ Qwen Blog: 5 篇文章
+🕷️  爬取: Zhipu AI Research (https://www.zhipuai.cn/en/research/)
+✅ Zhipu AI Research: 6 篇文章
+🕷️  爬取: Kimi Blog (https://platform.kimi.ai/blog)
+✅ Kimi Blog: 9 篇文章
+🕷️  爬取: Anthropic Research (https://www.anthropic.com/research)
+✅ Anthropic Research: 10 篇文章
+🕷️  爬取 OpenAI (使用Playwright)
+🕷️  爬取: OpenAI News (https://openai.com/news)
+  📡 正在访问页面...
+  ⏳ 等待Cloudflare验证（最多45秒）...
+  ✅ Cloudflare验证通过（耗时0秒）
+  ⏳ 等待内容加载...
+✅ OpenAI News: 12 篇文章
+🕷️  爬取: OpenAI Research (https://openai.com/research)
+  📡 正在访问页面...
+  ⏳ 等待Cloudflare验证（最多45秒）...
+  ✅ Cloudflare验证通过（耗时0秒）
+  ⏳ 等待内容加载...
+✅ OpenAI Research: 0 篇文章
+✅ OpenAI 总计: 12 篇文章
+🕷️  爬取: xAI Blog (https://x.ai/blog)
+✅ xAI Blog: 5 篇文章
+🕷️  爬取: Physical Intelligence (https://www.physicalintelligence.company/blog)
+❌ 爬取 Physical Intelligence (https://www.physicalintelligence.company/blog) 失败: 429 Client Error: Too Many Requests for url: https://www.physicalintelligence.company/blog
+🕷️  爬取: Physical Intelligence (https://www.physicalintelligence.company/research)
+❌ 爬取 Physical Intelligence (https://www.physicalintelligence.company/research) 失败: 429 Client Error: Too Many Requests for url: https://www.physicalintelligence.company/research
+🕷️  爬取: Skild AI (https://www.skild.ai/blogs)
+🕷️  爬取: Figure AI (https://www.figure.ai/news)
+🕷️  爬取: 1X Technologies (https://www.1x.tech/discover)
+🕷️  爬取: UBTECH (优必选) (https://www.ubtrobot.com/en/news-list)
+🕷️  爬取: Unitree (宇树科技) (https://www.unitree.com/)
+🕷️  爬取: Agibot (智元机器人) (https://agibot.com/news)
+✅ Skild AI: 1 篇文章
+✅ 1X Technologies: 11 篇文章
+✅ UBTECH (优必选): 4 篇文章
+✅ Unitree (宇树科技): 4 篇文章
+✅ Agibot (智元机器人): 7 篇文章
+🕷️  爬取: Agibot Research (https://agibot.com/research/)
+✅ Agibot Research: 0 篇研究
+🕷️  爬取: Cerebras (https://www.cerebras.ai/blog)
+✅ Cerebras: 44 篇文章
+🕷️  爬取: Cerebras (https://www.cerebras.ai/publications)
+✅ Cerebras: 44 篇文章
+🕷️  爬取: SambaNova (https://sambanova.ai/blog)
+✅ SambaNova: 1 篇文章
+🕷️  爬取: Tenstorrent (https://tenstorrent.com/newsroom)
+✅ Tenstorrent: 13 篇文章
+🕷️  爬取: D-Matrix (https://www.d-matrix.ai/blog/)
+  📡 尝试curl方式...
+  ✅ curl成功访问
+✅ D-Matrix: 6 篇文章
+🕷️  爬取: Etched (https://etched.com/progress)
+✅ Etched: 3 篇文章
+🕷️  爬取: Etched (https://etched.com/research)
+✅ Etched: 3 篇文章
+🕷️  爬取: Cambricon (寒武纪) (https://www.cambricon.com/)
+✅ Cambricon (寒武纪): 0 篇文章
+🕷️  爬取: Iluvatar (天数智芯) (https://www.iluvatar.com/news)
+✅ Iluvatar (天数智芯): 0 篇文章
+🕷️  爬取: Iluvatar (天数智芯) (https://www.iluvatar.com/en/research)
+✅ Iluvatar (天数智芯): 0 篇文章
+🕷️  爬取: Enflame (燧原科技) (https://www.enflame-tech.com/news)
+✅ Enflame (燧原科技): 8 篇文章
+🕷️  爬取: MetaX (沐曦) (https://www.metax-tech.com/news.html)
+✅ MetaX (沐曦): 0 篇文章
+🕷️  爬取: Biren (壁仞科技) (https://www.birentech.com/news/)
+✅ Biren (壁仞科技): 8 篇文章
+  🤖 批量分析 16 篇文章...
+     批次 1/4: 5 篇
+     处理 tier1 文章: 5 篇（基于摘要）
+       处理 1/5: EconomicsProject Swap: What happens when agents tr...
+       处理 2/5: ScienceHow Claude is uplifting biomolecular modeli...
+       处理 3/5: Frontier Red TeamMeasuring tactical intelligence t...
+       处理 4/5: Two years of OpenAI AcademyCompanySep 23, 2026...
+       处理 5/5: ChatGPT Ads expands to Southeast Asia and TaiwanPr...
+     批次 2/4: 5 篇
+     处理 tier1 文章: 5 篇（基于摘要）
+       处理 1/5: Airbnb expands access to GPT-6 AstraCompanySep 23,...
+       处理 2/5: Better prompt caching for GPT-6ProductSep 22, 2026...
+       处理 3/5: Introducing GPT-6 Sol and LunaProductSep 22, 2026...
+       处理 4/5: Priorities and principles for effective third part...
+       处理 5/5: AGIBOT and Chimelong Launch Large-Scale Embodied A...
+     批次 3/4: 5 篇
+     处理 tier1 文章: 5 篇（基于摘要）
+       处理 1/5: AGIBOT Releases AGIBOT WORLD 2026 Theme 3 for Real...
+       处理 2/5: Why Cyber Defense Needs Faster InferenceSeptember ...
+       处理 3/5: The rise of slow personal assistantsSeptember 24, ...
+       处理 4/5: TT-DeployTenstorrent hosted TT-Deploy on May 1, la...
+       处理 5/5: d-Matrix Adopts NVIDIA NVLink Fusion Rackscale Inf...
+     批次 4/4: 1 篇
+     处理 tier1 文章: 1 篇（基于摘要）
+       处理 1/1: 2026-09-10壁仞科技与上海大学共建“集成电路智能芯片联合实验室”...
+✅ 自定义网页爬取: 16 篇文章
+
+============================================================
+🕷️  军事新闻网站爬取
+============================================================
+
+📡 爬取: Jane's Defence
+  找到 0 个文章链接，开始获取详细内容...
+✅ Jane's Defence: 0 篇文章
+📡 爬取: Army Technology
+  ⚠️  cloudscraper失败: 403 Client Error: Forbidden for url: https://www.army-technology.com/
+✅ Army Technology: 9 篇文章
+📡 爬取: 环球网军事
+✅ 环球网军事: 0 篇文章
+
+✅ 军事新闻爬取总计: 9 篇文章
+
+  🤖 批量分析 7 篇文章...
+     批次 1/2: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Estonian firms demonstrate latest UAS tech in live...
+       处理 2/5: US approves air defence upgrades deal for Ukraine...
+       处理 3/5: Nokia Defense and C3IA partner to boost UK MoD dig...
+       处理 4/5: Aselsan reports strong revenue, growth and record ...
+       处理 5/5: Saab reports increased order bookings in Q4 2024...
+     批次 2/2: 2 篇
+     处理 tier2/3/military 文章: 2 篇（基于全文）
+       处理 1/2: MilDef sees 89% jump in Q4 order intake and strong...
+       处理 2/2: Milrem aspire to lead allied UxS integration borde...
+
+============================================================
+📂 TIER1 (13 个信源)
+============================================================
+
+📡 抓取: arXiv cs.CL (计算与语言) (https://export.arxiv.org/rss/cs.CL)
+  🤖 批量分析 89 篇文章...
+     批次 1/18: 5 篇
+     处理 tier1 文章: 5 篇（基于摘要）
+       处理 1/5: COMED: The Missing Middle Between Routing and Coll...
+       处理 2/5: Experts Rise Where LLMs Disagree: Using Cross-Mode...
+       处理 3/5: Classifying Interpretive Canons at the Sentence Le...
+       处理 4/5: LEGO: Synergizing Expert GraphRAG and Expert Chain...
+       处理 5/5: LexLattice: Multilingual Extractive Summarization ...
+     批次 2/18: 5 篇
+     处理 tier1 文章: 5 篇（基于摘要）
+       处理 1/5: EduBehaviors: Assertion-based Schemas for Auditabl...
+       处理 2/5: Giving Credit Where It's Due: Redundancy-Aware Lea...
+       处理 3/5: Count Evidence, Not Sentences: Tempered Evidence F...
