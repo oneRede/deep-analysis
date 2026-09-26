@@ -16743,3 +16743,570 @@ Call log:
    1. 浏览报告，标记感兴趣的文章
    2. 将候选 URL 喂给 Claude，运行深度分析
    3. 对确认收录的内容使用 /curate-research skill
+🚀 运行 RSS 聚合器...
+
+/Users/rede/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+✅ 已从 /Users/rede/Git/deep_analysis/.env 加载环境变量
+============================================================
+📰 AI技术追踪 - 每日报告
+📅 报告日期: 2026-09-26 (昨天)
+🕐 运行时间: 2026-09-27 07:00:01
+============================================================
+
+🤖 使用本地模型: qwen2.5:3b
+✅ Ollama 连接成功，模型 qwen2.5:3b 可用
+
+🚀 开始抓取 RSS feeds - 2026-09-27 07:00:01
+
+
+============================================================
+🕷️  自定义网页爬取
+============================================================
+
+🕷️  爬取: DeepSeek Blog (https://deepseek.ai/blog)
+✅ DeepSeek Blog: 10 篇文章
+🕷️  爬取: DeepSeek Research (https://www.deepseek.ai/research)
+✅ DeepSeek Research: 10 篇文章
+🕷️  爬取: Qwen Blog (https://qwenlm.github.io/blog/)
+✅ Qwen Blog: 5 篇文章
+🕷️  爬取: Zhipu AI Research (https://www.zhipuai.cn/en/research/)
+✅ Zhipu AI Research: 6 篇文章
+🕷️  爬取: Kimi Blog (https://platform.kimi.ai/blog)
+✅ Kimi Blog: 9 篇文章
+🕷️  爬取: Anthropic Research (https://www.anthropic.com/research)
+✅ Anthropic Research: 10 篇文章
+🕷️  爬取 OpenAI (使用Playwright)
+🕷️  爬取: OpenAI News (https://openai.com/news)
+  📡 正在访问页面...
+  ⏳ 等待Cloudflare验证（最多45秒）...
+  ✅ Cloudflare验证通过（耗时0秒）
+  ⏳ 等待内容加载...
+✅ OpenAI News: 12 篇文章
+🕷️  爬取: OpenAI Research (https://openai.com/research)
+  📡 正在访问页面...
+  ⏳ 等待Cloudflare验证（最多45秒）...
+  ✅ Cloudflare验证通过（耗时0秒）
+  ⏳ 等待内容加载...
+✅ OpenAI Research: 0 篇文章
+✅ OpenAI 总计: 12 篇文章
+🕷️  爬取: xAI Blog (https://x.ai/blog)
+✅ xAI Blog: 5 篇文章
+🕷️  爬取: Physical Intelligence (https://www.physicalintelligence.company/blog)
+❌ 爬取 Physical Intelligence (https://www.physicalintelligence.company/blog) 失败: 429 Client Error: Too Many Requests for url: https://www.physicalintelligence.company/blog
+🕷️  爬取: Physical Intelligence (https://www.physicalintelligence.company/research)
+❌ 爬取 Physical Intelligence (https://www.physicalintelligence.company/research) 失败: 429 Client Error: Too Many Requests for url: https://www.physicalintelligence.company/research
+🕷️  爬取: Skild AI (https://www.skild.ai/blogs)
+🕷️  爬取: Figure AI (https://www.figure.ai/news)
+🕷️  爬取: 1X Technologies (https://www.1x.tech/discover)
+🕷️  爬取: UBTECH (优必选) (https://www.ubtrobot.com/en/news-list)
+🕷️  爬取: Unitree (宇树科技) (https://www.unitree.com/)
+🕷️  爬取: Agibot (智元机器人) (https://agibot.com/news)
+✅ Skild AI: 1 篇文章
+✅ 1X Technologies: 11 篇文章
+✅ UBTECH (优必选): 4 篇文章
+✅ Unitree (宇树科技): 4 篇文章
+✅ Agibot (智元机器人): 7 篇文章
+🕷️  爬取: Agibot Research (https://agibot.com/research/)
+✅ Agibot Research: 0 篇研究
+🕷️  爬取: Cerebras (https://www.cerebras.ai/blog)
+✅ Cerebras: 44 篇文章
+🕷️  爬取: Cerebras (https://www.cerebras.ai/publications)
+✅ Cerebras: 44 篇文章
+🕷️  爬取: SambaNova (https://sambanova.ai/blog)
+✅ SambaNova: 1 篇文章
+🕷️  爬取: Tenstorrent (https://tenstorrent.com/newsroom)
+✅ Tenstorrent: 13 篇文章
+🕷️  爬取: D-Matrix (https://www.d-matrix.ai/blog/)
+  📡 尝试curl方式...
+  ✅ curl成功访问
+✅ D-Matrix: 6 篇文章
+🕷️  爬取: Etched (https://etched.com/progress)
+✅ Etched: 3 篇文章
+🕷️  爬取: Etched (https://etched.com/research)
+✅ Etched: 3 篇文章
+🕷️  爬取: Cambricon (寒武纪) (https://www.cambricon.com/)
+✅ Cambricon (寒武纪): 0 篇文章
+🕷️  爬取: Iluvatar (天数智芯) (https://www.iluvatar.com/news)
+✅ Iluvatar (天数智芯): 0 篇文章
+🕷️  爬取: Iluvatar (天数智芯) (https://www.iluvatar.com/en/research)
+✅ Iluvatar (天数智芯): 0 篇文章
+🕷️  爬取: Enflame (燧原科技) (https://www.enflame-tech.com/news)
+✅ Enflame (燧原科技): 8 篇文章
+🕷️  爬取: MetaX (沐曦) (https://www.metax-tech.com/news.html)
+✅ MetaX (沐曦): 0 篇文章
+🕷️  爬取: Biren (壁仞科技) (https://www.birentech.com/news/)
+✅ Biren (壁仞科技): 8 篇文章
+✅ 自定义网页爬取: 0 篇文章
+
+============================================================
+🕷️  军事新闻网站爬取
+============================================================
+
+📡 爬取: Jane's Defence
+  找到 0 个文章链接，开始获取详细内容...
+✅ Jane's Defence: 0 篇文章
+📡 爬取: Army Technology
+  ⚠️  cloudscraper失败: 403 Client Error: Forbidden for url: https://www.army-technology.com/
+✅ Army Technology: 9 篇文章
+📡 爬取: 环球网军事
+✅ 环球网军事: 0 篇文章
+
+✅ 军事新闻爬取总计: 9 篇文章
+
+
+============================================================
+📂 TIER1 (13 个信源)
+============================================================
+
+📡 抓取: arXiv cs.CL (计算与语言) (https://export.arxiv.org/rss/cs.CL)
+✅ arXiv cs.CL (计算与语言): 0 篇新文章
+📡 抓取: arXiv cs.AI (人工智能) (https://export.arxiv.org/rss/cs.AI)
+✅ arXiv cs.AI (人工智能): 0 篇新文章
+📡 抓取: arXiv cs.LG (机器学习) (https://export.arxiv.org/rss/cs.LG)
+✅ arXiv cs.LG (机器学习): 0 篇新文章
+📡 抓取: arXiv cs.RO (机器人) (https://export.arxiv.org/rss/cs.RO)
+✅ arXiv cs.RO (机器人): 0 篇新文章
+📡 抓取: arXiv cs.CV (计算机视觉) (https://export.arxiv.org/rss/cs.CV)
+✅ arXiv cs.CV (计算机视觉): 0 篇新文章
+📡 抓取: arXiv cs.AR (硬件架构) (https://export.arxiv.org/rss/cs.AR)
+✅ arXiv cs.AR (硬件架构): 0 篇新文章
+📡 抓取: arXiv physics.optics (光学/光计算) (https://export.arxiv.org/rss/physics.optics)
+✅ arXiv physics.optics (光学/光计算): 0 篇新文章
+📡 抓取: arXiv cs.ET (新兴技术) (https://export.arxiv.org/rss/cs.ET)
+✅ arXiv cs.ET (新兴技术): 0 篇新文章
+📡 抓取: arXiv cs.PL (编程语言) (https://export.arxiv.org/rss/cs.PL)
+✅ arXiv cs.PL (编程语言): 0 篇新文章
+📡 抓取: NVIDIA Technical Blog (https://developer.nvidia.com/blog/feed/)
+✅ NVIDIA Technical Blog: 0 篇新文章
+📡 抓取: NVIDIA AI Blog (https://blogs.nvidia.com/blog/category/deep-learning/feed/)
+✅ NVIDIA AI Blog: 0 篇新文章
+📡 抓取: Google DeepMind Blog (https://deepmind.google/blog/rss.xml)
+⚠️  警告: Google DeepMind Blog - document declared as us-ascii, but parsed as utf-8
+📡 抓取: SK hynix Newsroom (https://news.skhynix.com/en/feed/)
+✅ SK hynix Newsroom: 0 篇新文章
+
+============================================================
+📂 TIER2 (22 个信源)
+============================================================
+
+📡 抓取: CMU Machine Learning Blog (https://blog.ml.cmu.edu/feed/)
+✅ CMU Machine Learning Blog: 0 篇新文章
+📡 抓取: Hugging Face Blog (https://huggingface.co/blog/feed.xml)
+✅ Hugging Face Blog: 0 篇新文章
+📡 抓取: The Gradient (https://thegradient.pub/rss/)
+✅ The Gradient: 0 篇新文章
+📡 抓取: Together AI Blog (https://www.together.ai/blog/rss.xml)
+✅ Together AI Blog: 0 篇新文章
+📡 抓取: LLVM Blog (https://blog.llvm.org/index.xml)
+✅ LLVM Blog: 0 篇新文章
+📡 抓取: Rust Blog (https://blog.rust-lang.org/feed.xml)
+✅ Rust Blog: 0 篇新文章
+📡 抓取: V8 Blog (https://v8.dev/blog.atom)
+✅ V8 Blog: 0 篇新文章
+📡 抓取: WebKit Blog (https://webkit.org/feed/)
+✅ WebKit Blog: 0 篇新文章
+📡 抓取: Mozilla Hacks (https://hacks.mozilla.org/feed/)
+✅ Mozilla Hacks: 0 篇新文章
+📡 抓取: MaskRay (Fangrui Song) (https://maskray.me/blog/atom.xml)
+⚠️  警告: MaskRay (Fangrui Song) - document declared as us-ascii, but parsed as utf-8
+📡 抓取: Embedded in Academia (John Regehr) (https://blog.regehr.org/feed)
+✅ Embedded in Academia (John Regehr): 0 篇新文章
+📡 抓取: Eli Bendersky's website (https://eli.thegreenplace.net/feeds/all.atom.xml)
+✅ Eli Bendersky's website: 0 篇新文章
+📡 抓取: Adrian Sampson's blog (https://www.cs.cornell.edu/~asampson/blog.xml)
+✅ Adrian Sampson's blog: 0 篇新文章
+📡 抓取: Daniel Lemire's blog (https://lemire.me/blog/feed/)
+✅ Daniel Lemire's blog: 0 篇新文章
+📡 抓取: Meta LLaMA Releases (https://github.com/meta-llama/llama-models/releases.atom)
+✅ Meta LLaMA Releases: 0 篇新文章
+📡 抓取: Mistral AI Releases (https://github.com/mistralai/mistral-inference/releases.atom)
+✅ Mistral AI Releases: 0 篇新文章
+📡 抓取: OpenAI GPT Releases (https://github.com/openai/openai-python/releases.atom)
+✅ OpenAI GPT Releases: 0 篇新文章
+📡 抓取: Anthropic Claude Releases (https://github.com/anthropics/anthropic-sdk-python/releases.atom)
+✅ Anthropic Claude Releases: 0 篇新文章
+📡 抓取: SambaNova Blog (https://sambanova.ai/blog/rss.xml)
+✅ SambaNova Blog: 0 篇新文章
+📡 抓取: TrendForce Insights (https://insights.trendforce.com/feed)
+✅ TrendForce Insights: 0 篇新文章
+📡 抓取: SemiEngineering (https://semiengineering.com/feed/)
+✅ SemiEngineering: 0 篇新文章
+📡 抓取: Nature Photonics (https://www.nature.com/nphoton.rss)
+✅ Nature Photonics: 0 篇新文章
+
+============================================================
+📂 TIER3 (30 个信源)
+============================================================
+
+📡 抓取: 量子位 (https://www.qbitai.com/feed)
+  🤖 批量分析 3 篇文章...
+     批次 1/1: 3 篇
+     处理 tier2/3/military 文章: 3 篇（基于全文）
+       处理 1/3: 索辰科技加码世界模型，与战略投资企业美梦空间联合发布具身模型与物理测评标准...
+       处理 2/3: AI开始研究Physical AI：FSD级团队亮出首版模型Simate-beta，空降RoboDo...
+       处理 3/3: 笔记本跑7000亿参数GLM！无GPU也行? SSD当显存用火爆GitHub...
+✅ 量子位: 3 篇新文章
+📡 抓取: r/MachineLearning (https://www.reddit.com/r/MachineLearning/.rss)
+  🤖 批量分析 7 篇文章...
+     批次 1/2: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: LLMs were told they could lie in Diplomacy. Here's...
+       处理 2/5: [P] A small MLP from scratch in NumPy with a GUI t...
+       处理 3/5: Publication potential [D]...
+       处理 4/5: Medical student asked if they can match into Neuro...
+       处理 5/5: A Little Guide to Learning Distributed Algorithms ...
+     批次 2/2: 2 篇
+     处理 tier2/3/military 文章: 2 篇（基于全文）
+       处理 1/2: My paper got accepted at NeurIPS TAE Workshop 2026...
+       处理 2/2: Has anyone used the Forrester function?[D]...
+✅ r/MachineLearning: 7 篇新文章
+📡 抓取: r/LocalLLaMA (https://www.reddit.com/r/LocalLLaMA/.rss)
+✅ r/LocalLLaMA: 0 篇新文章
+📡 抓取: r/Compilers (https://www.reddit.com/r/Compilers/.rss)
+✅ r/Compilers: 0 篇新文章
+📡 抓取: r/ProgrammingLanguages (https://www.reddit.com/r/ProgrammingLanguages/.rss)
+✅ r/ProgrammingLanguages: 0 篇新文章
+📡 抓取: Tom's Hardware (https://www.tomshardware.com/feeds/all)
+  🤖 批量分析 7 篇文章...
+     批次 1/2: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Russia bombs Ukrainian data centers in latest esca...
+       处理 2/5: Microsoft quietly drops Copilot+ branding from new...
+       处理 3/5: Open-source AnyPS5 dumps emulation to run PlayStat...
+       处理 4/5: Nvidia patents AI chatbot to streamline PC game op...
+       处理 5/5: Nvidia’s RTX Mega Geometry 2.0 streams ray-tracing...
+     批次 2/2: 2 篇
+     处理 tier2/3/military 文章: 2 篇（基于全文）
+       处理 1/2: PNY allegedly refuses to cover melted RTX 5090 pow...
+       处理 2/2: Enthusiast cooled iPhone 18 Pro with cold can of L...
+✅ Tom's Hardware: 7 篇新文章
+📡 抓取: TechCrunch (https://techcrunch.com/feed/)
+  🤖 批量分析 3 篇文章...
+     批次 1/1: 3 篇
+     处理 tier2/3/military 文章: 3 篇（基于全文）
+       处理 1/3: Insurers claim AI is already increasing healthcare...
+       处理 2/3: Levoit’s new air purifier is for the pet odors tha...
+       处理 3/3: I created an interactive digital avatar of myself ...
+✅ TechCrunch: 3 篇新文章
+📡 抓取: TechCrunch AI (https://techcrunch.com/category/artificial-intelligence/feed/)
+✅ TechCrunch AI: 0 篇新文章
+📡 抓取: The Information (https://www.theinformation.com/feed)
+  🤖 批量分析 2 篇文章...
+     批次 1/1: 2 篇
+     处理 tier2/3/military 文章: 2 篇（基于全文）
+       处理 1/2: How New Mexico’s Oil Windfall Became a $2 Billion ...
+       处理 2/2: Why Wall Street’s Big, Bad Bears Aren’t Ready to B...
+✅ The Information: 2 篇新文章
+📡 抓取: Financial Times World (https://www.ft.com/world?format=rss)
+  🤖 批量分析 14 篇文章...
+     批次 1/3: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: German and Russian foreign ministers meet for firs...
+       处理 2/5: Trump and Xi to meet twice more after summit fails...
+       处理 3/5: Burnham to revive Help to Buy scheme in bid to aid...
+       处理 4/5: Trump rejects Iran’s ceasefire proposal to reopen ...
+       处理 5/5: Energy costs and AI power demand reshape climate t...
+     批次 2/3: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Hackers hijack AI accounts and servers to fuel new...
+       处理 2/5: Foreign capital flows into US stocks hit record as...
+       处理 3/5: Monzo in talks with Brazil’s Nubank about sale...
+       处理 4/5: Medicines run short in Iran under US sanctions...
+       处理 5/5: Whitbread acts out the UK’s growth challenge in mi...
+     批次 3/3: 4 篇
+     处理 tier2/3/military 文章: 4 篇（基于全文）
+       处理 1/4: Are you the ‘digital PA’ for your parents?...
+       处理 2/4: Business urges John Healey to show restraint on ra...
+       处理 3/4: Scandal and succession in the House of Bolsonaro...
+       处理 4/4: In Rome, a palazzo becomes a self-portrait...
+✅ Financial Times World: 14 篇新文章
+📡 抓取: Bloomberg Markets (https://feeds.bloomberg.com/markets/news.rss)
+  🤖 批量分析 6 篇文章...
+     批次 1/2: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Bloomberg This Weekend 09/26/2026...
+       处理 2/5: How Syracuse's Semiconductor Gamble May Help Save ...
+       处理 3/5: Birding Apps Bring More People Into the Wild...
+       处理 4/5: Russia Ukraine War Becomes Economic Battle...
+       处理 5/5: Trump Xi Summit Leaves Big Issues Unresolved...
+     批次 2/2: 1 篇
+     处理 tier2/3/military 文章: 1 篇（基于全文）
+       处理 1/1: Billionaire Charoen’s Asset World Targets $1 Billi...
+✅ Bloomberg Markets: 6 篇新文章
+📡 抓取: Bloomberg Politics (https://feeds.bloomberg.com/politics/news.rss)
+  🤖 批量分析 3 篇文章...
+     批次 1/1: 3 篇
+     处理 tier2/3/military 文章: 3 篇（基于全文）
+       处理 1/3: Brazil’s Government Extends Fuel Price Relief Ahea...
+       处理 2/3: India Election Commission Makes Changes to SIR Exe...
+       处理 3/3: Burnham to Outline Vision for Britain’s Economy at...
+✅ Bloomberg Politics: 3 篇新文章
+📡 抓取: Bloomberg Economics (https://feeds.bloomberg.com/economics/news.rss)
+  🤖 批量分析 2 篇文章...
+     批次 1/1: 2 篇
+     处理 tier2/3/military 文章: 2 篇（基于全文）
+       处理 1/2: China’s Economic ‘Regime Shift’ May Sow Global Ris...
+       处理 2/2: SNB Is in Comfortable Situation on Inflation, Schl...
+✅ Bloomberg Economics: 2 篇新文章
+📡 抓取: Bloomberg Technology (https://feeds.bloomberg.com/technology/news.rss)
+  🤖 批量分析 5 篇文章...
+     批次 1/1: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Deel Dealt New Setbacks in Rippling Case Over Alle...
+       处理 2/5: Exxon Signs Shale Deal With Azerbaijan for Middle ...
+       处理 3/5: AI Gives Tech Firms New National Security Power...
+       处理 4/5: What Is an AI Kill Switch? Why Shutting Down AI Is...
+       处理 5/5: OpenAI Sandbox Failure Allows AI Agent to Gain Int...
+✅ Bloomberg Technology: 5 篇新文章
+📡 抓取: CNBC Top News (https://www.cnbc.com/id/100003114/device/rss/rss.html)
+  🤖 批量分析 3 篇文章...
+     批次 1/1: 3 篇
+     处理 tier2/3/military 文章: 3 篇（基于全文）
+       处理 1/3: Trump says he approved new fuel economy standards,...
+       处理 2/3: This may be the ‘missing piece’ for investors look...
+       处理 3/3: Chinese AI models surge in global popularity — and...
+✅ CNBC Top News: 3 篇新文章
+📡 抓取: CNBC World News (https://www.cnbc.com/id/100727362/device/rss/rss.html)
+✅ CNBC World News: 0 篇新文章
+📡 抓取: CNBC Technology (https://www.cnbc.com/id/19854910/device/rss/rss.html)
+  🤖 批量分析 4 篇文章...
+     批次 1/1: 4 篇
+     处理 tier2/3/military 文章: 4 篇（基于全文）
+       处理 1/4: OpenAI expands review of model behavior after more...
+       处理 2/4: Apple faces $5.7 billion patent infringement verdi...
+       处理 3/4: The blue-collar AI job market is booming. Will dat...
+       处理 4/4: China wants in on U.S. AI data center boom. Here's...
+✅ CNBC Technology: 4 篇新文章
+📡 抓取: The New York Times HomePage (https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml)
+  🤖 批量分析 1 篇文章...
+     批次 1/1: 1 篇
+     处理 tier2/3/military 文章: 1 篇（基于全文）
+       处理 1/1: It’s Time for the W.N.B.A. to Pick Sides...
+✅ The New York Times HomePage: 1 篇新文章
+📡 抓取: The New York Times World (https://rss.nytimes.com/services/xml/rss/nyt/World.xml)
+✅ The New York Times World: 0 篇新文章
+📡 抓取: The New York Times Business (https://rss.nytimes.com/services/xml/rss/nyt/Business.xml)
+  🤖 批量分析 2 篇文章...
+     批次 1/1: 2 篇
+     处理 tier2/3/military 文章: 2 篇（基于全文）
+       处理 1/2: As A.I. Makes Law Firms More Efficient, Clients As...
+       处理 2/2: High Gas and Rising Mortgage Rates Trouble Trump a...
+✅ The New York Times Business: 2 篇新文章
+📡 抓取: The New York Times Technology (https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml)
+✅ The New York Times Technology: 0 篇新文章
+📡 抓取: The Wall Street Journal World News (https://feeds.a.dj.com/rss/RSSWorldNews.xml)
+✅ The Wall Street Journal World News: 0 篇新文章
+📡 抓取: The Wall Street Journal US Business (https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml)
+✅ The Wall Street Journal US Business: 0 篇新文章
+📡 抓取: The Wall Street Journal Markets (https://feeds.a.dj.com/rss/RSSMarketsMain.xml)
+✅ The Wall Street Journal Markets: 0 篇新文章
+📡 抓取: The Wall Street Journal Technology (https://feeds.a.dj.com/rss/RSSWSJD.xml)
+✅ The Wall Street Journal Technology: 0 篇新文章
+📡 抓取: The Economist - The World This Week (https://www.economist.com/the-world-this-week/rss.xml)
+⚠️  警告: The Economist - The World This Week - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist Business (https://www.economist.com/business/rss.xml)
+⚠️  警告: The Economist Business - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist Finance & Economics (https://www.economist.com/finance-and-economics/rss.xml)
+⚠️  警告: The Economist Finance & Economics - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist International (https://www.economist.com/international/rss.xml)
+⚠️  警告: The Economist International - document declared as us-ascii, but parsed as utf-8
+📡 抓取: The Economist Science & Technology (https://www.economist.com/science-and-technology/rss.xml)
+⚠️  警告: The Economist Science & Technology - document declared as us-ascii, but parsed as utf-8
+
+============================================================
+📂 MILITARY (7 个信源)
+============================================================
+
+📡 抓取: Defense News (https://www.defensenews.com/arc/outboundfeeds/rss/)
+✅ Defense News: 0 篇新文章
+📡 抓取: Military Times (https://www.militarytimes.com/m/rss/)
+⚠️  警告: Military Times - <unknown>:2:3759: not well-formed (invalid token)
+📡 抓取: Breaking Defense (https://breakingdefense.com/full-rss-feed/?v=2)
+✅ Breaking Defense: 0 篇新文章
+📡 抓取: Stars and Stripes (https://subscribe.stripes.com/rss)
+⚠️  警告: Stars and Stripes - document declared as us-ascii, but parsed as utf-8
+📡 抓取: TASS Defense (http://tass.com/rss/v2.xml)
+  🤖 批量分析 69 篇文章...
+     批次 1/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Seven Palestinians killed in Gaza Strip during Isr...
+       处理 2/5: Israeli aircraft launch series of strikes on mount...
+       处理 3/5: Ex-Russian sports minister Kolobkov elected FIDE v...
+       处理 4/5: Putin’s envoy says Russia, Germany could reopen No...
+       处理 5/5: Many analysts say Europe is trying to create Fourt...
+     批次 2/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Russia may agree to move S-400s from Turkey to fri...
+       处理 2/5: IN BRIEF: Lavrov comments on EU attempts to derail...
+       处理 3/5: Russia insists Anchorage summit yielded agreement ...
+       处理 4/5: Europe willingly hands Nazi ashes to Ukraine, know...
+       处理 5/5: Meeting with Germany’s top diplomat shows Russia r...
+     批次 3/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Russia has confidential capacity with some EU, NAT...
+       处理 2/5: Russia ready to continue dialogue with US — Lavrov...
+       处理 3/5: Russia, US maintain regular dialogue in various fo...
+       处理 4/5: Lavrov says he learned nothing new from German for...
+       处理 5/5: Lavrov says Guterres’ team promotes double standar...
+     批次 4/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Lavrov says Putin repeatedly said Russia has no in...
+       处理 2/5: Russia opposes new ‘Western seats’ on UN Security ...
+       处理 3/5: Lavrov sees Europeans preparing for war with Russi...
+       处理 4/5: NATO seeks to extend influence far beyond area of ...
+       处理 5/5: UN foundations under threat as West turns blind ey...
+     批次 5/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Middle East situation requires unconventional step...
+       处理 2/5: Russia calls for lifting Cuba blockade, urgent hum...
+       处理 3/5: Russia downs 105 Ukrainian drones over its regions...
+       处理 4/5: Security threats to Russia from Kiev to be elimina...
+       处理 5/5: Lavrov sees Belgrade being forced to join anti-Rus...
+     批次 6/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Russia believes time is right to ensure Palestinia...
+       处理 2/5: Russia considers killing of Iran’s supreme leader,...
+       处理 3/5: Trust between Arab nations, Iran must be restored ...
+       处理 4/5: Metastases of Nazi ideology visible among EU, NATO...
+       处理 5/5: Russia expects new UN chief not to serve interests...
+     批次 7/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Lavrov says West destroyed European security syste...
+       处理 2/5: West jeopardizes billions of lives on planet by ac...
+       处理 3/5: Russia insists on immediate release of Maduro with...
+       处理 4/5: Lavrov sees Europe making every effort to disrupt ...
+       处理 5/5: Russia’s Lavrov holds final bilateral meeting on s...
+     批次 8/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Russian forces strike logistics hub in Odessa, bul...
+       处理 2/5: Russia’s top diplomat holds meeting with his Germa...
+       处理 3/5: North Korea congratulates United Russia on Duma el...
+       处理 4/5: Vucic congratulates Putin on successful elections ...
+       处理 5/5: Putin, Vucic discuss Ukrainian conflict, situation...
+     批次 9/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Putin speaks by phone with Vucic...
+       处理 2/5: At least 11 killed, 30 more injured in blast in no...
+       处理 3/5: Iran no longer trusts talks with US amid ongoing s...
+       处理 4/5: Ukrainian troops encircled in Kharkov Region lose ...
+       处理 5/5: Leaders of China, US agree to provide mutual suppo...
+     批次 10/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Timur Turlov of Kazakhstan elected World Chess Fed...
+       处理 2/5: Trump advocates for trilateral arms control talks ...
+       处理 3/5: Euractiv columnist questions need for extra fundin...
+       处理 4/5: Explosion occurres during welding works at Elga de...
+       处理 5/5: Air defense forces shot down nine UAVs flying towa...
+     批次 11/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Air defenses down 645 drones over Russian regions,...
+       处理 2/5: Russian forces strike Novaya Pochta logistics cent...
+       处理 3/5: Russian Armed Forces hit Cosmonova data center in ...
+       处理 4/5: Iran may allow IAEA inspectors onto its territory ...
+       处理 5/5: Hormuz should be open in accordance with US-Iran m...
+     批次 12/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Typhon systems to be deployed to US Kadena base af...
+       处理 2/5: US must show it is not seeking violent change of p...
+       处理 3/5: Four Italian troops injured during NATO drills in ...
+       处理 4/5: Another typhoon approaches Japan’s Okinawa, moving...
+       处理 5/5: Hormuz blockade to threaten to least 45 million pe...
+     批次 13/14: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Number of victims of Japan’s typhoon rises to 12...
+       处理 2/5: EU’s reaction to corruption in Ukraine shows Europ...
+       处理 3/5: Europe to gain from resuming dialogue with Russia ...
+       处理 4/5: Trump tells aides strikes against Iran may resume ...
+       处理 5/5: West raised terrorists in Kiev capable of making b...
+     批次 14/14: 4 篇
+     处理 tier2/3/military 文章: 4 篇（基于全文）
+       处理 1/4: Ukraine cannot make up for losses in Druzhkovka be...
+       处理 2/4: Pentagon says 861 US military personnel injured af...
+       处理 3/4: Lavrov and Iraqi foreign minister discuss Middle E...
+       处理 4/4: Lavrov, deputy chairman of Yemen’s ruling presiden...
+✅ TASS Defense: 69 篇新文章
+📡 抓取: Military.com (https://www.military.com/feed/)
+  🤖 批量分析 6 篇文章...
+     批次 1/2: 5 篇
+     处理 tier2/3/military 文章: 5 篇（基于全文）
+       处理 1/5: Where Things Stand After Iran's New Pitch for a De...
+       处理 2/5: China and the US Agree to Set up a New AI Safety C...
+       处理 3/5: The Last American Veterans Who Witnessed Hiroshima...
+       处理 4/5: VA Urged by DOGE to Cut 435 Programs Last Year Tot...
+       处理 5/5: Marine Corps Ground Combat Element 2040 Plan Expla...
+     批次 2/2: 1 篇
+     处理 tier2/3/military 文章: 1 篇（基于全文）
+       处理 1/1: Former Special Forces Officer Warns of Data Center...
+✅ Military.com: 6 篇新文章
+📡 抓取: The War Zone (https://www.twz.com/feed)
+  🤖 批量分析 1 篇文章...
+     批次 1/1: 1 篇
+     处理 tier2/3/military 文章: 1 篇（基于全文）
+       处理 1/1: Laser Weapons Will Be Deployed At Cape Canaveral S...
+✅ The War Zone: 1 篇新文章
+
+============================================================
+📊 总计: 138 篇新文章
+============================================================
+
+
+============================================================
+📄 报告预览 - 2026-09-26
+============================================================
+
+# RSS 聚合报告 - 2026-09-26
+
+**生成时间**: 2026-09-27 07:12:17
+**报告日期**: 2026-09-26 (昨天)
+**新发现文章**: 138 篇
+
+## 📊 分类统计
+
+- **AI模型**: 3 篇
+- **Harness工程**: 3 篇
+- **具身智能**: 4 篇
+- **光计算**: 1 篇
+- **军事技术**: 13 篇
+- **经济**: 24 篇
+- **时政**: 77 篇
+- **AI应用**: 13 篇
+
+---
+
+## 🏷️  AI模型
+
+**3 篇文章**
+
+### 1. [P] A small MLP from scratch in NumPy with a GUI to look inside it while it trains (weight distributions, t-SNE per layer, neuron ablation...) [P]
+- **来源**: r/MachineLearning (TIER3)
+- **发布日期**: 2026-09-26T18:38:38+00:00 ...
+
+
+============================================================
+✅ 报告已保存到: /Users/rede/Git/deep_analysis/report/2026-09-26
+============================================================
+   📄 全部文章: rss-aggregation-2026-09-26.md
+   📄 AI模型: rss-aggregation-2026-09-26-AI模型.md
+   📄 Harness工程: rss-aggregation-2026-09-26-Harness工程.md
+   📄 具身智能: rss-aggregation-2026-09-26-具身智能.md
+   📄 光计算: rss-aggregation-2026-09-26-光计算.md
+   📄 军事技术: rss-aggregation-2026-09-26-军事技术.md
+   📄 经济: rss-aggregation-2026-09-26-经济.md
+   📄 时政: rss-aggregation-2026-09-26-时政.md
+   📄 AI应用: rss-aggregation-2026-09-26-AI应用.md
+============================================================
+✅ 缓存已更新:
+   • 今日新增: 138 个 URL
+   • 总计: 13504 个 URL，跨 31 天
+   • 缓存日期范围: 2026-08-28 至 2026-09-26
+
+🎉 完成! 昨天(2026-09-26)的文章已整理完毕
+
+📄 查看报告：
+   open report/rss-aggregation-2026-09-27.md
+
+💡 下一步：
+   1. 浏览报告，标记感兴趣的文章
+   2. 将候选 URL 喂给 Claude，运行深度分析
+   3. 对确认收录的内容使用 /curate-research skill
