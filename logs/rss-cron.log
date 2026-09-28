@@ -18021,3 +18021,348 @@ Call log:
    1. 浏览报告，标记感兴趣的文章
    2. 将候选 URL 喂给 Claude，运行深度分析
    3. 对确认收录的内容使用 /curate-research skill
+🚀 运行 RSS 聚合器...
+
+/Users/rede/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+✅ 已从 /Users/rede/Git/deep_analysis/.env 加载环境变量
+============================================================
+📰 AI技术追踪 - 每日报告
+📅 报告日期: 2026-09-28 (昨天)
+🕐 运行时间: 2026-09-29 07:00:00
+============================================================
+
+🤖 使用本地模型: qwen2.5:3b
+✅ Ollama 连接成功，模型 qwen2.5:3b 可用
+
+🚀 开始抓取 RSS feeds - 2026-09-29 07:00:01
+
+
+============================================================
+🕷️  自定义网页爬取
+============================================================
+
+🕷️  爬取: DeepSeek Blog (https://deepseek.ai/blog)
+❌ 爬取 DeepSeek Blog 失败: HTTPSConnectionPool(host='deepseek.ai', port=443): Max retries exceeded with url: /blog (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: DeepSeek Research (https://www.deepseek.ai/research)
+❌ 爬取 DeepSeek Research 失败: HTTPSConnectionPool(host='www.deepseek.ai', port=443): Max retries exceeded with url: /research (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Qwen Blog (https://qwenlm.github.io/blog/)
+❌ 爬取 Qwen Blog 失败: HTTPSConnectionPool(host='qwenlm.github.io', port=443): Max retries exceeded with url: /blog/ (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Zhipu AI Research (https://www.zhipuai.cn/en/research/)
+✅ Zhipu AI Research: 6 篇文章
+🕷️  爬取: Kimi Blog (https://platform.kimi.ai/blog)
+❌ 爬取 Kimi Blog 失败: HTTPSConnectionPool(host='platform.kimi.ai', port=443): Max retries exceeded with url: /blog (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Anthropic Research (https://www.anthropic.com/research)
+❌ 爬取 Anthropic Research 失败: HTTPSConnectionPool(host='www.anthropic.com', port=443): Max retries exceeded with url: /research (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取 OpenAI (使用Playwright)
+🕷️  爬取: OpenAI News (https://openai.com/news)
+  📡 正在访问页面...
+  ⚠️  爬取过程出错: Page.goto: net::ERR_CONNECTION_CLOSED at https://openai.com/news
+Call log:
+  - navigating to "https://openai.com/news", waiting until "domcontentloaded"
+
+🕷️  爬取: OpenAI Research (https://openai.com/research)
+  📡 正在访问页面...
+  ⚠️  爬取过程出错: Page.goto: net::ERR_CONNECTION_CLOSED at https://openai.com/research
+Call log:
+  - navigating to "https://openai.com/research", waiting until "domcontentloaded"
+
+✅ OpenAI 总计: 0 篇文章
+🕷️  爬取: xAI Blog (https://x.ai/blog)
+❌ 爬取 xAI Blog 失败: HTTPSConnectionPool(host='x.ai', port=443): Max retries exceeded with url: /blog (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Physical Intelligence (https://www.physicalintelligence.company/blog)
+❌ 爬取 Physical Intelligence (https://www.physicalintelligence.company/blog) 失败: HTTPSConnectionPool(host='www.physicalintelligence.company', port=443): Max retries exceeded with url: /blog (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Physical Intelligence (https://www.physicalintelligence.company/research)
+❌ 爬取 Physical Intelligence (https://www.physicalintelligence.company/research) 失败: HTTPSConnectionPool(host='www.physicalintelligence.company', port=443): Max retries exceeded with url: /research (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Skild AI (https://www.skild.ai/blogs)
+❌ 爬取 Skild AI (https://www.skild.ai/blogs) 失败: HTTPSConnectionPool(host='www.skild.ai', port=443): Max retries exceeded with url: /blogs (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Figure AI (https://www.figure.ai/news)
+❌ 爬取 Figure AI (https://www.figure.ai/news) 失败: HTTPSConnectionPool(host='www.figure.ai', port=443): Max retries exceeded with url: /news (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: 1X Technologies (https://www.1x.tech/discover)
+❌ 爬取 1X Technologies (https://www.1x.tech/discover) 失败: HTTPSConnectionPool(host='www.1x.tech', port=443): Max retries exceeded with url: /discover (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: UBTECH (优必选) (https://www.ubtrobot.com/en/news-list)
+🕷️  爬取: Unitree (宇树科技) (https://www.unitree.com/)
+🕷️  爬取: Agibot (智元机器人) (https://agibot.com/news)
+✅ UBTECH (优必选): 4 篇文章
+✅ Unitree (宇树科技): 4 篇文章
+✅ Agibot (智元机器人): 7 篇文章
+🕷️  爬取: Agibot Research (https://agibot.com/research/)
+✅ Agibot Research: 0 篇研究
+🕷️  爬取: Cerebras (https://www.cerebras.ai/blog)
+❌ 爬取 Cerebras 失败: HTTPSConnectionPool(host='www.cerebras.ai', port=443): Max retries exceeded with url: /blog (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Cerebras (https://www.cerebras.ai/publications)
+❌ 爬取 Cerebras 失败: HTTPSConnectionPool(host='www.cerebras.ai', port=443): Max retries exceeded with url: /publications (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: SambaNova (https://sambanova.ai/blog)
+❌ 爬取 SambaNova 失败: HTTPSConnectionPool(host='sambanova.ai', port=443): Max retries exceeded with url: /blog (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Tenstorrent (https://tenstorrent.com/newsroom)
+❌ 爬取 Tenstorrent 失败: HTTPSConnectionPool(host='tenstorrent.com', port=443): Max retries exceeded with url: /newsroom (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: D-Matrix (https://www.d-matrix.ai/blog/)
+  📡 尝试curl方式...
+  🔄 重试 1/3 (cloudscraper)...
+  🔄 重试 2/3 (cloudscraper)...
+  ⚠️  cloudscraper多次尝试后仍失败
+❌ D-Matrix: 所有方法失败，跳过
+🕷️  爬取: Etched (https://etched.com/progress)
+❌ 爬取 Etched 失败: HTTPSConnectionPool(host='etched.com', port=443): Max retries exceeded with url: /progress (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Etched (https://etched.com/research)
+❌ 爬取 Etched 失败: HTTPSConnectionPool(host='etched.com', port=443): Max retries exceeded with url: /research (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+🕷️  爬取: Cambricon (寒武纪) (https://www.cambricon.com/)
+✅ Cambricon (寒武纪): 0 篇文章
+🕷️  爬取: Iluvatar (天数智芯) (https://www.iluvatar.com/news)
+✅ Iluvatar (天数智芯): 0 篇文章
+🕷️  爬取: Iluvatar (天数智芯) (https://www.iluvatar.com/en/research)
+✅ Iluvatar (天数智芯): 0 篇文章
+🕷️  爬取: Enflame (燧原科技) (https://www.enflame-tech.com/news)
+✅ Enflame (燧原科技): 8 篇文章
+🕷️  爬取: MetaX (沐曦) (https://www.metax-tech.com/news.html)
+✅ MetaX (沐曦): 0 篇文章
+🕷️  爬取: Biren (壁仞科技) (https://www.birentech.com/news/)
+✅ Biren (壁仞科技): 8 篇文章
+  🤖 批量分析 5 篇文章...
+     批次 1/1: 5 篇
+     处理 tier1 文章: 5 篇（基于摘要）
+       处理 1/5: AGIBOT Demonstrates WITA-Omni in Live Human-Robot ...
+       处理 2/5: 2026-09-07一图读懂壁仞科技2026年半年度报告...
+       处理 3/5: 2026-09-07壁仞科技斩获中国专利银奖，自研GPU技术再获国家级认可...
+       处理 4/5: 2026-09-07共探训推融通新路径！壁仞科技 x 龙蜥社区 x PyTorch生态共建MeetU...
+       处理 5/5: 2026-09-07DAY0适配 | 壁仞科技完成智谱GLM-5.3-Flash大模型推理验证...
+✅ 自定义网页爬取: 5 篇文章
+
+============================================================
+🕷️  军事新闻网站爬取
+============================================================
+
+📡 爬取: Jane's Defence
+❌ Jane's Defence 爬取失败: HTTPSConnectionPool(host='www.janes.com', port=443): Max retries exceeded with url: /defence-intelligence-insights (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+📡 爬取: Army Technology
+  ⚠️  cloudscraper失败: HTTPSConnectionPool(host='www.army-technology.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1129)')))
+⚠️  Army Technology 爬取失败: cloudscraper和curl都失败
+📡 爬取: 环球网军事
+✅ 环球网军事: 0 篇文章
+
+✅ 军事新闻爬取总计: 0 篇文章
+
+
+============================================================
+📂 TIER1 (13 个信源)
+============================================================
+
+📡 抓取: arXiv cs.CL (计算与语言) (https://export.arxiv.org/rss/cs.CL)
+⚠️  警告: arXiv cs.CL (计算与语言) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: arXiv cs.AI (人工智能) (https://export.arxiv.org/rss/cs.AI)
+⚠️  警告: arXiv cs.AI (人工智能) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: arXiv cs.LG (机器学习) (https://export.arxiv.org/rss/cs.LG)
+⚠️  警告: arXiv cs.LG (机器学习) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: arXiv cs.RO (机器人) (https://export.arxiv.org/rss/cs.RO)
+⚠️  警告: arXiv cs.RO (机器人) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: arXiv cs.CV (计算机视觉) (https://export.arxiv.org/rss/cs.CV)
+⚠️  警告: arXiv cs.CV (计算机视觉) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: arXiv cs.AR (硬件架构) (https://export.arxiv.org/rss/cs.AR)
+⚠️  警告: arXiv cs.AR (硬件架构) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: arXiv physics.optics (光学/光计算) (https://export.arxiv.org/rss/physics.optics)
+⚠️  警告: arXiv physics.optics (光学/光计算) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: arXiv cs.ET (新兴技术) (https://export.arxiv.org/rss/cs.ET)
+⚠️  警告: arXiv cs.ET (新兴技术) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: arXiv cs.PL (编程语言) (https://export.arxiv.org/rss/cs.PL)
+⚠️  警告: arXiv cs.PL (编程语言) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: NVIDIA Technical Blog (https://developer.nvidia.com/blog/feed/)
+⚠️  警告: NVIDIA Technical Blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: NVIDIA AI Blog (https://blogs.nvidia.com/blog/category/deep-learning/feed/)
+⚠️  警告: NVIDIA AI Blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Google DeepMind Blog (https://deepmind.google/blog/rss.xml)
+⚠️  警告: Google DeepMind Blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: SK hynix Newsroom (https://news.skhynix.com/en/feed/)
+⚠️  警告: SK hynix Newsroom - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+
+============================================================
+📂 TIER2 (22 个信源)
+============================================================
+
+📡 抓取: CMU Machine Learning Blog (https://blog.ml.cmu.edu/feed/)
+⚠️  警告: CMU Machine Learning Blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Hugging Face Blog (https://huggingface.co/blog/feed.xml)
+⚠️  警告: Hugging Face Blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The Gradient (https://thegradient.pub/rss/)
+⚠️  警告: The Gradient - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Together AI Blog (https://www.together.ai/blog/rss.xml)
+⚠️  警告: Together AI Blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: LLVM Blog (https://blog.llvm.org/index.xml)
+⚠️  警告: LLVM Blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Rust Blog (https://blog.rust-lang.org/feed.xml)
+⚠️  警告: Rust Blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: V8 Blog (https://v8.dev/blog.atom)
+⚠️  警告: V8 Blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: WebKit Blog (https://webkit.org/feed/)
+✅ WebKit Blog: 0 篇新文章
+📡 抓取: Mozilla Hacks (https://hacks.mozilla.org/feed/)
+⚠️  警告: Mozilla Hacks - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: MaskRay (Fangrui Song) (https://maskray.me/blog/atom.xml)
+⚠️  警告: MaskRay (Fangrui Song) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Embedded in Academia (John Regehr) (https://blog.regehr.org/feed)
+⚠️  警告: Embedded in Academia (John Regehr) - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Eli Bendersky's website (https://eli.thegreenplace.net/feeds/all.atom.xml)
+⚠️  警告: Eli Bendersky's website - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Adrian Sampson's blog (https://www.cs.cornell.edu/~asampson/blog.xml)
+⚠️  警告: Adrian Sampson's blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Daniel Lemire's blog (https://lemire.me/blog/feed/)
+⚠️  警告: Daniel Lemire's blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Meta LLaMA Releases (https://github.com/meta-llama/llama-models/releases.atom)
+⚠️  警告: Meta LLaMA Releases - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Mistral AI Releases (https://github.com/mistralai/mistral-inference/releases.atom)
+⚠️  警告: Mistral AI Releases - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: OpenAI GPT Releases (https://github.com/openai/openai-python/releases.atom)
+⚠️  警告: OpenAI GPT Releases - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Anthropic Claude Releases (https://github.com/anthropics/anthropic-sdk-python/releases.atom)
+⚠️  警告: Anthropic Claude Releases - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: SambaNova Blog (https://sambanova.ai/blog/rss.xml)
+⚠️  警告: SambaNova Blog - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: TrendForce Insights (https://insights.trendforce.com/feed)
+⚠️  警告: TrendForce Insights - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: SemiEngineering (https://semiengineering.com/feed/)
+⚠️  警告: SemiEngineering - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Nature Photonics (https://www.nature.com/nphoton.rss)
+⚠️  警告: Nature Photonics - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+
+============================================================
+📂 TIER3 (30 个信源)
+============================================================
+
+📡 抓取: 量子位 (https://www.qbitai.com/feed)
+✅ 量子位: 0 篇新文章
+📡 抓取: r/MachineLearning (https://www.reddit.com/r/MachineLearning/.rss)
+⚠️  警告: r/MachineLearning - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: r/LocalLLaMA (https://www.reddit.com/r/LocalLLaMA/.rss)
+⚠️  警告: r/LocalLLaMA - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: r/Compilers (https://www.reddit.com/r/Compilers/.rss)
+⚠️  警告: r/Compilers - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: r/ProgrammingLanguages (https://www.reddit.com/r/ProgrammingLanguages/.rss)
+⚠️  警告: r/ProgrammingLanguages - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Tom's Hardware (https://www.tomshardware.com/feeds/all)
+⚠️  警告: Tom's Hardware - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: TechCrunch (https://techcrunch.com/feed/)
+⚠️  警告: TechCrunch - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: TechCrunch AI (https://techcrunch.com/category/artificial-intelligence/feed/)
+⚠️  警告: TechCrunch AI - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The Information (https://www.theinformation.com/feed)
+⚠️  警告: The Information - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Financial Times World (https://www.ft.com/world?format=rss)
+⚠️  警告: Financial Times World - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Bloomberg Markets (https://feeds.bloomberg.com/markets/news.rss)
+⚠️  警告: Bloomberg Markets - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Bloomberg Politics (https://feeds.bloomberg.com/politics/news.rss)
+⚠️  警告: Bloomberg Politics - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Bloomberg Economics (https://feeds.bloomberg.com/economics/news.rss)
+⚠️  警告: Bloomberg Economics - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Bloomberg Technology (https://feeds.bloomberg.com/technology/news.rss)
+⚠️  警告: Bloomberg Technology - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: CNBC Top News (https://www.cnbc.com/id/100003114/device/rss/rss.html)
+⚠️  警告: CNBC Top News - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: CNBC World News (https://www.cnbc.com/id/100727362/device/rss/rss.html)
+⚠️  警告: CNBC World News - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: CNBC Technology (https://www.cnbc.com/id/19854910/device/rss/rss.html)
+⚠️  警告: CNBC Technology - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The New York Times HomePage (https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml)
+⚠️  警告: The New York Times HomePage - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The New York Times World (https://rss.nytimes.com/services/xml/rss/nyt/World.xml)
+⚠️  警告: The New York Times World - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The New York Times Business (https://rss.nytimes.com/services/xml/rss/nyt/Business.xml)
+⚠️  警告: The New York Times Business - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The New York Times Technology (https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml)
+⚠️  警告: The New York Times Technology - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The Wall Street Journal World News (https://feeds.a.dj.com/rss/RSSWorldNews.xml)
+⚠️  警告: The Wall Street Journal World News - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The Wall Street Journal US Business (https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml)
+⚠️  警告: The Wall Street Journal US Business - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The Wall Street Journal Markets (https://feeds.a.dj.com/rss/RSSMarketsMain.xml)
+⚠️  警告: The Wall Street Journal Markets - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The Wall Street Journal Technology (https://feeds.a.dj.com/rss/RSSWSJD.xml)
+⚠️  警告: The Wall Street Journal Technology - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The Economist - The World This Week (https://www.economist.com/the-world-this-week/rss.xml)
+⚠️  警告: The Economist - The World This Week - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The Economist Business (https://www.economist.com/business/rss.xml)
+⚠️  警告: The Economist Business - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The Economist Finance & Economics (https://www.economist.com/finance-and-economics/rss.xml)
+⚠️  警告: The Economist Finance & Economics - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The Economist International (https://www.economist.com/international/rss.xml)
+⚠️  警告: The Economist International - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The Economist Science & Technology (https://www.economist.com/science-and-technology/rss.xml)
+⚠️  警告: The Economist Science & Technology - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+
+============================================================
+📂 MILITARY (7 个信源)
+============================================================
+
+📡 抓取: Defense News (https://www.defensenews.com/arc/outboundfeeds/rss/)
+⚠️  警告: Defense News - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Military Times (https://www.militarytimes.com/m/rss/)
+⚠️  警告: Military Times - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Breaking Defense (https://breakingdefense.com/full-rss-feed/?v=2)
+⚠️  警告: Breaking Defense - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: Stars and Stripes (https://subscribe.stripes.com/rss)
+⚠️  警告: Stars and Stripes - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: TASS Defense (http://tass.com/rss/v2.xml)
+❌ 错误: TASS Defense - Remote end closed connection without response
+📡 抓取: Military.com (https://www.military.com/feed/)
+⚠️  警告: Military.com - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+📡 抓取: The War Zone (https://www.twz.com/feed)
+⚠️  警告: The War Zone - <urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>
+
+============================================================
+📊 总计: 5 篇新文章
+============================================================
+
+
+============================================================
+📄 报告预览 - 2026-09-28
+============================================================
+
+# RSS 聚合报告 - 2026-09-28
+
+**生成时间**: 2026-09-29 07:09:35
+**报告日期**: 2026-09-28 (昨天)
+**新发现文章**: 5 篇
+
+## 📊 分类统计
+
+- **Harness工程**: 1 篇
+- **具身智能**: 1 篇
+- **AI芯片**: 3 篇
+
+---
+
+## 🏷️  Harness工程
+
+**1 篇文章**
+
+### 1. 2026-09-07共探训推融通新路径！壁仞科技 x 龙蜥社区 x PyTorch生态共建MeetUp圆满收官
+- **来源**: Biren (壁仞科技) (TIER1)
+- **发布日期**: 2026-09-29
+- **类型**: blog
+- **优先级**: high
+- **分类**: Harness工程
+- **链接**: https://www.birentech.com/news//news/z7mnt0q87wmvhpfshy0fumoi/
+- **AI 摘要**: 壁仞科技、龙蜥社区与PyTorch生态在MeetUp上成功举办了关于训推融通的新路径探讨活动。
+
+#...
+
+
+============================================================
+✅ 报告已保存到: /Users/rede/Git/deep_analysis/report/2026-09-28
+============================================================
+   📄 全部文章: rss-aggregation-2026-09-28.md
+   📄 Harness工程: rss-aggregation-2026-09-28-Harness工程.md
+   📄 具身智能: rss-aggregation-2026-09-28-具身智能.md
+   📄 AI芯片: rss-aggregation-2026-09-28-AI芯片.md
+============================================================
+Traceback (most recent call last):
+  File "/Users/rede/Git/deep_analysis/scripts/rss-aggregator.py", line 1094, in <module>
+    main()
+  File "/Users/rede/Git/deep_analysis/scripts/rss-aggregator.py", line 1089, in main
+    aggregator.save_report(reports)
+  File "/Users/rede/Git/deep_analysis/scripts/rss-aggregator.py", line 1056, in save_report
+    self.cache_manager.cleanup_old_caches(keep_days=30)
+  File "/Users/rede/Git/deep_analysis/scripts/cache_manager_new.py", line 165, in cleanup_old_caches
+    cache_file.unlink()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1344, in unlink
+    self._accessor.unlink(self)
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/rede/Git/deep_analysis/scripts/.cache/cache_2026-08-29.json'
