@@ -1,69 +1,49 @@
 # RSS 聚合报告 - Harness工程
 
-**生成时间**: 2026-11-09 07:11:55
-**文章数量**: 6 篇
+**生成时间**: 2026-11-09 09:49:45
+**文章数量**: 4 篇
 
 ---
 
-### 1. I merged attention and MLP processing into a single gated Transformer block. GAP [R]
+### 1. I trained a playable diffusion world model of Pokémon Red, plus a game agent harness on the same System 1/2 split as Krafton's PUBG Ally. Can this be ICLR-workshop worthy? [P]
 - **来源**: r/MachineLearning (TIER3)
-- **发布日期**: 2026-11-08T17:43:26+00:00 (今天)
-- **类型**: forum
-- **优先级**: low
-- **分类**: Harness工程
-- **链接**: https://www.reddit.com/r/MachineLearning/comments/1xr47tw/i_merged_attention_and_mlp_processing_into_a/
-- **AI 摘要**: 文章讨论了将注意力机制和MLP处理合并到一个带有门控的Transformer块中的方法。这与AI模型或具身智能的范畴不符，但与AI工程实践和编译器技术相关。但由于文章主题不明确，无法准确分类。
-- **原始摘要**: Hi everyone! I've been experimenting with an alternative Transformer architecture called GAP (Gated Attention Projection). The main idea is to combine attention and MLP-style processing into a single...
-
-### 2. I trained a playable diffusion world model of Pokémon Red, plus a game agent harness on the same System 1/2 split as Krafton's PUBG Ally. Can this be ICLR-workshop worthy? [P]
-- **来源**: r/MachineLearning (TIER3)
-- **发布日期**: 2026-11-08T07:48:52+00:00 (今天)
+- **发布日期**: 2026-11-08T07:48:52+00:00 (昨天)
 - **类型**: forum
 - **优先级**: low
 - **分类**: Harness工程
 - **链接**: https://www.reddit.com/r/MachineLearning/comments/1xqt0pk/i_trained_a_playable_diffusion_world_model_of/
-- **AI 摘要**: 文章讨论了使用扩散模型和游戏代理框架在PUBG Ally系统上训练了一个可玩的Pokémon Red世界模型，探讨了该研究是否适合ICLR研讨会。
+- **AI 摘要**: 文章讨论了训练了一个可玩的《Pokémon Red》扩散世界模型以及一个游戏代理框架，并将其应用于Krafton的PUBG Ally系统1/2分割。文章询问是否可以用于ICLR研讨会。
 - **原始摘要**: 1. The world model: the game, dreamed by a neural net A diffusion model (same family as image generators) that learned Pokémon Red frame by frame from recorded play. Give it the last 4 screens and a b...
 
-### 3. 3321 ICLR, should I rebuttal? [R]
-- **来源**: r/MachineLearning (TIER3)
-- **发布日期**: 2026-11-08T06:34:04+00:00 (昨天)
-- **类型**: forum
-- **优先级**: low
-- **分类**: Harness工程
-- **链接**: https://www.reddit.com/r/MachineLearning/comments/1xqrv2a/3321_iclr_should_i_rebuttal_r/
-- **AI 摘要**: 这篇文章标题为ICLR，但全文内容仅为Reddit上的讨论，没有提供足够的信息来判断其具体类别。根据现有信息，最可能的类别是Harness工程。
-- **原始摘要**: Looks like this killer just doesn’t understand my paper. He said my abstract is not well organized, hard to follow...my definitions are also hard to follow..., missing important explaination... etc. b...
-
-### 4. Open-source GPU task manager reveals exactly what's eating your VRAM
+### 2. Open-source GPU task manager reveals exactly what's eating your VRAM
 - **来源**: Tom's Hardware (TIER3)
 - **发布日期**: Sun, 08 Nov 2026 13:40:00 +0000 (今天)
 - **类型**: news
 - **优先级**: medium
 - **分类**: Harness工程
 - **链接**: https://www.tomshardware.com/pc-components/gpus/open-source-gpu-task-manager-reveals-exactly-whats-eating-your-vram-microsoft-vps-new-gpu-taskman-tool-reveals-every-process-using-your-gpu-how-much-memory-each-uses-and-breaks-down-ai-and-llm-workloads
-- **AI 摘要**: 本文介绍了Microsoft的GPU任务管理器工具，该工具可以揭示占用VRAM的每个进程及其使用量，并区分AI和LLM工作负载。这属于AI工程实践和工具链的范畴。
+- **AI 摘要**: 本文介绍了一款名为GPU Taskman的新工具，它是一个开源的GPU任务管理器，可以揭示正在消耗VRAM的每一个进程。该工具由微软副总裁开发，能够显示每个进程使用的内存量，并且可以分解AI和LLM的工作负载。
 - **原始摘要**: A new open-source GitHub project called gputaskman has been released by Microsoft VP Scott Hanselman.
 
-### 5. Democrats amp up Trump investigation threats, Blanche counters he may probe lawmakers
+### 3. Nvidia Inquiry, Anthropic, CoreWeave and Unity News Promise Big Week
+- **来源**: The Information (TIER3)
+- **发布日期**: 2026-11-08T21:41:31Z (今天)
+- **类型**: news
+- **优先级**: medium
+- **分类**: Harness工程
+- **链接**: https://www.theinformation.com/articles/nvidia-inquiry-anthropic-coreweave-unity-news-promise-big-week
+- **AI 摘要**: Nvidia、Anthropic等公司近期有重大动向，Nvidia宣布调查CEO是否受到外国情报影响，Anthropic预计下周开始其研究计划。文章并未涉及具体技术或产品。
+- **原始摘要**: If you were hoping for a quiet week after the turmoil of the past few days, take a vacation. This week is promising to be nearly as busy as the last one was. Nvidia's announcement this afternoon that...
+
+### 4. Democrats amp up Trump investigation threats, Blanche counters he may probe lawmakers
 - **来源**: CNBC Top News (TIER3)
 - **发布日期**: Sun, 08 Nov 2026 18:57:56 GMT (今天)
 - **类型**: news
 - **优先级**: high
 - **分类**: Harness工程
 - **链接**: https://www.cnbc.com/2026/11/08/democrats-trump-oversight-blanche-doj-investigations.html
-- **AI 摘要**: 民主党准备对特朗普政府和与其有关的私营公司进行广泛的监督调查，因为他们现在控制了国会两院。民主党参议员布莱夏表示，如果民主党议员说了什么，司法部对民主党议员的调查可能会发生。民主党现在控制了国会，但新一届委员会的主席将获得正式的锤子和传票权力。
+- **AI 摘要**: 民主党准备对特朗普政府及其相关私人公司进行广泛的监督调查，因为他们在众议院和参议院都取得了控制权。民主党参议员Blanche表示，如果情况需要，司法部对民主党议员的调查可能会发生。民主党在国会中取得了控制权，但新一届国会的委员会主席将获得正式的敲门锤和传票权力。
 - **原始摘要**: Democrats have vowed to investigate both President Donald Trump's White House and businesses that have worked with the administration.
-
-### 6. Russia's Dikidzhi takes second place at ISU Grand Prix in China, Semenenko finishes third
-- **来源**: TASS Defense (MILITARY)
-- **发布日期**: Sun, 08 Nov 2026 15:22:26 +0300 (今天)
-- **类型**: news
-- **优先级**: medium
-- **分类**: Harness工程
-- **链接**: https://tass.com/sports/2214459
-- **AI 摘要**: 俄罗斯选手Dikidzhi在国际滑冰联盟大奖赛中获得第二名，Semenenko获得第三名。这场比赛在中国深圳举行。
-- **原始摘要**: Across the two programs, Vladislav Dikidzhi scored 282.44 points
 
 ---
 
